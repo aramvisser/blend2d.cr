@@ -1,0 +1,13 @@
+name: blend2d
+version: 0.0.1
+description: Bindings for Blend2D
+
+authors:
+  - Aram Visser <hello@aramvisser.com>
+
+development_dependencies:
+  clang:
+    github: crystal-lang/clang.cr
+    branch: master
+
+license: ZLib
