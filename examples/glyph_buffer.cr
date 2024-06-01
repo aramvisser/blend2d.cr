@@ -9,7 +9,6 @@ text = <<-TEXT
 img = Blend2D::Image.new 480, 480, :prgb32
 ctx = Blend2D::Context.new img
 
-ctx.comp_op = :src_copy
 ctx.fill_all
 
 face = Blend2D::FontFace.new "#{__DIR__}/resources/ABeeZee-Regular.ttf"

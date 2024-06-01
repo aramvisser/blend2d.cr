@@ -20,6 +20,13 @@ module Blend2D
       LibBlend2D.blContextRestore(self, nil).success_or_raise
     end
 
+    def save_and_restore
+      cookie = uninitialized LibBlend2D::BLContextCookie
+      LibBlend2D.blContextSave(self, pointerof(cookie)).success_or_raise
+      yield
+      LibBlend2D.blContextRestore(self, pointerof(cookie)).success_or_raise
+    end
+
     def apply_transform_op(op : TransformOp, data : Array(Float64)) : Bool
       LibBlend2D.blContextApplyTransformOp(self, op, data).success_or_raise
     end
@@ -36,12 +43,24 @@ module Blend2D
       apply_transform_op :rotate_pt, [angle, x, y]
     end
 
+    def scale(x : Float64, y : Float64)
+      apply_transform_op :scale, [x, y]
+    end
+
+    def skew(x : Float64, y : Float64)
+      apply_transform_op :skew, [x, y]
+    end
+
     def fill_style=(style)
       LibBlend2D.blContextSetFillStyle(self, style).success_or_raise
     end
 
     def fill_style=(rgba32 : UInt32)
       LibBlend2D.blContextSetFillStyleRgba32(self, rgba32).success_or_raise
+    end
+
+    def fill_style=(rgba32 : RGBA32)
+      LibBlend2D.blContextSetFillStyleRgba32(self, rgba32.packed).success_or_raise
     end
 
     def stroke_style=(rgba32 : UInt32)
@@ -61,6 +80,18 @@ module Blend2D
     end
     def stroke_style_rgba32=(rgba32 : UInt32)
       LibBlend2D.blContextSetStrokeStyleRgba32(self, rgba32).success_or_raise
+    end
+
+    def stroke_cap(position : StrokeCapPosition) : StrokeCap
+      LibBlend2D.blContextGetStrokeCap(self, position)
+    end
+
+    def stroke_start_cap
+      stroke_cap :start
+    end
+
+    def stroke_end_cap
+      stroke_cap :end
     end
 
     def set_stroke_cap(position : StrokeCapPosition, stroke_cap : StrokeCap) : Bool
@@ -83,6 +114,10 @@ module Blend2D
       LibBlend2D.blContextFillAllRgba32(self, rgba32).success_or_raise
     end
 
+    def fill_all(rgba32 : RGBA32) : Bool
+      LibBlend2D.blContextFillAllRgba32(self, rgba32.packed).success_or_raise
+    end
+
     def fill(path : Path) : Bool
       fill Point::ZERO, path
     end
@@ -95,7 +130,7 @@ module Blend2D
       LibBlend2D.blContextFillGeometry(
         self,
         geometry.type,
-        geometry,
+        geometry.to_unsafe,
       ).success_or_raise
     end
 
@@ -105,6 +140,15 @@ module Blend2D
         geometry.type,
         geometry,
         rgba32,
+      ).success_or_raise
+    end
+
+    def fill(geometry : Geometry::Core, rgba32 : RGBA32)
+      LibBlend2D.blContextFillGeometryRgba32(
+        self,
+        geometry.type,
+        geometry,
+        rgba32.packed,
       ).success_or_raise
     end
 
@@ -127,6 +171,10 @@ module Blend2D
 
     def fill(origin : Point, font : Font, text : String, style) : Bool
       LibBlend2D.blContextFillUtf8TextDExt(self, origin, font, text, text.size, style).success_or_raise
+    end
+
+    def fill(origin : Point, font : Font, glyphRun : GlyphRun) : Bool
+      LibBlend2D.blContextFillGlyphRunD(self, origin, font, glyphRun).success_or_raise
     end
 
     def fill(origin : Point, font : Font, glyph_run : GlyphRun, rgba32 : UInt32) : Bool
@@ -163,6 +211,53 @@ module Blend2D
         geometry.type,
         geometry,
       ).success_or_raise
+    end
+
+    def stroke(geometry : Geometry::Core, rgba32 : UInt32)
+      LibBlend2D.blContextStrokeGeometryRgba32(
+        self,
+        geometry.type,
+        geometry,
+        rgba32,
+      ).success_or_raise
+    end
+
+    def stroke(geometry : Geometry::Core, rgba32 : RGBA32)
+      LibBlend2D.blContextStrokeGeometryRgba32(
+        self,
+        geometry.type,
+        geometry,
+        rgba32.packed,
+      ).success_or_raise
+    end
+
+    def stroke(geometry : Geometry::Core, style)
+      LibBlend2D.blContextStrokeGeometryExt(
+        self,
+        geometry.type,
+        geometry,
+        style,
+      ).success_or_raise
+    end
+
+    def stroke(origin : Point , font : Font, text : String)
+      LibBlend2D.blContextStrokeUtf8TextD(self, origin, font, text, text.size).success_or_raise
+    end
+
+    def stroke(origin : Point, font : Font, text : String, rgba32 : UInt32) : Bool
+      LibBlend2D.blContextStrokeUtf8TextDRgba32(self, origin, font, text, text.size, rgba32).success_or_raise
+    end
+
+    def stroke(origin : Point, font : Font, text : String, style) : Bool
+      LibBlend2D.blContextStrokeUtf8TextDExt(self, origin, font, text, text.size, style).success_or_raise
+    end
+
+    def stroke(origin : Point, font : Font, glyph_run : GlyphRun, rgba32 : UInt32) : Bool
+      LibBlend2D.blContextStrokeGlyphRunDRgba32(self, origin, font, glyph_run, rgba32).success_or_raise
+    end
+
+    def blit_image(origin : PointI, img : Image, img_area : RectI? = nil) : Bool
+      LibBlend2D.blContextBlitImageI(self, origin, img, img_area).success_or_raise
     end
   end
 end

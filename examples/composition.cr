@@ -3,7 +3,6 @@ require "../src/blend2d"
 img = Blend2D::Image.new 480, 480
 ctx = Blend2D::Context.new img
 
-ctx.comp_op = :src_copy
 ctx.fill_all
 
 radial_gradient = Blend2D::Gradient.radial 180, 180, 180, 180, 180

@@ -28,5 +28,9 @@ module Blend2D
     def write_to_file(fileName : String|::Path, codec : ImageCodec) : Bool
       LibBlend2D.blImageWriteToFile(self, fileName.to_s, codec).success_or_raise
     end
+
+    def size
+      SizeI.new @core._d.value.size
+    end
   end
 end

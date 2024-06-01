@@ -8,7 +8,11 @@ module Blend2D
       def initialize(@core : T)
       end
 
-      def to_unsafe : Pointer(T)
+      def to_unsafe
+        pointerof(@core)
+      end
+
+      def pointer
         pointerof(@core)
       end
     end
@@ -103,7 +107,7 @@ module Blend2D
       delegate :x, :y, :w, :h, to: @core
 
       def initialize(x : Int32, y : Int32, w : Int32, h : Int32)
-        @core = LibBlend2D::BLRect.new x: x, y: y, w: w, h: h
+        @core = LibBlend2D::BLRectI.new x: x, y: y, w: w, h: h
       end
     end
 

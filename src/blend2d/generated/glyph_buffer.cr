@@ -1,16 +1,6 @@
 module Blend2D
   class GlyphBuffer
     # :nodoc:
-    def initialize
-      LibBlend2D.blGlyphBufferInit(out @core).success_or_raise
-    end
-
-    # :nodoc:
-    def finalize
-      LibBlend2D.blGlyphBufferDestroy(self).success_or_raise
-    end
-
-    # :nodoc:
     def reset : Bool
       LibBlend2D.blGlyphBufferReset(self).success_or_raise
     end

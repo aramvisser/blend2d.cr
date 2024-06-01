@@ -236,11 +236,6 @@ module Blend2D
     end
 
     # :nodoc:
-    def get_stroke_cap(position : StrokeCapPosition) : StrokeCap
-      LibBlend2D.blContextGetStrokeCap(self, position)
-    end
-
-    # :nodoc:
     def stroke_caps=(strokeCap : StrokeCap)
       LibBlend2D.blContextSetStrokeCaps(self, strokeCap).success_or_raise
     end
@@ -531,11 +526,6 @@ module Blend2D
     end
 
     # :nodoc:
-    def fill_glyph_run_d(origin : LibBlend2D::BLPoint*, font : Font, glyphRun : LibBlend2D::BLGlyphRun*) : Bool
-      LibBlend2D.blContextFillGlyphRunD(self, origin, font, glyphRun).success_or_raise
-    end
-
-    # :nodoc:
     def fill_glyph_run_d_rgba64(origin : LibBlend2D::BLPoint*, font : Font, glyphRun : LibBlend2D::BLGlyphRun*, rgba64 : LibC::ULong) : Bool
       LibBlend2D.blContextFillGlyphRunDRgba64(self, origin, font, glyphRun, rgba64).success_or_raise
     end
@@ -633,11 +623,6 @@ module Blend2D
     # :nodoc:
     def stroke_path_d_rgba64(origin : LibBlend2D::BLPoint*, path : Path, rgba64 : LibC::ULong) : Bool
       LibBlend2D.blContextStrokePathDRgba64(self, origin, path, rgba64).success_or_raise
-    end
-
-    # :nodoc:
-    def stroke_geometry_rgba32(type : GeometryType, data : Pointer, rgba32 : UInt32) : Bool
-      LibBlend2D.blContextStrokeGeometryRgba32(self, type, data, rgba32).success_or_raise
     end
 
     # :nodoc:

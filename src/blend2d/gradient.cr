@@ -56,7 +56,7 @@ module Blend2D
       new Radial.new(x0, y0, x1, y1, r0), extend_mode
     end
 
-    def self.radial(x0 : Float64, y0 : Float64, angle : Float64, extend_mode : ExtendMode = ExtendMode::Pad)
+    def self.conic(x0 : Float64, y0 : Float64, angle : Float64, extend_mode : ExtendMode = ExtendMode::Pad)
       new Conic.new(x0, y0, angle), extend_mode
     end
 
