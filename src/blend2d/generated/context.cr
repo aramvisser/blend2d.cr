@@ -636,11 +636,6 @@ module Blend2D
     end
 
     # :nodoc:
-    def stroke_geometry(type : GeometryType, data : Pointer) : Bool
-      LibBlend2D.blContextStrokeGeometry(self, type, data).success_or_raise
-    end
-
-    # :nodoc:
     def stroke_geometry_rgba32(type : GeometryType, data : Pointer, rgba32 : UInt32) : Bool
       LibBlend2D.blContextStrokeGeometryRgba32(self, type, data, rgba32).success_or_raise
     end

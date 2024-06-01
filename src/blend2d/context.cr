@@ -12,8 +12,20 @@ module Blend2D
       LibBlend2D.blContextEnd(self).success_or_raise
     end
 
+    def save : Bool
+      LibBlend2D.blContextSave(self, nil).success_or_raise
+    end
+
+    def restore : Bool
+      LibBlend2D.blContextRestore(self, nil).success_or_raise
+    end
+
     def apply_transform_op(op : TransformOp, data : Array(Float64)) : Bool
       LibBlend2D.blContextApplyTransformOp(self, op, data).success_or_raise
+    end
+
+    def translate(x : Float64, y : Float64)
+      apply_transform_op :translate, [x, y]
     end
 
     def rotate(angle : Float64)
@@ -32,12 +44,23 @@ module Blend2D
       LibBlend2D.blContextSetFillStyleRgba32(self, rgba32).success_or_raise
     end
 
+    def stroke_style=(rgba32 : UInt32)
+      LibBlend2D.blContextSetStrokeStyleRgba32(self, rgba32).success_or_raise
+    end
+
+    def stroke_style=(rgba32 : RGBA32)
+      LibBlend2D.blContextSetStrokeStyleRgba32(self, rgba32.packed).success_or_raise
+    end
+
     def comp_op : CompOp
       LibBlend2D.blContextGetCompOp(self)
     end
 
     def comp_op=(comp_op : CompOp)
       LibBlend2D.blContextSetCompOp(self, comp_op).success_or_raise
+    end
+    def stroke_style_rgba32=(rgba32 : UInt32)
+      LibBlend2D.blContextSetStrokeStyleRgba32(self, rgba32).success_or_raise
     end
 
     def set_stroke_cap(position : StrokeCapPosition, stroke_cap : StrokeCap) : Bool
@@ -66,6 +89,23 @@ module Blend2D
 
     def fill(origin : Point, path : Path) : Bool
       LibBlend2D.blContextFillPathD(self, origin, path).success_or_raise
+    end
+
+    def fill(geometry : Geometry::Core)
+      LibBlend2D.blContextFillGeometry(
+        self,
+        geometry.type,
+        geometry,
+      ).success_or_raise
+    end
+
+    def fill(geometry : Geometry::Core, rgba32 : UInt32)
+      LibBlend2D.blContextFillGeometryRgba32(
+        self,
+        geometry.type,
+        geometry,
+        rgba32,
+      ).success_or_raise
     end
 
     def fill(geometry : Geometry::Core, style)
@@ -115,6 +155,14 @@ module Blend2D
 
     def stroke(origin : Point, path : Path, style) : Bool
       LibBlend2D.blContextStrokePathDExt(self, origin, path, style).success_or_raise
+    end
+
+    def stroke(geometry : Geometry::Core)
+      LibBlend2D.blContextStrokeGeometry(
+        self,
+        geometry.type,
+        geometry,
+      ).success_or_raise
     end
   end
 end

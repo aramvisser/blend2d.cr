@@ -11,3 +11,6 @@ development_dependencies:
     branch: master
 
 license: ZLib
+
+crystalline:
+  main: src/blend2d.cr
