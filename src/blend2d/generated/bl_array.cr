@@ -1,33 +1,8 @@
 module Blend2D
   class BLArray
     # :nodoc:
-    def initialize(arrayType : ObjectType)
-      LibBlend2D.blArrayInit(out @core, arrayType).success_or_raise
-    end
-
-    # :nodoc:
-    def finalize
-      LibBlend2D.blArrayDestroy(self).success_or_raise
-    end
-
-    # :nodoc:
     def reset : Bool
       LibBlend2D.blArrayReset(self).success_or_raise
-    end
-
-    # :nodoc:
-    def size : Int32
-      LibBlend2D.blArrayGetSize(self)
-    end
-
-    # :nodoc:
-    def capacity : Int32
-      LibBlend2D.blArrayGetCapacity(self)
-    end
-
-    # :nodoc:
-    def item_size : Int32
-      LibBlend2D.blArrayGetItemSize(self)
     end
 
     # :nodoc:
@@ -43,11 +18,6 @@ module Blend2D
     # :nodoc:
     def shrink : Bool
       LibBlend2D.blArrayShrink(self).success_or_raise
-    end
-
-    # :nodoc:
-    def reserve(n : Int32) : Bool
-      LibBlend2D.blArrayReserve(self, n).success_or_raise
     end
 
     # :nodoc:
@@ -93,41 +63,6 @@ module Blend2D
     # :nodoc:
     def assign_external_data(data : Pointer, size : Int32, capacity : Int32, dataAccessFlags : DataAccessFlags, destroyFunc : LibBlend2D::BLDestroyExternalDataFunc, userData : Pointer) : Bool
       LibBlend2D.blArrayAssignExternalData(self, data, size, capacity, dataAccessFlags, destroyFunc, userData).success_or_raise
-    end
-
-    # :nodoc:
-    def append_u8(value : UInt8) : Bool
-      LibBlend2D.blArrayAppendU8(self, value).success_or_raise
-    end
-
-    # :nodoc:
-    def append_u16(value : UInt16) : Bool
-      LibBlend2D.blArrayAppendU16(self, value).success_or_raise
-    end
-
-    # :nodoc:
-    def append_u32(value : UInt32) : Bool
-      LibBlend2D.blArrayAppendU32(self, value).success_or_raise
-    end
-
-    # :nodoc:
-    def append_u64(value : LibC::ULong) : Bool
-      LibBlend2D.blArrayAppendU64(self, value).success_or_raise
-    end
-
-    # :nodoc:
-    def append_f32(value : Float32) : Bool
-      LibBlend2D.blArrayAppendF32(self, value).success_or_raise
-    end
-
-    # :nodoc:
-    def append_f64(value : Float64) : Bool
-      LibBlend2D.blArrayAppendF64(self, value).success_or_raise
-    end
-
-    # :nodoc:
-    def append_item(item : Pointer) : Bool
-      LibBlend2D.blArrayAppendItem(self, item).success_or_raise
     end
 
     # :nodoc:
