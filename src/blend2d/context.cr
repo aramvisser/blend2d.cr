@@ -106,6 +106,15 @@ module Blend2D
       set_stroke_cap :end, stroke_cap
     end
 
+    def stroke_join : StrokeJoin
+      LibBlend2D.blContextGetStrokeJoin(self)
+    end
+
+    def stroke_join=(stroke_join : StrokeJoin)
+      LibBlend2D.blContextSetStrokeJoin(self, stroke_join).success_or_raise
+    end
+
+
     def fill_all : Bool
       LibBlend2D.blContextFillAll(self).success_or_raise
     end

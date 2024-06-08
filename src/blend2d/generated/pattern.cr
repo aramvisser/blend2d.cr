@@ -1,97 +1,97 @@
 module Blend2D
   class Pattern
     # :nodoc:
-    def initialize
+    private def initialize
       LibBlend2D.blPatternInit(out @core).success_or_raise
     end
 
     # :nodoc:
-    def initialize(image : Image, area : LibBlend2D::BLRectI*, extendMode : ExtendMode, transform : LibBlend2D::BLMatrix2D*)
+    private def initialize(image : Image, area : LibBlend2D::BLRectI*, extendMode : ExtendMode, transform : LibBlend2D::BLMatrix2D*)
       LibBlend2D.blPatternInitAs(out @core, image, area, extendMode, transform).success_or_raise
     end
 
     # :nodoc:
-    def reset : Bool
+    private def reset : Bool
       LibBlend2D.blPatternReset(self).success_or_raise
     end
 
     # :nodoc:
-    def assign_move(other : Pattern) : Bool
+    private def assign_move(other : Pattern) : Bool
       LibBlend2D.blPatternAssignMove(self, other).success_or_raise
     end
 
     # :nodoc:
-    def assign_weak(other : Pattern) : Bool
+    private def assign_weak(other : Pattern) : Bool
       LibBlend2D.blPatternAssignWeak(self, other).success_or_raise
     end
 
     # :nodoc:
-    def assign_deep(other : Pattern) : Bool
+    private def assign_deep(other : Pattern) : Bool
       LibBlend2D.blPatternAssignDeep(self, other).success_or_raise
     end
 
     # :nodoc:
-    def create(image : Image, area : LibBlend2D::BLRectI*, extendMode : ExtendMode, transform : LibBlend2D::BLMatrix2D*) : Bool
+    private def create(image : Image, area : LibBlend2D::BLRectI*, extendMode : ExtendMode, transform : LibBlend2D::BLMatrix2D*) : Bool
       LibBlend2D.blPatternCreate(self, image, area, extendMode, transform).success_or_raise
     end
 
     # :nodoc:
-    def get_image(image : Image) : Bool
+    private def get_image(image : Image) : Bool
       LibBlend2D.blPatternGetImage(self, image).success_or_raise
     end
 
     # :nodoc:
-    def set_image(image : Image, area : LibBlend2D::BLRectI*) : Bool
+    private def set_image(image : Image, area : LibBlend2D::BLRectI*) : Bool
       LibBlend2D.blPatternSetImage(self, image, area).success_or_raise
     end
 
     # :nodoc:
-    def reset_image : Bool
+    private def reset_image : Bool
       LibBlend2D.blPatternResetImage(self).success_or_raise
     end
 
     # :nodoc:
-    def get_area(areaOut : LibBlend2D::BLRectI*) : Bool
+    private def get_area(areaOut : LibBlend2D::BLRectI*) : Bool
       LibBlend2D.blPatternGetArea(self, areaOut).success_or_raise
     end
 
     # :nodoc:
-    def area=(area : LibBlend2D::BLRectI*)
+    private def area=(area : LibBlend2D::BLRectI*)
       LibBlend2D.blPatternSetArea(self, area).success_or_raise
     end
 
     # :nodoc:
-    def reset_area : Bool
+    private def reset_area : Bool
       LibBlend2D.blPatternResetArea(self).success_or_raise
     end
 
     # :nodoc:
-    def extend_mode : ExtendMode
+    private def extend_mode : ExtendMode
       LibBlend2D.blPatternGetExtendMode(self)
     end
 
     # :nodoc:
-    def extend_mode=(extendMode : ExtendMode)
+    private def extend_mode=(extendMode : ExtendMode)
       LibBlend2D.blPatternSetExtendMode(self, extendMode).success_or_raise
     end
 
     # :nodoc:
-    def get_transform(transformOut : LibBlend2D::BLMatrix2D*) : Bool
+    private def get_transform(transformOut : LibBlend2D::BLMatrix2D*) : Bool
       LibBlend2D.blPatternGetTransform(self, transformOut).success_or_raise
     end
 
     # :nodoc:
-    def transform_type : TransformType
+    private def transform_type : TransformType
       LibBlend2D.blPatternGetTransformType(self)
     end
 
     # :nodoc:
-    def apply_transform_op(opType : TransformOp, opData : Pointer) : Bool
+    private def apply_transform_op(opType : TransformOp, opData : Pointer) : Bool
       LibBlend2D.blPatternApplyTransformOp(self, opType, opData).success_or_raise
     end
 
     # :nodoc:
-    def self.equals(a : Pattern, b : Pattern) : Int32
+    private def self.equals(a : Pattern, b : Pattern) : Int32
       LibBlend2D.blPatternEquals(a, b)
     end
   end
