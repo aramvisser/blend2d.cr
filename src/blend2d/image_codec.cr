@@ -1,13 +1,24 @@
 module Blend2D
   class ImageCodec < Core(LibBlend2D::BLImageCodecCore)
-    def initialize(@core : T)
+    def self.find_by_name(name : String) : ImageCodec
+      codec = new
+      LibBlend2D.blImageCodecFindByName(codec, name.to_unsafe, name.size, nil).success_or_raise
+      codec
     end
 
-    def self.find_by_extension(extension : String)
+    def self.find_by_extension(extension : String) : ImageCodec
+      codec = new
+      LibBlend2D.blImageCodecFindByExtension(codec, extension.to_unsafe, extension.size, nil).success_or_raise
+      codec
     end
 
-    def initialize(name : ::String)
-      LibBlend2D.blImageCodecInitByName(out @core, name.to_unsafe, name.size, nil).success_or_raise
+    # :nodoc:
+    private def initialize
+      LibBlend2D.blImageCodecInit(out @core).success_or_raise
+    end
+
+    # :nodoc:
+    protected def initialize(@core : T)
     end
 
     def finalize

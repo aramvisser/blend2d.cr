@@ -20,12 +20,11 @@ module Blend2D
 
     # Codec is determined based on file extension
     def write_to_file(filename) : Bool
-      codec_name = ::Path.new(filename).extension.lchop(".").upcase
-      codec = ImageCodec.new(codec_name)
+      codec = ImageCodec.find_by_extension(filename)
       write_to_file(filename, codec)
     end
 
-    def write_to_file(fileName : String|::Path, codec : ImageCodec) : Bool
+    def write_to_file(fileName, codec : ImageCodec) : Bool
       LibBlend2D.blImageWriteToFile(self, fileName.to_s, codec).success_or_raise
     end
 

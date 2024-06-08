@@ -1,11 +1,6 @@
 module Blend2D
   class ImageCodec
     # :nodoc:
-    def initialize
-      LibBlend2D.blImageCodecInit(out @core).success_or_raise
-    end
-
-    # :nodoc:
     def reset : Bool
       LibBlend2D.blImageCodecReset(self).success_or_raise
     end
@@ -18,16 +13,6 @@ module Blend2D
     # :nodoc:
     def assign_weak(other : ImageCodec) : Bool
       LibBlend2D.blImageCodecAssignWeak(self, other).success_or_raise
-    end
-
-    # :nodoc:
-    def find_by_name(name : UInt8*, size : Int32, codecs : Array) : Bool
-      LibBlend2D.blImageCodecFindByName(self, name, size, codecs).success_or_raise
-    end
-
-    # :nodoc:
-    def find_by_extension(name : UInt8*, size : Int32, codecs : Array) : Bool
-      LibBlend2D.blImageCodecFindByExtension(self, name, size, codecs).success_or_raise
     end
 
     # :nodoc:
@@ -48,11 +33,6 @@ module Blend2D
     # :nodoc:
     def create_encoder(dst : ImageEncoder) : Bool
       LibBlend2D.blImageCodecCreateEncoder(self, dst).success_or_raise
-    end
-
-    # :nodoc:
-    def self.array_init_built_in_codecs(self_ : Array) : Bool
-      LibBlend2D.blImageCodecArrayInitBuiltInCodecs(self_).success_or_raise
     end
 
     # :nodoc:
