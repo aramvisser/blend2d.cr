@@ -28,6 +28,17 @@ module Blend2D
       LibBlend2D.blImageWriteToFile(self, fileName.to_s, codec).success_or_raise
     end
 
+    def write_to_data(codec : ImageCodec) : BLArray(UInt8)
+      dst = BLArray(UInt8).new
+      LibBlend2D.blImageWriteToData(self, dst, codec).success_or_raise
+      dst
+    end
+
+    def write_to_io(io : IO, codec : ImageCodec) : IO
+      io.write write_to_data(codec).to_slice
+      io
+    end
+
     def size : SizeI
       SizeI.new @core._d.value.size
     end

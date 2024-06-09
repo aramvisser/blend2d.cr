@@ -44,3 +44,7 @@ def write_pixel(io, pixel : UInt32)
   io << g.to_s.rjust(3, ' ') << " "
   io << b.to_s.rjust(3, ' ') << " "
 end
+
+# Alternatively, you can also get an encoded image as a Bytes slice or written to an IO instance
+as_bytes = img.write_to_data(Blend2D::ImageCodec::BMP).to_slice # write_to_data returns a Blend2D::BLArray
+as_io = img.write_to_io(IO::Memory.new, Blend2D::ImageCodec::PNG) # write_to_io writes the image to the IO and returns the IO

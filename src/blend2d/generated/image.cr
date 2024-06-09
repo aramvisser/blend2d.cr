@@ -59,10 +59,5 @@ module Blend2D
     private def read_from_data(data : Pointer, size : Int32, codecs : Array) : Bool
       LibBlend2D.blImageReadFromData(self, data, size, codecs).success_or_raise
     end
-
-    # :nodoc:
-    private def write_to_data(dst : Array, codec : ImageCodec) : Bool
-      LibBlend2D.blImageWriteToData(self, dst, codec).success_or_raise
-    end
   end
 end

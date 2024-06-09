@@ -1,5 +1,9 @@
 module Blend2D
   class ImageCodec < Core(LibBlend2D::BLImageCodecCore)
+    BMP = find_by_name("BMP")
+    JPG = find_by_name("JPG")
+    PNG = find_by_name("PNG")
+
     def self.find_by_name(name : String) : ImageCodec
       codec = new
       LibBlend2D.blImageCodecFindByName(codec, name.to_unsafe, name.size, nil).success_or_raise
