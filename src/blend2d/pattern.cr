@@ -13,6 +13,5 @@ module Blend2D
     def finalize
       LibBlend2D.blPatternDestroy(self).success_or_raise
     end
-
   end
 end

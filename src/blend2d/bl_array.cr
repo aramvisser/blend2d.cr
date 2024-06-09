@@ -92,7 +92,7 @@ module Blend2D
       to_slice.to_a
     end
 
-    def to_a(x : U.class) forall U
+    def to_a(x : U.class) : Array(U) forall U
       data = LibBlend2D.blArrayGetData self
       pointer = Pointer(LibBlend2D::BLImageCodecCore).new(data.address)
       step = (item_size / sizeof(T)).ceil.to_i

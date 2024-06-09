@@ -7,7 +7,7 @@ module Blend2D
       LibBlend2D.blStringDestroy(self).success_or_raise
     end
 
-    def to_s
+    def to_s : String
       String.new LibBlend2D.blStringGetData(self)
     end
   end

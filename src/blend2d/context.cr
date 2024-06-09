@@ -90,11 +90,11 @@ module Blend2D
       LibBlend2D.blContextGetStrokeCap(self, position)
     end
 
-    def stroke_start_cap
+    def stroke_start_cap : StrokeCap
       stroke_cap :start
     end
 
-    def stroke_end_cap
+    def stroke_end_cap : StrokeCap
       stroke_cap :end
     end
 
@@ -218,7 +218,7 @@ module Blend2D
       LibBlend2D.blContextStrokePathDExt(self, origin, path, style).success_or_raise
     end
 
-    def stroke(geometry : Geometry::Core)
+    def stroke(geometry : Geometry::Core) : Bool
       LibBlend2D.blContextStrokeGeometry(
         self,
         geometry.type,
@@ -226,7 +226,7 @@ module Blend2D
       ).success_or_raise
     end
 
-    def stroke(geometry : Geometry::Core, rgba32 : UInt32)
+    def stroke(geometry : Geometry::Core, rgba32 : UInt32) : Bool
       LibBlend2D.blContextStrokeGeometryRgba32(
         self,
         geometry.type,
@@ -235,7 +235,7 @@ module Blend2D
       ).success_or_raise
     end
 
-    def stroke(geometry : Geometry::Core, rgba32 : RGBA32)
+    def stroke(geometry : Geometry::Core, rgba32 : RGBA32) : Bool
       LibBlend2D.blContextStrokeGeometryRgba32(
         self,
         geometry.type,
@@ -244,7 +244,7 @@ module Blend2D
       ).success_or_raise
     end
 
-    def stroke(geometry : Geometry::Core, style)
+    def stroke(geometry : Geometry::Core, style) : Bool
       LibBlend2D.blContextStrokeGeometryExt(
         self,
         geometry.type,
@@ -253,7 +253,7 @@ module Blend2D
       ).success_or_raise
     end
 
-    def stroke(origin : Point , font : Font, text : String)
+    def stroke(origin : Point , font : Font, text : String) : Bool
       LibBlend2D.blContextStrokeUtf8TextD(self, origin, font, text, text.size).success_or_raise
     end
 

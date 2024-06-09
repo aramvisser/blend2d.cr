@@ -16,7 +16,7 @@ module Blend2D
       Point.new @core.trailing_bearing
     end
 
-    def bounding_box
+    def bounding_box : Box
       Box.new @core.bounding_box
     end
   end

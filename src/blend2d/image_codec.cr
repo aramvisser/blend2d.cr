@@ -31,19 +31,19 @@ module Blend2D
       bl_array.to_a(ImageCodec)
     end
 
-    def name
+    def name : BLString
       BLString.new @core._d.value.name
     end
 
-    def vendor
+    def vendor : BLString
       BLString.new @core._d.value.vendor
     end
 
-    def mime_type
+    def mime_type : BLString
       BLString.new @core._d.value.mime_type
     end
 
-    def extensions
+    def extensions : BLString
       BLString.new @core._d.value.extensions
     end
   end

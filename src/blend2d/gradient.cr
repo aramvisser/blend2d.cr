@@ -11,7 +11,7 @@ module Blend2D
         pointerof(@core)
       end
 
-      def type
+      def type : GradientType
         GradientType::Linear
       end
     end
@@ -27,7 +27,7 @@ module Blend2D
         pointerof(@core)
       end
 
-      def type
+      def type : GradientType
         GradientType::Radial
       end
     end
@@ -43,7 +43,7 @@ module Blend2D
         pointerof(@core)
       end
 
-      def type
+      def type : GradientType
         GradientType::Conic
       end
     end

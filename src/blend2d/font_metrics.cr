@@ -20,19 +20,19 @@ module Blend2D
       LibBlend2D.blFontGetMetrics(font, out @core).success_or_raise
     end
 
-    def ascent
+    def ascent : Float32
       @core.ascent_by_orientation[0]
     end
 
-    def v_ascent
+    def v_ascent : Float32
       @core.ascent_by_orientation[1]
     end
 
-    def descent
+    def descent : Float32
       @core.descent_by_orientation[0]
     end
 
-    def v_descent
+    def v_descent : Float32
       @core.descent_by_orientation[1]
     end
   end

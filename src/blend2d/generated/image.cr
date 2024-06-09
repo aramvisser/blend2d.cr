@@ -1,11 +1,6 @@
 module Blend2D
   class Image
     # :nodoc:
-    private def initialize
-      LibBlend2D.blImageInit(out @core).success_or_raise
-    end
-
-    # :nodoc:
     private def initialize(w : Int32, h : Int32, format : Format, pixelData : Pointer, stride : LibC::Long, accessFlags : DataAccessFlags, destroyFunc : LibBlend2D::BLDestroyExternalDataFunc, userData : Pointer)
       LibBlend2D.blImageInitAsFromData(out @core, w, h, format, pixelData, stride, accessFlags, destroyFunc, userData).success_or_raise
     end

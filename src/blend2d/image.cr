@@ -28,7 +28,7 @@ module Blend2D
       LibBlend2D.blImageWriteToFile(self, fileName.to_s, codec).success_or_raise
     end
 
-    def size
+    def size : SizeI
       SizeI.new @core._d.value.size
     end
   end

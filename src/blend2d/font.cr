@@ -9,7 +9,7 @@ module Blend2D
       LibBlend2D.blFontDestroy(self).success_or_raise
     end
 
-    def metrics
+    def metrics : FontMetrics
       FontMetrics.new self
     end
 
