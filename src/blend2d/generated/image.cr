@@ -36,11 +36,6 @@ module Blend2D
     end
 
     # :nodoc:
-    private def get_data(dataOut : LibBlend2D::BLImageData*) : Bool
-      LibBlend2D.blImageGetData(self, dataOut).success_or_raise
-    end
-
-    # :nodoc:
     private def make_mutable(dataOut : LibBlend2D::BLImageData*) : Bool
       LibBlend2D.blImageMakeMutable(self, dataOut).success_or_raise
     end

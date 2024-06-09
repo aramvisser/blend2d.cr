@@ -31,5 +31,10 @@ module Blend2D
     def size : SizeI
       SizeI.new @core._d.value.size
     end
+
+    def data : ImageData
+      LibBlend2D.blImageGetData(self, out image_data).success_or_raise
+      ImageData.new image_data
+    end
   end
 end
