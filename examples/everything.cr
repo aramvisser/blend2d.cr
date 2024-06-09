@@ -120,7 +120,7 @@ def draw_primitive_shapes(size, padding)
 end
 
 def draw_transformations(size, padding)
-  img = Blend2D::Image.new 9*size + padding*3, size + 3*padding
+  img = Blend2D::Image.new 11*size + padding*3, size + 3*padding
   ctx = Blend2D::Context.new img
   ctx.fill_all BLACK
 
@@ -167,6 +167,16 @@ def draw_transformations(size, padding)
   ctx.save_and_restore do
     ctx.fill shape, GRAY
     ctx.skew 0.4, 0
+    ctx.fill shape
+  end
+
+  ctx.translate size*2, 0
+
+  ctx.save_and_restore do
+    matrix = Blend2D::Matrix2D.translation(padding, -padding).scale(0.5, 1.3).rotate(30 * Math::PI / 180)
+
+    ctx.fill shape, GRAY
+    ctx.transform matrix
     ctx.fill shape
   end
 

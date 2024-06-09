@@ -31,24 +31,28 @@ module Blend2D
       LibBlend2D.blContextApplyTransformOp(self, op, data).success_or_raise
     end
 
-    def translate(x : Float64, y : Float64)
+    def translate(x : Float64, y : Float64) : Bool
       apply_transform_op :translate, [x, y]
     end
 
-    def rotate(angle : Float64)
+    def rotate(angle : Float64) : Bool
       apply_transform_op :rotate, [angle]
     end
 
-    def rotate(angle : Float64, x : Float64, y : Float64)
+    def rotate(angle : Float64, x : Float64, y : Float64) : Bool
       apply_transform_op :rotate_pt, [angle, x, y]
     end
 
-    def scale(x : Float64, y : Float64)
+    def scale(x : Float64, y : Float64) : Bool
       apply_transform_op :scale, [x, y]
     end
 
-    def skew(x : Float64, y : Float64)
+    def skew(x : Float64, y : Float64) : Bool
       apply_transform_op :skew, [x, y]
+    end
+
+    def transform(matrix : Matrix2D) : Bool
+      LibBlend2D.blContextApplyTransformOp(self, TransformOp::Transform, matrix).success_or_raise
     end
 
     def fill_style=(style)
