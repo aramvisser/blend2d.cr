@@ -10,6 +10,9 @@ module Blend2D
       LibBlend2D.blImageInit(out @core).success_or_raise
     end
 
+    def initialize(@core : LibBlend2D::BLImageCore)
+    end
+
     def initialize(w : Int32, h : Int32, format : Format = Format::Prgb32)
       LibBlend2D.blImageInitAs(out @core, w, h, format).success_or_raise
     end

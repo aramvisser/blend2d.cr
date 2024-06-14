@@ -16,93 +16,13 @@ module Blend2D
     end
 
     # :nodoc:
-    private def type : ContextType
-      LibBlend2D.blContextGetType(self)
-    end
-
-    # :nodoc:
-    private def get_target_size(targetSizeOut : LibBlend2D::BLSize*) : Bool
-      LibBlend2D.blContextGetTargetSize(self, targetSizeOut).success_or_raise
-    end
-
-    # :nodoc:
     private def target_image : LibBlend2D::BLImageCore*
       LibBlend2D.blContextGetTargetImage(self)
     end
 
     # :nodoc:
-    private def begin(image : Image, cci : LibBlend2D::BLContextCreateInfo*) : Bool
-      LibBlend2D.blContextBegin(self, image, cci).success_or_raise
-    end
-
-    # :nodoc:
     private def flush(flags : ContextFlushFlags) : Bool
       LibBlend2D.blContextFlush(self, flags).success_or_raise
-    end
-
-    # :nodoc:
-    private def save(cookie : LibBlend2D::BLContextCookie*) : Bool
-      LibBlend2D.blContextSave(self, cookie).success_or_raise
-    end
-
-    # :nodoc:
-    private def restore(cookie : LibBlend2D::BLContextCookie*) : Bool
-      LibBlend2D.blContextRestore(self, cookie).success_or_raise
-    end
-
-    # :nodoc:
-    private def get_meta_transform(transformOut : LibBlend2D::BLMatrix2D*) : Bool
-      LibBlend2D.blContextGetMetaTransform(self, transformOut).success_or_raise
-    end
-
-    # :nodoc:
-    private def get_user_transform(transformOut : LibBlend2D::BLMatrix2D*) : Bool
-      LibBlend2D.blContextGetUserTransform(self, transformOut).success_or_raise
-    end
-
-    # :nodoc:
-    private def get_final_transform(transformOut : LibBlend2D::BLMatrix2D*) : Bool
-      LibBlend2D.blContextGetFinalTransform(self, transformOut).success_or_raise
-    end
-
-    # :nodoc:
-    private def user_to_meta : Bool
-      LibBlend2D.blContextUserToMeta(self).success_or_raise
-    end
-
-    # :nodoc:
-    private def apply_transform_op(opType : TransformOp, opData : Pointer) : Bool
-      LibBlend2D.blContextApplyTransformOp(self, opType, opData).success_or_raise
-    end
-
-    # :nodoc:
-    private def get_hint(hintType : ContextHint) : UInt32
-      LibBlend2D.blContextGetHint(self, hintType)
-    end
-
-    # :nodoc:
-    private def set_hint(hintType : ContextHint, value : UInt32) : Bool
-      LibBlend2D.blContextSetHint(self, hintType, value).success_or_raise
-    end
-
-    # :nodoc:
-    private def get_hints(hintsOut : LibBlend2D::BLContextHints*) : Bool
-      LibBlend2D.blContextGetHints(self, hintsOut).success_or_raise
-    end
-
-    # :nodoc:
-    private def hints=(hints : LibBlend2D::BLContextHints*)
-      LibBlend2D.blContextSetHints(self, hints).success_or_raise
-    end
-
-    # :nodoc:
-    private def flatten_mode=(mode : FlattenMode)
-      LibBlend2D.blContextSetFlattenMode(self, mode).success_or_raise
-    end
-
-    # :nodoc:
-    private def flatten_tolerance=(tolerance : Float64)
-      LibBlend2D.blContextSetFlattenTolerance(self, tolerance).success_or_raise
     end
 
     # :nodoc:
@@ -126,31 +46,6 @@ module Blend2D
     end
 
     # :nodoc:
-    private def fill_style_rgba=(rgba : LibBlend2D::BLRgba*)
-      LibBlend2D.blContextSetFillStyleRgba(self, rgba).success_or_raise
-    end
-
-    # :nodoc:
-    private def fill_style_rgba64=(rgba64 : LibC::ULong)
-      LibBlend2D.blContextSetFillStyleRgba64(self, rgba64).success_or_raise
-    end
-
-    # :nodoc:
-    private def disable_fill_style : Bool
-      LibBlend2D.blContextDisableFillStyle(self).success_or_raise
-    end
-
-    # :nodoc:
-    private def fill_alpha : Float64
-      LibBlend2D.blContextGetFillAlpha(self)
-    end
-
-    # :nodoc:
-    private def fill_alpha=(alpha : Float64)
-      LibBlend2D.blContextSetFillAlpha(self, alpha).success_or_raise
-    end
-
-    # :nodoc:
     private def get_stroke_style(styleOut : Var) : Bool
       LibBlend2D.blContextGetStrokeStyle(self, styleOut).success_or_raise
     end
@@ -168,36 +63,6 @@ module Blend2D
     # :nodoc:
     private def set_stroke_style_with_mode(style : Pointer, transformMode : ContextStyleTransformMode) : Bool
       LibBlend2D.blContextSetStrokeStyleWithMode(self, style, transformMode).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_style_rgba=(rgba : LibBlend2D::BLRgba*)
-      LibBlend2D.blContextSetStrokeStyleRgba(self, rgba).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_style_rgba32=(rgba32 : UInt32)
-      LibBlend2D.blContextSetStrokeStyleRgba32(self, rgba32).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_style_rgba64=(rgba64 : LibC::ULong)
-      LibBlend2D.blContextSetStrokeStyleRgba64(self, rgba64).success_or_raise
-    end
-
-    # :nodoc:
-    private def disable_stroke_style : Bool
-      LibBlend2D.blContextDisableStrokeStyle(self).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_alpha : Float64
-      LibBlend2D.blContextGetStrokeAlpha(self)
-    end
-
-    # :nodoc:
-    private def stroke_alpha=(alpha : Float64)
-      LibBlend2D.blContextSetStrokeAlpha(self, alpha).success_or_raise
     end
 
     # :nodoc:

@@ -2,6 +2,9 @@ module Blend2D
   struct Size < BLStruct(LibBlend2D::BLSize)
     delegate :w, :h, to: @core
 
+    def initialize(@core : T)
+    end
+
     def initialize(w : Float64, h : Float64)
       @core = LibBlend2D::BLSize.new w: w, h: h
     end

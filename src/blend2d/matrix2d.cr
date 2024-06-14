@@ -40,6 +40,9 @@ module Blend2D
       @core = uninitialized LibBlend2D::BLMatrix2D
     end
 
+    protected def initialize(@core : LibBlend2D::BLMatrix2D)
+    end
+
     def initialize(m00 : Float64, m01 : Float64, m10 : Float64, m11 : Float64, m20 : Float64, m21 : Float64)
       @core = LibBlend2D::BLMatrix2D.new m00: m00, m01: m01, m10: m10, m11: m11, m20: m20, m21: m21
     end
