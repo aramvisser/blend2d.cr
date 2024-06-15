@@ -31,33 +31,8 @@ module Blend2D
     end
 
     # :nodoc:
-    private def get_fill_style(styleOut : Var) : Bool
-      LibBlend2D.blContextGetFillStyle(self, styleOut).success_or_raise
-    end
-
-    # :nodoc:
-    private def get_transformed_fill_style(styleOut : Var) : Bool
-      LibBlend2D.blContextGetTransformedFillStyle(self, styleOut).success_or_raise
-    end
-
-    # :nodoc:
     private def set_fill_style_with_mode(style : Pointer, transformMode : ContextStyleTransformMode) : Bool
       LibBlend2D.blContextSetFillStyleWithMode(self, style, transformMode).success_or_raise
-    end
-
-    # :nodoc:
-    private def get_stroke_style(styleOut : Var) : Bool
-      LibBlend2D.blContextGetStrokeStyle(self, styleOut).success_or_raise
-    end
-
-    # :nodoc:
-    private def get_transformed_stroke_style(styleOut : Var) : Bool
-      LibBlend2D.blContextGetTransformedStrokeStyle(self, styleOut).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_style=(style : Pointer)
-      LibBlend2D.blContextSetStrokeStyle(self, style).success_or_raise
     end
 
     # :nodoc:

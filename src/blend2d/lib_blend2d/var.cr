@@ -53,6 +53,7 @@ module Blend2D
 
     struct BLVarCore
       _d : BLObjectDetail
+      _dummy : UInt8 # Add dummy data to force heap allocation
     end
   end
 end

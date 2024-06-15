@@ -173,8 +173,14 @@ module Blend2D
       LibBlend2D.blContextSetFlattenTolerance(self, tolerance).success_or_raise
     end
 
-    def fill_style=(style)
-      LibBlend2D.blContextSetFillStyle(self, style).success_or_raise
+    def fill_style
+      LibBlend2D.blContextGetFillStyle(self, out style).success_or_raise
+      Var.init_with_type style
+    end
+
+    def transformed_fill_style
+      LibBlend2D.blContextGetTransformedFillStyle(self, out style).success_or_raise
+      Var.init_with_type style
     end
 
     def fill_style=(rgba32 : UInt32)
@@ -201,6 +207,10 @@ module Blend2D
       LibBlend2D.blContextSetFillStyleRgba64(self, rgba64).success_or_raise
     end
 
+    def fill_style=(style)
+      LibBlend2D.blContextSetFillStyle(self, style).success_or_raise
+    end
+
     def fill_alpha : Float64
       LibBlend2D.blContextGetFillAlpha(self)
     end
@@ -211,6 +221,16 @@ module Blend2D
 
     def disable_fill_style : Bool
       LibBlend2D.blContextDisableFillStyle(self).success_or_raise
+    end
+
+    def stroke_style
+      LibBlend2D.blContextGetStrokeStyle(self, out style).success_or_raise
+      Var.init_with_type style
+    end
+
+    def transformed_stroke_style
+      LibBlend2D.blContextGetTransformedStrokeStyle(self, out style).success_or_raise
+      Var.init_with_type style
     end
 
     def stroke_style=(rgba : RGBA)
@@ -231,6 +251,10 @@ module Blend2D
 
     def stroke_style=(rgba64 : RGBA64)
       LibBlend2D.blContextSetStrokeStyleRgba64(self, rgba64.packed).success_or_raise
+    end
+
+    def stroke_style=(style)
+      LibBlend2D.blContextSetStrokeStyle(self, style).success_or_raise
     end
 
     def stroke_alpha : Float64

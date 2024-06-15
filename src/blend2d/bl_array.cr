@@ -3,13 +3,13 @@ module Blend2D
     def self.object_type : ObjectType
       case
       when T == Int8 then ObjectType::ArrayInt8
-      when T == UInt8 then ObjectType::ArrayUint8
+      when T == UInt8 then ObjectType::ArrayUInt8
       when T == Int16 then ObjectType::ArrayInt16
-      when T == UInt16 then ObjectType::ArrayUint16
+      when T == UInt16 then ObjectType::ArrayUInt16
       when T == Int32 then ObjectType::ArrayInt32
-      when T == UInt32 then ObjectType::ArrayUint32
+      when T == UInt32 then ObjectType::ArrayUInt32
       when T == Int64 then ObjectType::ArrayInt64
-      when T == UInt64 then ObjectType::ArrayUint64
+      when T == UInt64 then ObjectType::ArrayUInt64
       when T == Float32 then ObjectType::ArrayFloat32
       when T == Float64 then ObjectType::ArrayFloat64
       else ObjectType::ArrayObject
