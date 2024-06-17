@@ -7,7 +7,7 @@ ctx.fill_all
 
 texture = Blend2D::Image.read_from_file "#{__DIR__}/resources/Leaves.jpeg"
 pattern = Blend2D::Pattern.new texture
-ctx.fill Blend2D::RoundRect.new(40, 40, 400, 400, 45.5), pattern
+ctx.fill_geometry Blend2D::RoundRect.new(40, 40, 400, 400, 45.5), pattern
 
 ctx.end
 img.write_to_file "#{__DIR__}/patterns.png"

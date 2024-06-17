@@ -12,7 +12,7 @@ path.cubic_to 882, 404, 144, 267, 27, 31
 
 ctx.comp_op = :src_over
 ctx.fill_style = 0xFFFFFFFF_u32
-ctx.fill path
+ctx.fill_path path
 
 ctx.end
 img.write_to_file "#{__DIR__}/getting_started.png"

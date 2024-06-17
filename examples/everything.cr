@@ -48,7 +48,7 @@ def draw_header(font, text)
   ctx.fill_style = WHITE
   ctx.stroke_style = WHITE
 
-  ctx.fill Blend2D::Point.new(24, 52), font, text
+  ctx.fill_text Blend2D::Point.new(24, 52), font, text
   ctx.stroke Blend2D::Line.new 12, 54.5, 798, 54.5
 
   ctx.end
@@ -75,23 +75,23 @@ def draw_primitive_shapes(size, padding)
 
   ctx.save_and_restore do
     ctx.translate padding, padding
-    ctx.fill box
+    ctx.fill_geometry box
     ctx.translate size + padding, 0
-    ctx.fill rect
+    ctx.fill_geometry rect
     ctx.translate size + padding, 0
-    ctx.fill round_rect
+    ctx.fill_geometry round_rect
     ctx.translate size + padding, 0
-    ctx.fill ellipse
+    ctx.fill_geometry ellipse
     ctx.translate size + padding, 0
-    ctx.fill circle
+    ctx.fill_geometry circle
     ctx.translate size + padding, 0
-    ctx.fill arc
+    ctx.fill_geometry arc
     ctx.translate size + padding, 0
-    ctx.fill chord
+    ctx.fill_geometry chord
     ctx.translate size + padding, 0
-    ctx.fill pie
+    ctx.fill_geometry pie
     ctx.translate size + padding, 0
-    ctx.fill triangle
+    ctx.fill_geometry triangle
   end
 
   ctx.save_and_restore do
@@ -132,42 +132,42 @@ def draw_transformations(size, padding)
   ctx.translate padding, padding * 1.5
 
   ctx.save_and_restore do
-    ctx.fill shape, GRAY
+    ctx.fill_geometry shape, GRAY
     ctx.translate padding/2, padding/2
-    ctx.fill shape
+    ctx.fill_geometry shape
   end
 
   ctx.translate size*2, 0
 
   ctx.save_and_restore do
-    ctx.fill shape, GRAY
+    ctx.fill_geometry shape, GRAY
     ctx.rotate 15.0 * Math::PI / 180
-    ctx.fill shape
+    ctx.fill_geometry shape
   end
 
   ctx.translate size*2, 0
 
   ctx.save_and_restore do
-    ctx.fill shape, GRAY
+    ctx.fill_geometry shape, GRAY
     ctx.rotate 30.0 * Math::PI / 180, size/2, size/2
-    ctx.fill shape
+    ctx.fill_geometry shape
   end
 
   ctx.translate size*2, 0
 
   ctx.save_and_restore do
-    ctx.fill shape, GRAY
+    ctx.fill_geometry shape, GRAY
     ctx.translate 0.15 * size, -0.15 * size
     ctx.scale 0.7, 1.3
-    ctx.fill shape
+    ctx.fill_geometry shape
   end
 
   ctx.translate size*2, 0
 
   ctx.save_and_restore do
-    ctx.fill shape, GRAY
+    ctx.fill_geometry shape, GRAY
     ctx.skew 0.4, 0
-    ctx.fill shape
+    ctx.fill_geometry shape
   end
 
   ctx.translate size*2, 0
@@ -175,9 +175,9 @@ def draw_transformations(size, padding)
   ctx.save_and_restore do
     matrix = Blend2D::Matrix2D.translation(padding, -padding).scale(0.5, 1.3).rotate(30 * Math::PI / 180)
 
-    ctx.fill shape, GRAY
+    ctx.fill_geometry shape, GRAY
     ctx.transform matrix
-    ctx.fill shape
+    ctx.fill_geometry shape
   end
 
   img
@@ -199,21 +199,21 @@ def draw_gradients(size, padding)
   linear_gradient.add_stop 1.0, WHITE
 
   ctx.translate padding, padding*1.5
-  ctx.fill rectangle, linear_gradient
+  ctx.fill_geometry rectangle, linear_gradient
 
   radial_gradient = Blend2D::Gradient.radial size/2, size/2, size/2 + padding/2, size/2 + padding/2, size/2 + padding/2
   radial_gradient.add_stop 1.0, GRAY
   radial_gradient.add_stop 0.0, WHITE
 
   ctx.translate size*2 + padding*2, 0
-  ctx.fill circle, radial_gradient
+  ctx.fill_geometry circle, radial_gradient
 
   conic_gradient = Blend2D::Gradient.conic size/2, size/2, 270 * Math::PI / 180
   conic_gradient.add_stop 0.0, GRAY
   conic_gradient.add_stop 1.0, WHITE
 
   ctx.translate size + padding*2.5, 0
-  ctx.fill circle, conic_gradient
+  ctx.fill_geometry circle, conic_gradient
 
   img
 end

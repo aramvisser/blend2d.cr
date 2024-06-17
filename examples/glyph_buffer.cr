@@ -26,7 +26,7 @@ text.lines.each do |line|
   text_width = text_metrics.bounding_box.x1 - text_metrics.bounding_box.x0
   starting_point = Blend2D::Point.new((480 - text_width) / 2, y)
 
-  ctx.fill starting_point, font, buffer.glyph_run, 0xFFFFFFFF_u32
+  ctx.fill_glyph_run starting_point, font, buffer.glyph_run, 0xFFFFFFFF_u32
 
   y += font_metrics.ascent + font_metrics.descent + font_metrics.line_gap
 end

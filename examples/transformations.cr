@@ -11,7 +11,7 @@ pattern = Blend2D::Pattern.new texture
 angle = 45.0 * Math::PI / 180.0
 ctx.rotate angle, 240.0, 240.0
 
-ctx.fill Blend2D::RoundRect.new(50, 50, 380, 380, 80.5), pattern
+ctx.fill_geometry Blend2D::RoundRect.new(50, 50, 380, 380, 80.5), pattern
 
 ctx.end
 img.write_to_file "#{__DIR__}/transformations.png"
