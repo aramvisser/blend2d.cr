@@ -141,56 +141,6 @@ module Blend2D
     end
 
     # :nodoc:
-    private def stroke_rect_i(rect : LibBlend2D::BLRectI*) : Bool
-      LibBlend2D.blContextStrokeRectI(self, rect).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_rect_i_rgba32(rect : LibBlend2D::BLRectI*, rgba32 : UInt32) : Bool
-      LibBlend2D.blContextStrokeRectIRgba32(self, rect, rgba32).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_rect_i_rgba64(rect : LibBlend2D::BLRectI*, rgba64 : LibC::ULong) : Bool
-      LibBlend2D.blContextStrokeRectIRgba64(self, rect, rgba64).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_rect_i_ext(rect : LibBlend2D::BLRectI*, style : Pointer) : Bool
-      LibBlend2D.blContextStrokeRectIExt(self, rect, style).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_rect_d(rect : LibBlend2D::BLRect*) : Bool
-      LibBlend2D.blContextStrokeRectD(self, rect).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_rect_d_rgba32(rect : LibBlend2D::BLRect*, rgba32 : UInt32) : Bool
-      LibBlend2D.blContextStrokeRectDRgba32(self, rect, rgba32).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_rect_d_rgba64(rect : LibBlend2D::BLRect*, rgba64 : LibC::ULong) : Bool
-      LibBlend2D.blContextStrokeRectDRgba64(self, rect, rgba64).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_rect_d_ext(rect : LibBlend2D::BLRect*, style : Pointer) : Bool
-      LibBlend2D.blContextStrokeRectDExt(self, rect, style).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_path_d_rgba32(origin : LibBlend2D::BLPoint*, path : Path, rgba32 : UInt32) : Bool
-      LibBlend2D.blContextStrokePathDRgba32(self, origin, path, rgba32).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_path_d_rgba64(origin : LibBlend2D::BLPoint*, path : Path, rgba64 : LibC::ULong) : Bool
-      LibBlend2D.blContextStrokePathDRgba64(self, origin, path, rgba64).success_or_raise
-    end
-
-    # :nodoc:
     private def stroke_geometry_rgba64(type : GeometryType, data : Pointer, rgba64 : LibC::ULong) : Bool
       LibBlend2D.blContextStrokeGeometryRgba64(self, type, data, rgba64).success_or_raise
     end

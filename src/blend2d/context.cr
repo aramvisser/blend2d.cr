@@ -726,6 +726,54 @@ module Blend2D
       LibBlend2D.blContextFillMaskIExt(self, origin, mask, mask_area, style).success_or_raise
     end
 
+    def stroke(rect : Rect) : Bool
+      LibBlend2D.blContextStrokeRectD(self, rect).success_or_raise
+    end
+
+    def stroke(rect : RectI) : Bool
+      LibBlend2D.blContextStrokeRectI(self, rect).success_or_raise
+    end
+
+    def stroke(rect : Rect, rgba32 : RGBA32) : Bool
+      LibBlend2D.blContextStrokeRectDRgba32(self, rect, rgba32.packed).success_or_raise
+    end
+
+    def stroke(rect : RectI, rgba32 : RGBA32) : Bool
+      LibBlend2D.blContextStrokeRectIRgba32(self, rect, rgba32.packed).success_or_raise
+    end
+
+    def stroke(rect : Rect, rgba32 : UInt32) : Bool
+      LibBlend2D.blContextStrokeRectDRgba32(self, rect, rgba32).success_or_raise
+    end
+
+    def stroke(rect : RectI, rgba32 : UInt32) : Bool
+      LibBlend2D.blContextStrokeRectIRgba32(self, rect, rgba32).success_or_raise
+    end
+
+    def stroke(rect : Rect, rgba64 : RGBA64) : Bool
+      LibBlend2D.blContextStrokeRectDRgba64(self, rect, rgba64.packed).success_or_raise
+    end
+
+    def stroke(rect : RectI, rgba64 : RGBA64) : Bool
+      LibBlend2D.blContextStrokeRectIRgba64(self, rect, rgba64.packed).success_or_raise
+    end
+
+    def stroke(rect : Rect, rgba64 : UInt64) : Bool
+      LibBlend2D.blContextStrokeRectDRgba64(self, rect, rgba64).success_or_raise
+    end
+
+    def stroke(rect : RectI, rgba64 : UInt64) : Bool
+      LibBlend2D.blContextStrokeRectIRgba64(self, rect, rgba64).success_or_raise
+    end
+
+    def stroke(rect : Rect, style) : Bool
+      LibBlend2D.blContextStrokeRectDExt(self, rect, style).success_or_raise
+    end
+
+    def stroke(rect : RectI, style) : Bool
+      LibBlend2D.blContextStrokeRectIExt(self, rect, style).success_or_raise
+    end
+
     def stroke(path : Path) : Bool
       stroke Point::ZERO, path
     end
