@@ -159,6 +159,7 @@ module Blend2D
       miter_limit : Float64
       dash_offset : Float64
       dash_array : BLArrayCore
+      _dummy : UInt8 # Add dummy data to force heap allocation
     end
 
     struct BLPathImpl

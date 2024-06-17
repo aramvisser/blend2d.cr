@@ -269,6 +269,22 @@ module Blend2D
       LibBlend2D.blContextDisableStrokeStyle(self).success_or_raise
     end
 
+    def swap_styles(mode : ContextStyleSwapMode = ContextStyleSwapMode::Styles) : Bool
+      LibBlend2D.blContextSwapStyles(self, mode).success_or_raise
+    end
+
+    def swap_styles_with_alpha()
+      swap_styles :styles_with_alpha
+    end
+
+    def global_alpha : Float64
+      LibBlend2D.blContextGetGlobalAlpha(self)
+    end
+
+    def global_alpha=(alpha : Float64)
+      LibBlend2D.blContextSetGlobalAlpha(self, alpha).success_or_raise
+    end
+
     def comp_op : CompOp
       LibBlend2D.blContextGetCompOp(self)
     end
@@ -276,6 +292,32 @@ module Blend2D
     def comp_op=(comp_op : CompOp)
       LibBlend2D.blContextSetCompOp(self, comp_op).success_or_raise
     end
+
+    def fill_rule : FillRule
+      LibBlend2D.blContextGetFillRule(self)
+    end
+
+    def fill_rule=(fill_rule : FillRule)
+      LibBlend2D.blContextSetFillRule(self, fillRule).success_or_raise
+    end
+
+    def stroke_width : Float64
+      LibBlend2D.blContextGetStrokeWidth(self)
+    end
+
+    def stroke_width=(width : Float64)
+      LibBlend2D.blContextSetStrokeWidth(self, width).success_or_raise
+    end
+
+    def stroke_miter_limit : Float64
+      LibBlend2D.blContextGetStrokeMiterLimit(self)
+    end
+
+    def stroke_miter_limit=(miter_limit : Float64)
+      LibBlend2D.blContextSetStrokeMiterLimit(self, miter_limit).success_or_raise
+    end
+
+
     def stroke_style_rgba32=(rgba32 : UInt32)
       LibBlend2D.blContextSetStrokeStyleRgba32(self, rgba32).success_or_raise
     end
@@ -290,6 +332,10 @@ module Blend2D
 
     def stroke_end_cap : StrokeCap
       stroke_cap :end
+    end
+
+    def stroke_caps=(stroke_cap : StrokeCap)
+      LibBlend2D.blContextSetStrokeCaps(self, stroke_cap).success_or_raise
     end
 
     def set_stroke_cap(position : StrokeCapPosition, stroke_cap : StrokeCap) : Bool
@@ -312,6 +358,56 @@ module Blend2D
       LibBlend2D.blContextSetStrokeJoin(self, stroke_join).success_or_raise
     end
 
+    def stroke_transform_order : StrokeTransformOrder
+      LibBlend2D.blContextGetStrokeTransformOrder(self)
+    end
+
+    def stroke_transform_order=(transform_order : StrokeTransformOrder)
+      LibBlend2D.blContextSetStrokeTransformOrder(self, transform_order).success_or_raise
+    end
+
+    def stroke_options : StrokeOptions
+      LibBlend2D.blContextGetStrokeOptions(self, out options).success_or_raise
+      StrokeOptions.new options
+    end
+
+    def stroke_options=(options : StrokeOptions)
+      LibBlend2D.blContextSetStrokeOptions(self, options).success_or_raise
+    end
+
+    def clip_to_rect(rect : Rect) : Bool
+      LibBlend2D.blContextClipToRectD(self, rect).success_or_raise
+    end
+
+    def clip_to_rect(rect : RectI) : Bool
+      LibBlend2D.blContextClipToRectI(self, rect).success_or_raise
+    end
+
+    def clip_to_rect(x : Float64, y : Float64, w : Float64, h : Float64) : Bool
+      rect = Rect.new x, y, w, h
+      LibBlend2D.blContextClipToRectI(self, rect).success_or_raise
+    end
+
+    def restore_clipping : Bool
+      LibBlend2D.blContextRestoreClipping(self).success_or_raise
+    end
+
+    def clear_all : Bool
+      LibBlend2D.blContextClearAll(self).success_or_raise
+    end
+
+    def clear_rect(rect : RectI) : Bool
+      LibBlend2D.blContextClearRectI(self, rect).success_or_raise
+    end
+
+    def clear_rect(rect : Rect) : Bool
+      LibBlend2D.blContextClearRectD(self, rect).success_or_raise
+    end
+
+    def clear_rect(x : Float64, y : Float64, w : Float64, h : Float64) : Bool
+      rect = Rect.new x, y, w, h
+      LibBlend2D.blContextClearRectD(self, rect).success_or_raise
+    end
 
     def fill_all : Bool
       LibBlend2D.blContextFillAll(self).success_or_raise
@@ -325,12 +421,112 @@ module Blend2D
       LibBlend2D.blContextFillAllRgba32(self, rgba32.packed).success_or_raise
     end
 
+    def fill_all(rgba64 : UInt64) : Bool
+      LibBlend2D.blContextFillAllRgba64(self, rgba64).success_or_raise
+    end
+
+    def fill_all(rgba64 : RGBA64) : Bool
+      LibBlend2D.blContextFillAllRgba64(self, rgba64.packed).success_or_raise
+    end
+
+    def fill_all(style) : Bool
+      LibBlend2D.blContextFillAllExt(self, style).success_or_raise
+    end
+
+    def fill(rect : RectI) : Bool
+      LibBlend2D.blContextFillRectI(self, rect).success_or_raise
+    end
+
+    def fill(rect : Rect) : Bool
+      LibBlend2D.blContextFillRectD(self, rect).success_or_raise
+    end
+
+    def fill(rect : RectI, rgba32 : RGBA32) : Bool
+      LibBlend2D.blContextFillRectIRgba32(self, rect, rgba32.packed).success_or_raise
+    end
+
+    def fill(rect : Rect, rgba32 : RGBA32) : Bool
+      LibBlend2D.blContextFillRectDRgba32(self, rect, rgba32.packed).success_or_raise
+    end
+
+    def fill(rect : RectI, rgba32 : UInt32) : Bool
+      LibBlend2D.blContextFillRectIRgba32(self, rect, rgba32).success_or_raise
+    end
+
+    def fill(rect : Rect, rgba32 : UInt32) : Bool
+      LibBlend2D.blContextFillRectDRgba32(self, rect, rgba32).success_or_raise
+    end
+
+    def fill(rect : RectI, rgba64 : RGBA64) : Bool
+      LibBlend2D.blContextFillRectIRgba64(self, rect, rgba64.packed).success_or_raise
+    end
+
+    def fill(rect : Rect, rgba64 : RGBA64) : Bool
+      LibBlend2D.blContextFillRectDRgba64(self, rect, rgba64.packed).success_or_raise
+    end
+
+    def fill(rect : RectI, rgba64 : UInt64) : Bool
+      LibBlend2D.blContextFillRectIRgba64(self, rect, rgba64).success_or_raise
+    end
+
+    def fill(rect : Rect, rgba64 : UInt64) : Bool
+      LibBlend2D.blContextFillRectDRgba64(self, rect, rgba64).success_or_raise
+    end
+
+    def fill(rect : RectI, style) : Bool
+      LibBlend2D.blContextFillRectIExt(self, rect, style).success_or_raise
+    end
+
+    def fill(rect : Rect, style) : Bool
+      LibBlend2D.blContextFillRectDExt(self, rect, style).success_or_raise
+    end
+
     def fill(path : Path) : Bool
       fill Point::ZERO, path
     end
 
     def fill(origin : Point, path : Path) : Bool
       LibBlend2D.blContextFillPathD(self, origin, path).success_or_raise
+    end
+
+    def fill(path : Path, rgba32 : RGBA32) : Bool
+      fill Point::ZERO, path, rgba32
+    end
+
+    def fill(origin : Point, path : Path, rgba32 : RGBA32) : Bool
+      LibBlend2D.blContextFillPathDRgba32(self, origin, path, rgba32.packed).success_or_raise
+    end
+
+    def fill(path : Path, rgba32 : UInt32) : Bool
+      fill Point::ZERO, path, rgba32
+    end
+
+    def fill(origin : Point, path : Path, rgba32 : UInt32) : Bool
+      LibBlend2D.blContextFillPathDRgba32(self, origin, path, rgba32).success_or_raise
+    end
+
+    def fill(path : Path, rgba64 : RGBA64) : Bool
+      fill Point::ZERO, path, rgba64
+    end
+
+    def fill(origin : Point, path : Path, rgba64 : RGBA64) : Bool
+      LibBlend2D.blContextFillPathDRgba64(self, origin, path, rgba64.packed).success_or_raise
+    end
+
+    def fill(path : Path, rgba64 : UInt64) : Bool
+      fill Point::ZERO, path, rgba64
+    end
+
+    def fill(origin : Point, path : Path, rgba64 : UInt64) : Bool
+      LibBlend2D.blContextFillPathDRgba64(self, origin, path, rgba64).success_or_raise
+    end
+
+    def fill(path : Path, style) : Bool
+      fill Point::ZERO, path, style
+    end
+
+    def fill(origin : Point, path : Path, style) : Bool
+      LibBlend2D.blContextFillPathDExt(self, origin, path, style).success_or_raise
     end
 
     def fill(geometry : Geometry::Core)
@@ -359,6 +555,24 @@ module Blend2D
       ).success_or_raise
     end
 
+    def fill(geometry : Geometry::Core, rgba64 : UInt64)
+      LibBlend2D.blContextFillGeometryRgba64(
+        self,
+        geometry.type,
+        geometry,
+        rgba64,
+      ).success_or_raise
+    end
+
+    def fill(geometry : Geometry::Core, rgba64 : RGBA64)
+      LibBlend2D.blContextFillGeometryRgba64(
+        self,
+        geometry.type,
+        geometry,
+        rgba64.packed,
+      ).success_or_raise
+    end
+
     def fill(geometry : Geometry::Core, style)
       LibBlend2D.blContextFillGeometryExt(
         self,
@@ -372,28 +586,144 @@ module Blend2D
       LibBlend2D.blContextFillUtf8TextD(self, origin, font, text, text.size).success_or_raise
     end
 
+    def fill(origin : PointI , font : Font, text : String)
+      LibBlend2D.blContextFillUtf8TextI(self, origin, font, text, text.size).success_or_raise
+    end
+
+    def fill(origin : Point, font : Font, text : String, rgba32 : RGBA32) : Bool
+      LibBlend2D.blContextFillUtf8TextDRgba32(self, origin, font, text, text.size, rgba32.packed).success_or_raise
+    end
+
     def fill(origin : Point, font : Font, text : String, rgba32 : UInt32) : Bool
       LibBlend2D.blContextFillUtf8TextDRgba32(self, origin, font, text, text.size, rgba32).success_or_raise
+    end
+
+    def fill(origin : PointI, font : Font, text : String, rgba32 : RGBA32) : Bool
+      LibBlend2D.blContextFillUtf8TextIRgba32(self, origin, font, text, text.size, rgba32.packed).success_or_raise
+    end
+
+    def fill(origin : PointI, font : Font, text : String, rgba32 : UInt32) : Bool
+      LibBlend2D.blContextFillUtf8TextIRgba32(self, origin, font, text, text.size, rgba32).success_or_raise
+    end
+
+    def fill(origin : Point, font : Font, text : String, rgba64 : RGBA64) : Bool
+      LibBlend2D.blContextFillUtf8TextDRgba64(self, origin, font, text, text.size, rgba64.packed).success_or_raise
+    end
+
+    def fill(origin : Point, font : Font, text : String, rgba64 : UInt64) : Bool
+      LibBlend2D.blContextFillUtf8TextDRgba64(self, origin, font, text, text.size, rgba64).success_or_raise
+    end
+
+    def fill(origin : PointI, font : Font, text : String, rgba64 : RGBA64) : Bool
+      LibBlend2D.blContextFillUtf8TextIRgba64(self, origin, font, text, text.size, rgba64.packed).success_or_raise
+    end
+
+    def fill(origin : PointI, font : Font, text : String, rgba64 : UInt64) : Bool
+      LibBlend2D.blContextFillUtf8TextIRgba64(self, origin, font, text, text.size, rgba64).success_or_raise
     end
 
     def fill(origin : Point, font : Font, text : String, style) : Bool
       LibBlend2D.blContextFillUtf8TextDExt(self, origin, font, text, text.size, style).success_or_raise
     end
 
+    def fill(origin : PointO, font : Font, text : String, style) : Bool
+      LibBlend2D.blContextFillUtf8TextIExt(self, origin, font, text, text.size, style).success_or_raise
+    end
+
     def fill(origin : Point, font : Font, glyphRun : GlyphRun) : Bool
       LibBlend2D.blContextFillGlyphRunD(self, origin, font, glyphRun).success_or_raise
+    end
+
+    def fill(origin : PointI, font : Font, glyphRun : GlyphRun) : Bool
+      LibBlend2D.blContextFillGlyphRunI(self, origin, font, glyphRun).success_or_raise
     end
 
     def fill(origin : Point, font : Font, glyph_run : GlyphRun, rgba32 : UInt32) : Bool
       LibBlend2D.blContextFillGlyphRunDRgba32(self, origin, font, glyph_run, rgba32).success_or_raise
     end
 
-    def stroke_width : Float64
-      LibBlend2D.blContextGetStrokeWidth(self)
+    def fill(origin : Point, font : Font, glyph_run : GlyphRun, rgba32 : RGBA32) : Bool
+      LibBlend2D.blContextFillGlyphRunDRgba32(self, origin, font, glyph_run, rgba32.packed).success_or_raise
     end
 
-    def stroke_width=(width : Float64)
-      LibBlend2D.blContextSetStrokeWidth(self, width).success_or_raise
+    def fill(origin : PointI, font : Font, glyph_run : GlyphRun, rgba32 : UInt32) : Bool
+      LibBlend2D.blContextFillGlyphRunIRgba32(self, origin, font, glyph_run, rgba32).success_or_raise
+    end
+
+    def fill(origin : PointI, font : Font, glyph_run : GlyphRun, rgba32 : RGBA32) : Bool
+      LibBlend2D.blContextFillGlyphRunIRgba32(self, origin, font, glyph_run, rgba32.packed).success_or_raise
+    end
+
+    def fill(origin : Point, font : Font, glyph_run : GlyphRun, rgba64 : UInt64) : Bool
+      LibBlend2D.blContextFillGlyphRunDRgba64(self, origin, font, glyph_run, rgba64).success_or_raise
+    end
+
+    def fill(origin : Point, font : Font, glyph_run : GlyphRun, rgba64 : RGBA64) : Bool
+      LibBlend2D.blContextFillGlyphRunDRgba64(self, origin, font, glyph_run, rgba64.packed).success_or_raise
+    end
+
+    def fill(origin : PointI, font : Font, glyph_run : GlyphRun, rgba64 : UInt64) : Bool
+      LibBlend2D.blContextFillGlyphRunIRgba64(self, origin, font, glyph_run, rgba64).success_or_raise
+    end
+
+    def fill(origin : PointI, font : Font, glyph_run : GlyphRun, rgba64 : RGBA64) : Bool
+      LibBlend2D.blContextFillGlyphRunIRgba64(self, origin, font, glyph_run, rgba64.packed).success_or_raise
+    end
+
+    def fill(origin : Point, font : Font, glyph_run : GlyphRun, style) : Bool
+      LibBlend2D.blContextFillGlyphRunDExt(self, origin, font, glyph_run, style).success_or_raise
+    end
+
+    def fill(origin : PointI, font : Font, glyph_run : GlyphRun, style) : Bool
+      LibBlend2D.blContextFillGlyphRunIExt(self, origin, font, glyph_run, style).success_or_raise
+    end
+
+    def fill(origin : Point, mask : Image, mask_area : RectI? = Nil) : Bool
+      LibBlend2D.blContextFillMaskD(self, origin, mask, mask_area).success_or_raise
+    end
+
+    def fill(origin : PointI, mask : Image, mask_area : RectI? = Nil) : Bool
+      LibBlend2D.blContextFillMaskI(self, origin, mask, mask_area).success_or_raise
+    end
+
+    def fill(origin : Point, mask : Image, rgba32 : RGBA32, mask_area : RectI? = Nil) : Bool
+      LibBlend2D.blContextFillMaskDRgba32(self, origin, mask, mask_area, rgba32.packed).success_or_raise
+    end
+
+    def fill(origin : PointI, mask : Image, rgba32 : RGBA32, mask_area : RectI? = Nil) : Bool
+      LibBlend2D.blContextFillMaskIRgba32(self, origin, mask, mask_area, rgba32.packed).success_or_raise
+    end
+
+    def fill(origin : Point, mask : Image, rgba32 : UInt32, mask_area : RectI? = Nil) : Bool
+      LibBlend2D.blContextFillMaskDRgba32(self, origin, mask, mask_area, rgba32).success_or_raise
+    end
+
+    def fill(origin : PointI, mask : Image, rgba32 : UInt32, mask_area : RectI? = Nil) : Bool
+      LibBlend2D.blContextFillMaskIRgba32(self, origin, mask, mask_area, rgba32).success_or_raise
+    end
+
+    def fill(origin : Point, mask : Image, rgba64 : RGBA64, mask_area : RectI? = Nil) : Bool
+      LibBlend2D.blContextFillMaskDRgba64(self, origin, mask, mask_area, rgba64.packed).success_or_raise
+    end
+
+    def fill(origin : PointI, mask : Image, rgba64 : RGBA64, mask_area : RectI? = Nil) : Bool
+      LibBlend2D.blContextFillMaskIRgba64(self, origin, mask, mask_area, rgba64.packed).success_or_raise
+    end
+
+    def fill(origin : Point, mask : Image, rgba64 : UInt64, mask_area : RectI? = Nil) : Bool
+      LibBlend2D.blContextFillMaskDRgba64(self, origin, mask, mask_area, rgba64).success_or_raise
+    end
+
+    def fill(origin : PointI, mask : Image, rgba64 : UInt64, mask_area : RectI? = Nil) : Bool
+      LibBlend2D.blContextFillMaskIRgba64(self, origin, mask, mask_area, rgba64).success_or_raise
+    end
+
+    def fill(origin : Point, mask : Image, style, mask_area : RectI? = Nil) : Bool
+      LibBlend2D.blContextFillMaskDExt(self, origin, mask, mask_area, style).success_or_raise
+    end
+
+    def fill(origin : PointI, mask : Image, style, mask_area : RectI? = Nil) : Bool
+      LibBlend2D.blContextFillMaskIExt(self, origin, mask, mask_area, style).success_or_raise
     end
 
     def stroke(path : Path) : Bool

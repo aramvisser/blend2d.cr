@@ -6,11 +6,6 @@ module Blend2D
     end
 
     # :nodoc:
-    private def finalize
-      LibBlend2D.blStrokeOptionsDestroy(self).success_or_raise
-    end
-
-    # :nodoc:
     private def reset : Bool
       LibBlend2D.blStrokeOptionsReset(self).success_or_raise
     end

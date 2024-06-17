@@ -96,6 +96,9 @@ module Blend2D
 
       delegate :x, :y, :w, :h, to: @core
 
+      def initialize(@core : LibBlend2D::BLRect)
+      end
+
       def initialize(x : Float64, y : Float64, w : Float64, h : Float64)
         @core = LibBlend2D::BLRect.new x: x, y: y, w: w, h: h
       end
@@ -105,6 +108,9 @@ module Blend2D
       @type = GeometryType::Recti
 
       delegate :x, :y, :w, :h, to: @core
+
+      def initialize(@core : LibBlend2D::BLRectI)
+      end
 
       def initialize(x : Int32, y : Int32, w : Int32, h : Int32)
         @core = LibBlend2D::BLRectI.new x: x, y: y, w: w, h: h
