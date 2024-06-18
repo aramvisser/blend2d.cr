@@ -32,7 +32,7 @@ module Blend2D
       LibBlend2D.blVarDestroy(self).success_or_raise
     end
 
-    def value : VarTypes
+    def value : T
       if T == Bool
         LibBlend2D.blVarToBool(self, out bool)
         bool != 0
