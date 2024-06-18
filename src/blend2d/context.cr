@@ -442,6 +442,10 @@ module Blend2D
       fill_path Point::ZERO, path, style
     end
 
+    def fill_path(origin : Tuple(Float64, Float64), path : Path, style : Style? = nil) : Bool
+      fill_path Point.new(origin[0].to_f64, origin[1].to_f64), path, style
+    end
+
     def fill_path(origin : Point, path : Path, style : Style? = nil) : Bool
       case style
       when Nil
@@ -474,6 +478,105 @@ module Blend2D
       else
         LibBlend2D.blContextFillGeometryExt(self, geometry.type, geometry, style).success_or_raise
       end
+    end
+
+    def fill_arc(cx : Float64, cy : Float64, rx : Float64, ry : Float64, start : Float64, sweep : Float64, style : Style? = nil) : Bool
+      arc = Geometry::Arc.new cx, cy, rx, ry, start, sweep
+      fill_geometry arc, style
+    end
+
+    def fill_arc(arc : Geometry::Arc, style : Style? = nil) : Bool
+      fill_geometry arc, style
+    end
+
+    def fill_box(x0 : Float64, y0 : Float64, x1 : Float64, y1 : Float64, style : Style? = nil) : Bool
+      box = Geometry::Box.new x0, y0, x1, y1
+      fill_geometry box, style
+    end
+
+    def fill_box(box : Geometry::Box | Geometry::BoxI, style : Style? = nil) : Bool
+      fill_geometry box, style
+    end
+
+    def fill_circle(cx : Float64, cy : Float64, r : Float64, style : Style? = nil) : Bool
+      circle = Geometry::Circle.new cx, cy, r
+      fill_geometry circle, style
+    end
+
+    def fill_circle(circle : Geometry::Circle, style : Style? = nil) : Bool
+      fill_geometry circle, style
+    end
+
+    def fill_chord(cx : Float64, cy : Float64, rx : Float64, ry : Float64, start : Float64, sweep : Float64, style : Style? = nil) : Bool
+      chord = Geometry::Chord.new cx, cy, rx, ry, start, sweep
+      fill_geometry chord, style
+    end
+
+    def fill_chord(chord : Geometry::Chord, style : Style? = nil) : Bool
+      fill_geometry chord, style
+    end
+
+    def fill_ellipse(cx : Float64, cy : Float64, rx : Float64, ry : Float64, style : Style? = nil) : Bool
+      ellipse = Geometry::Circle.new cx, cy, rx, ry
+      fill_geometry ellipse, style
+    end
+
+    def fill_ellipse(ellipse : Geometry::Ellipse, style : Style? = nil) : Bool
+      fill_geometry ellipse, style
+    end
+
+    def fill_line(x0 : Float64, y0 : Float64, x1 : Float64, y1 : Float64, style : Style? = nil) : Bool
+      line = Geometry::Line.new x0, y0, x1, y1
+      fill_geometry line, style
+    end
+
+    def fill_line(line : Geometry::Line, style : Style? = nil) : Bool
+      fill_geometry line, style
+    end
+
+    def fill_pie(cx : Float64, cy : Float64, rx : Float64, ry : Float64, start : Float64, sweep : Float64, style : Style? = nil) : Bool
+      pie = Geometry::Pie.new cx, cy, rx, ry, start, sweep
+      fill_geometry pie, style
+    end
+
+    def fill_pie(pie : Geometry::Pie, style : Style? = nil) : Bool
+      fill_geometry pie, style
+    end
+
+    def fill_rect(x : Float64, y : Float64, w : Float64, h : Float64, style : Style? = nil) : Bool
+      rect = Geometry::Rect.new x, y, w, h
+      fill_rect rect, style
+    end
+
+    def fill_rect(rect : Geometry::Rect | Geometry::RectI, style : Style? = nil) : Bool
+      fill_geometry rect, style
+    end
+
+    def fill_round_rect(x : Float64, y : Float64, w : Float64, h : Float64, r : Float64, style : Style? = nil) : Bool
+      round_rect = Geometry::RoundRect.new x, y, w, h, r
+      fill_geometry round_rect, style
+    end
+
+    def fill_round_rect(x : Float64, y : Float64, w : Float64, h : Float64, rx : Float64, ry : Float64, style : Style? = nil) : Bool
+      round_rect = Geometry::RoundRect.new x, y, w, h, rx, ry
+      fill_geometry round_rect, style
+    end
+
+    def fill_round_rect(round_rect : Geometry::RoundRect, style : Style? = nil) : Bool
+      fill_geometry round_rect, style
+    end
+
+    def fill_triangle(x0 : Float64, y0 : Float64, x1 : Float64, y1 : Float64, x2 : Float64, y2 : Float64, style : Style? = nil) : Bool
+      triangle = Geometry::Triangle.new x0, y0, x1, y1, x2, y2
+      fill_geometry triangle, style
+    end
+
+    def fill_triangle(triangle : Geometry::Triangle, style : Style? = nil) : Bool
+      fill_geometry triangle, style
+    end
+
+    def fill_text(origin : Tuple(Number, Number), font : Font, text : String, style : Style? = nil) : Bool
+      fill_text Point.new(origin[0].to_f64, origin[1].to_f64), font, text, style
     end
 
     def fill_text(origin : Point | PointI, font : Font, text : String, style : Style? = nil) : Bool
@@ -509,6 +612,10 @@ module Blend2D
           LibBlend2D.blContextFillUtf8TextIExt(self, origin, font, text, text.size, style).success_or_raise
         end
       end
+    end
+
+    def fill_glyph_run(origin : Tuple(Number, Number), font : Font, glyph_run : GlyphRun, style : Style? = nil) : Bool
+      fill_glyph_run Point.new(origin[0].to_f64, origin[1].to_f64), font, glyph_run, style
     end
 
     def fill_glyph_run(origin : Point | PointI, font : Font, glyph_run : GlyphRun, style : Style? = nil) : Bool

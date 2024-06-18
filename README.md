@@ -32,11 +32,10 @@ ctx.clear_all
 
 # Set the current fill style to black
 ctx.comp_op = :src_over
-ctx.fill_style = 0xFF000000_u32 # Black in ARGB order
+ctx.fill_style = Blend2D::RGBA32.new(0, 0, 0)
 
 # Fill a circle using the current fill style
-circle = Blend2D::Geometry::Circle.new cx: 240, cy: 240, r: 200
-ctx.fill circle
+ctx.fill_circle cx: 240, cy: 240, r: 200
 
 ctx.end
 img.write_to_file "example.png"
@@ -49,14 +48,11 @@ See the `examples` directory for more examples.
 For usage of Blend2D itself, see the [Blend2D
 Documentation](https://blend2d.com/doc/) itself.
 
-This binding wraps the Blend2D C Api and mkes it more crystal-like.
+This binding wraps the Blend2D C Api, but tries to follow the Blend2D C++ api design.
 
 - Core classes are available in the Blend2D namespace, e.g. `BLContextCore` is
   `Blend2D::Context`.
 - Methods that return a `BLResult` in the C Api throw an exception on error.
-- Most methods are overloaded, so long names are not needed. You can use
-  `Context#fill` or `Context#stroke` instead of `Context#fillPathD` or
-  `Context#strokeFillUtf8TextD`.
 - Getter and setter methods are that start with `get` and `set` are directly
   available, e.g. `Context#fill_style=` or `Context#comp_op`.
 - Enums are abbreviated and made camelcase, e.g. `COMP_OP_SRC_OVER` is

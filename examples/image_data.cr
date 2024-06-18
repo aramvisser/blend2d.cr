@@ -7,7 +7,7 @@ img = Blend2D::Image.new 8, 8, :prgb32
 ctx = Blend2D::Context.new img
 
 ctx.fill_all
-ctx.fill_geometry Blend2D::Circle.new(4, 4, 3), 0xFFFF8040_u32 # Orangish color in ARGB format
+ctx.fill_circle 4, 4, 3, 0xFFFF8040_u32 # Orangish color in ARGB format
 
 ctx.end
 

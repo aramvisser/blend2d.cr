@@ -8,9 +8,8 @@ ctx.fill_all
 radial_gradient = Blend2D::Gradient.radial 180, 180, 180, 180, 180
 radial_gradient.add_stop 0.0, 0xFFFFFFFF
 radial_gradient.add_stop 1.0, 0xFFFF6F3F # ARGB order
-circle = Blend2D::Geometry::Circle.new cx: 180, cy: 180, r: 160
 
-ctx.fill_geometry circle, radial_gradient
+ctx.fill_circle cx: 180, cy: 180, r: 160, style: radial_gradient
 
 linear_gradient = Blend2D::Gradient.linear 195, 195, 470, 470
 linear_gradient.add_stop 0.0, 0xFFFFFFFF
