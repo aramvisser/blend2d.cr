@@ -22,8 +22,8 @@ files = [Clang::UnsavedFile.new("input.c", input_content)]
 index = Clang::Index.new
 args = ["-I/usr/include"]
 options = Clang::TranslationUnit.default_options |
-  Clang::TranslationUnit::Options::SkipFunctionBodies |
-  Clang::TranslationUnit::Options::DetailedPreprocessingRecord
+          Clang::TranslationUnit::Options::SkipFunctionBodies |
+          Clang::TranslationUnit::Options::DetailedPreprocessingRecord
 
 tu = Clang::TranslationUnit.from_source(index, files, args, options)
 

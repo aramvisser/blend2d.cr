@@ -5,28 +5,27 @@ module Renamer
     return type if type.is_a?(String)
 
     case type.kind
-    when .int? then "Int32"
-    when .u_int? then "UInt32"
-    when .u_short? then "UInt16"
+    when .int?              then "Int32"
+    when .u_int?            then "UInt32"
+    when .u_short?          then "UInt16"
     when .s_char?, .char_s? then "UInt8"
     when .u_char?, .char_u? then "UInt8"
-    when .long? then "LibC::Long"
-    when .u_long? then "LibC::ULong"
-    when .float? then "Float32"
-    when .double? then "Float64"
-    when .pointer? then pointer(type)
+    when .long?             then "LibC::Long"
+    when .u_long?           then "LibC::ULong"
+    when .float?            then "Float32"
+    when .double?           then "Float64"
+    when .pointer?          then pointer(type)
     when .record?
       spelling = type.cursor.spelling
       spelling = type.spelling if type.cursor.spelling.empty?
       spelling
-    when .elaborated? then type(type.named_type)
-    when .typedef? then typedef(type)
+    when .elaborated?     then type(type.named_type)
+    when .typedef?        then typedef(type)
     when .constant_array? then constant_array(type)
     when .function_proto? then function_proto(type)
-    else type.kind.to_s
+    else                       type.kind.to_s
     end
   end
-
 
   def self.pointer(type)
     pointee = type(type.pointee_type)
@@ -61,7 +60,7 @@ module Renamer
   def self.variable_name(name)
     case name
     when "end" then "_end"
-    else name
+    else            name
     end.underscore
   end
 

@@ -2,9 +2,9 @@ require "clang"
 require "./renamer"
 
 record BLFile, functions = Array(String).new,
-               enums = Array(String).new,
-               structs = Array(String).new,
-               typedefs = Array(String).new
+  enums = Array(String).new,
+  structs = Array(String).new,
+  typedefs = Array(String).new
 
 class Parser
   getter files = Hash(String, BLFile).new
@@ -97,9 +97,8 @@ class Parser
 
       # Special case for BLObjectDetail, point directly to Impl version
       if members.size == 1 &&
-        members[0][0] == "_d" &&
-        !cores_without_impls.includes?(spelling)
-
+         members[0][0] == "_d" &&
+         !cores_without_impls.includes?(spelling)
         str << " _d : " << spelling.rchop("Core") << "Impl*\n"
       else
         members.each do |(name, type)|

@@ -60,7 +60,7 @@ module Blend2D
       new Conic.new(x0, y0, angle), extend_mode
     end
 
-    def initialize(gradient : Linear|Radial|Conic, extend_mode : ExtendMode = ExtendMode::Pad)
+    def initialize(gradient : Linear | Radial | Conic, extend_mode : ExtendMode = ExtendMode::Pad)
       LibBlend2D.blGradientInitAs(
         out @core,
         gradient.type,

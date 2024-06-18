@@ -2,7 +2,7 @@ require "../src/blend2d"
 
 BLACK = Blend2D::RGBA32.new 0xff0d1321
 WHITE = Blend2D::RGBA32.new 0xffe5e5e5
-GRAY = Blend2D::RGBA32.new 0xff787b82
+GRAY  = Blend2D::RGBA32.new 0xff787b82
 
 face = Blend2D::FontFace.new "#{__DIR__}/resources/ABeeZee-Regular.ttf"
 header_font = Blend2D::Font.new face, 36.0
@@ -38,7 +38,6 @@ end
 
 ctx.end
 img.write_to_file "#{__DIR__}/everything.png"
-
 
 def draw_header(font, text)
   img = Blend2D::Image.new 512, 56

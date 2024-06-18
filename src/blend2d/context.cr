@@ -120,7 +120,7 @@ module Blend2D
       LibBlend2D.blContextApplyTransformOp(self, TransformOp::Assign, matrix).success_or_raise
     end
 
-    def reset_transform()
+    def reset_transform
       LibBlend2D.blContextApplyTransformOp(self, TransformOp::Reset, nil).success_or_raise
     end
 
@@ -253,7 +253,7 @@ module Blend2D
       LibBlend2D.blContextSwapStyles(self, mode).success_or_raise
     end
 
-    def swap_styles_with_alpha()
+    def swap_styles_with_alpha
       swap_styles :styles_with_alpha
     end
 
@@ -795,7 +795,7 @@ module Blend2D
       ).success_or_raise
     end
 
-    def stroke(origin : Point , font : Font, text : String) : Bool
+    def stroke(origin : Point, font : Font, text : String) : Bool
       LibBlend2D.blContextStrokeUtf8TextD(self, origin, font, text, text.size).success_or_raise
     end
 
