@@ -403,6 +403,11 @@ module Blend2D
       end
     end
 
+    def fill_rect(x : Float64, y : Float64, w : Float64, h : Float64, style : Style? = nil) : Bool
+      rect = Rect.new x, y, w, h
+      fill_rect rect, style
+    end
+
     def fill_rect(rect : Rect | RectI, style : Style? = nil) : Bool
       case rect
       in Rect
@@ -481,97 +486,88 @@ module Blend2D
     end
 
     def fill_arc(cx : Float64, cy : Float64, rx : Float64, ry : Float64, start : Float64, sweep : Float64, style : Style? = nil) : Bool
-      arc = Geometry::Arc.new cx, cy, rx, ry, start, sweep
+      arc = Arc.new cx, cy, rx, ry, start, sweep
       fill_geometry arc, style
     end
 
-    def fill_arc(arc : Geometry::Arc, style : Style? = nil) : Bool
+    def fill_arc(arc : Arc, style : Style? = nil) : Bool
       fill_geometry arc, style
     end
 
     def fill_box(x0 : Float64, y0 : Float64, x1 : Float64, y1 : Float64, style : Style? = nil) : Bool
-      box = Geometry::Box.new x0, y0, x1, y1
+      box = Box.new x0, y0, x1, y1
       fill_geometry box, style
     end
 
-    def fill_box(box : Geometry::Box | Geometry::BoxI, style : Style? = nil) : Bool
+    def fill_box(box : Box | BoxI, style : Style? = nil) : Bool
       fill_geometry box, style
     end
 
     def fill_circle(cx : Float64, cy : Float64, r : Float64, style : Style? = nil) : Bool
-      circle = Geometry::Circle.new cx, cy, r
+      circle = Circle.new cx, cy, r
       fill_geometry circle, style
     end
 
-    def fill_circle(circle : Geometry::Circle, style : Style? = nil) : Bool
+    def fill_circle(circle : Circle, style : Style? = nil) : Bool
       fill_geometry circle, style
     end
 
     def fill_chord(cx : Float64, cy : Float64, rx : Float64, ry : Float64, start : Float64, sweep : Float64, style : Style? = nil) : Bool
-      chord = Geometry::Chord.new cx, cy, rx, ry, start, sweep
+      chord = Chord.new cx, cy, rx, ry, start, sweep
       fill_geometry chord, style
     end
 
-    def fill_chord(chord : Geometry::Chord, style : Style? = nil) : Bool
+    def fill_chord(chord : Chord, style : Style? = nil) : Bool
       fill_geometry chord, style
     end
 
     def fill_ellipse(cx : Float64, cy : Float64, rx : Float64, ry : Float64, style : Style? = nil) : Bool
-      ellipse = Geometry::Circle.new cx, cy, rx, ry
+      ellipse = Circle.new cx, cy, rx, ry
       fill_geometry ellipse, style
     end
 
-    def fill_ellipse(ellipse : Geometry::Ellipse, style : Style? = nil) : Bool
+    def fill_ellipse(ellipse : Ellipse, style : Style? = nil) : Bool
       fill_geometry ellipse, style
     end
 
     def fill_line(x0 : Float64, y0 : Float64, x1 : Float64, y1 : Float64, style : Style? = nil) : Bool
-      line = Geometry::Line.new x0, y0, x1, y1
+      line = Line.new x0, y0, x1, y1
       fill_geometry line, style
     end
 
-    def fill_line(line : Geometry::Line, style : Style? = nil) : Bool
+    def fill_line(line : Line, style : Style? = nil) : Bool
       fill_geometry line, style
     end
 
     def fill_pie(cx : Float64, cy : Float64, rx : Float64, ry : Float64, start : Float64, sweep : Float64, style : Style? = nil) : Bool
-      pie = Geometry::Pie.new cx, cy, rx, ry, start, sweep
+      pie = Pie.new cx, cy, rx, ry, start, sweep
       fill_geometry pie, style
     end
 
-    def fill_pie(pie : Geometry::Pie, style : Style? = nil) : Bool
+    def fill_pie(pie : Pie, style : Style? = nil) : Bool
       fill_geometry pie, style
-    end
-
-    def fill_rect(x : Float64, y : Float64, w : Float64, h : Float64, style : Style? = nil) : Bool
-      rect = Geometry::Rect.new x, y, w, h
-      fill_rect rect, style
-    end
-
-    def fill_rect(rect : Geometry::Rect | Geometry::RectI, style : Style? = nil) : Bool
-      fill_geometry rect, style
     end
 
     def fill_round_rect(x : Float64, y : Float64, w : Float64, h : Float64, r : Float64, style : Style? = nil) : Bool
-      round_rect = Geometry::RoundRect.new x, y, w, h, r
+      round_rect = RoundRect.new x, y, w, h, r
       fill_geometry round_rect, style
     end
 
     def fill_round_rect(x : Float64, y : Float64, w : Float64, h : Float64, rx : Float64, ry : Float64, style : Style? = nil) : Bool
-      round_rect = Geometry::RoundRect.new x, y, w, h, rx, ry
+      round_rect = RoundRect.new x, y, w, h, rx, ry
       fill_geometry round_rect, style
     end
 
-    def fill_round_rect(round_rect : Geometry::RoundRect, style : Style? = nil) : Bool
+    def fill_round_rect(round_rect : RoundRect, style : Style? = nil) : Bool
       fill_geometry round_rect, style
     end
 
     def fill_triangle(x0 : Float64, y0 : Float64, x1 : Float64, y1 : Float64, x2 : Float64, y2 : Float64, style : Style? = nil) : Bool
-      triangle = Geometry::Triangle.new x0, y0, x1, y1, x2, y2
+      triangle = Triangle.new x0, y0, x1, y1, x2, y2
       fill_geometry triangle, style
     end
 
-    def fill_triangle(triangle : Geometry::Triangle, style : Style? = nil) : Bool
+    def fill_triangle(triangle : Triangle, style : Style? = nil) : Bool
       fill_geometry triangle, style
     end
 
@@ -696,123 +692,268 @@ module Blend2D
       end
     end
 
-    def stroke(rect : Rect) : Bool
-      LibBlend2D.blContextStrokeRectD(self, rect).success_or_raise
+    def stroke_rect(x : Float64, y : Float64, w : Float64, h : Float64, style : Style? = nil) : Bool
+      rect = Rect.new x, y, w, h
+      stroke_rect rect, style
     end
 
-    def stroke(rect : RectI) : Bool
-      LibBlend2D.blContextStrokeRectI(self, rect).success_or_raise
+    def stroke_rect(rect : Rect | RectI, style : Style? = nil) : Bool
+      case rect
+      in Rect
+        case style
+        when Nil
+          LibBlend2D.blContextStrokeRectD(self, rect).success_or_raise
+        when UInt32
+          LibBlend2D.blContextStrokeRectDRgba32(self, rect, style).success_or_raise
+        when RGBA32
+          LibBlend2D.blContextStrokeRectDRgba32(self, rect, style.packed).success_or_raise
+        when UInt64
+          LibBlend2D.blContextStrokeRectDRgba64(self, rect, style).success_or_raise
+        when RGBA64
+          LibBlend2D.blContextStrokeRectDRgba64(self, rect, style.packed).success_or_raise
+        else
+          LibBlend2D.blContextStrokeRectDExt(self, rect, style).success_or_raise
+        end
+      in RectI
+        case style
+        when Nil
+          LibBlend2D.blContextStrokeRectI(self, rect).success_or_raise
+        when UInt32
+          LibBlend2D.blContextStrokeRectIRgba32(self, rect, style).success_or_raise
+        when RGBA32
+          LibBlend2D.blContextStrokeRectIRgba32(self, rect, style.packed).success_or_raise
+        when UInt64
+          LibBlend2D.blContextStrokeRectIRgba64(self, rect, style).success_or_raise
+        when RGBA64
+          LibBlend2D.blContextStrokeRectIRgba64(self, rect, style.packed).success_or_raise
+        else
+          LibBlend2D.blContextStrokeRectIExt(self, rect, style).success_or_raise
+        end
+      end
     end
 
-    def stroke(rect : Rect, rgba32 : RGBA32) : Bool
-      LibBlend2D.blContextStrokeRectDRgba32(self, rect, rgba32.packed).success_or_raise
+    def stroke_path(path : Path, style : Style? = nil) : Bool
+      stroke_path Point::ZERO, path, style
     end
 
-    def stroke(rect : RectI, rgba32 : RGBA32) : Bool
-      LibBlend2D.blContextStrokeRectIRgba32(self, rect, rgba32.packed).success_or_raise
+    def stroke_path(origin : Tuple(Float64, Float64), path : Path, style : Style? = nil) : Bool
+      stroke_path Point.new(origin[0].to_f64, origin[1].to_f64), path, style
     end
 
-    def stroke(rect : Rect, rgba32 : UInt32) : Bool
-      LibBlend2D.blContextStrokeRectDRgba32(self, rect, rgba32).success_or_raise
+    def stroke_path(origin : Point, path : Path, style : Style? = nil) : Bool
+      case style
+      when Nil
+        LibBlend2D.blContextStrokePathD(self, origin, path).success_or_raise
+      when UInt32
+        LibBlend2D.blContextStrokePathDRgba32(self, origin, path, style).success_or_raise
+      when RGBA32
+        LibBlend2D.blContextStrokePathDRgba32(self, origin, path, style.packed).success_or_raise
+      when UInt64
+        LibBlend2D.blContextStrokePathDRgba64(self, origin, path, style).success_or_raise
+      when RGBA64
+        LibBlend2D.blContextStrokePathDRgba64(self, origin, path, style.packed).success_or_raise
+      else
+        LibBlend2D.blContextStrokePathDExt(self, origin, path, style).success_or_raise
+      end
     end
 
-    def stroke(rect : RectI, rgba32 : UInt32) : Bool
-      LibBlend2D.blContextStrokeRectIRgba32(self, rect, rgba32).success_or_raise
+    def stroke_geometry(geometry : Geometry::Core, style : Style? = nil) : Bool
+      case style
+      when Nil
+        LibBlend2D.blContextStrokeGeometry(self, geometry.type, geometry.to_unsafe).success_or_raise
+      when UInt32
+        LibBlend2D.blContextStrokeGeometryRgba32(self, geometry.type, geometry, style).success_or_raise
+      when RGBA32
+        LibBlend2D.blContextStrokeGeometryRgba32(self, geometry.type, geometry, style.packed).success_or_raise
+      when UInt64
+        LibBlend2D.blContextStrokeGeometryRgba64(self, geometry.type, geometry, style).success_or_raise
+      when RGBA64
+        LibBlend2D.blContextStrokeGeometryRgba64(self, geometry.type, geometry, style.packed).success_or_raise
+      else
+        LibBlend2D.blContextStrokeGeometryExt(self, geometry.type, geometry, style).success_or_raise
+      end
     end
 
-    def stroke(rect : Rect, rgba64 : RGBA64) : Bool
-      LibBlend2D.blContextStrokeRectDRgba64(self, rect, rgba64.packed).success_or_raise
+    def stroke_arc(cx : Float64, cy : Float64, rx : Float64, ry : Float64, start : Float64, sweep : Float64, style : Style? = nil) : Bool
+      arc = Arc.new cx, cy, rx, ry, start, sweep
+      stroke_geometry arc, style
     end
 
-    def stroke(rect : RectI, rgba64 : RGBA64) : Bool
-      LibBlend2D.blContextStrokeRectIRgba64(self, rect, rgba64.packed).success_or_raise
+    def stroke_arc(arc : Arc, style : Style? = nil) : Bool
+      stroke_geometry arc, style
     end
 
-    def stroke(rect : Rect, rgba64 : UInt64) : Bool
-      LibBlend2D.blContextStrokeRectDRgba64(self, rect, rgba64).success_or_raise
+    def stroke_box(x0 : Float64, y0 : Float64, x1 : Float64, y1 : Float64, style : Style? = nil) : Bool
+      box = Box.new x0, y0, x1, y1
+      stroke_geometry box, style
     end
 
-    def stroke(rect : RectI, rgba64 : UInt64) : Bool
-      LibBlend2D.blContextStrokeRectIRgba64(self, rect, rgba64).success_or_raise
+    def stroke_box(box : Box | BoxI, style : Style? = nil) : Bool
+      stroke_geometry box, style
     end
 
-    def stroke(rect : Rect, style) : Bool
-      LibBlend2D.blContextStrokeRectDExt(self, rect, style).success_or_raise
+    def stroke_circle(cx : Float64, cy : Float64, r : Float64, style : Style? = nil) : Bool
+      circle = Circle.new cx, cy, r
+      stroke_geometry circle, style
     end
 
-    def stroke(rect : RectI, style) : Bool
-      LibBlend2D.blContextStrokeRectIExt(self, rect, style).success_or_raise
+    def stroke_circle(circle : Circle, style : Style? = nil) : Bool
+      stroke_geometry circle, style
     end
 
-    def stroke(path : Path) : Bool
-      stroke Point::ZERO, path
+    def stroke_chord(cx : Float64, cy : Float64, rx : Float64, ry : Float64, start : Float64, sweep : Float64, style : Style? = nil) : Bool
+      chord = Chord.new cx, cy, rx, ry, start, sweep
+      stroke_geometry chord, style
     end
 
-    def stroke(path : Path, style) : Bool
-      stroke Point::ZERO, path, style
+    def stroke_chord(chord : Chord, style : Style? = nil) : Bool
+      stroke_geometry chord, style
     end
 
-    def stroke(origin : Point, path : Path) : Bool
-      LibBlend2D.blContextStrokePathD(self, origin, path).success_or_raise
+    def stroke_ellipse(cx : Float64, cy : Float64, rx : Float64, ry : Float64, style : Style? = nil) : Bool
+      ellipse = Circle.new cx, cy, rx, ry
+      stroke_geometry ellipse, style
     end
 
-    def stroke(origin : Point, path : Path, style) : Bool
-      LibBlend2D.blContextStrokePathDExt(self, origin, path, style).success_or_raise
+    def stroke_ellipse(ellipse : Ellipse, style : Style? = nil) : Bool
+      stroke_geometry ellipse, style
     end
 
-    def stroke(geometry : Geometry::Core) : Bool
-      LibBlend2D.blContextStrokeGeometry(
-        self,
-        geometry.type,
-        geometry,
-      ).success_or_raise
+    def stroke_line(x0 : Float64, y0 : Float64, x1 : Float64, y1 : Float64, style : Style? = nil) : Bool
+      line = Line.new x0, y0, x1, y1
+      stroke_geometry line, style
     end
 
-    def stroke(geometry : Geometry::Core, rgba32 : UInt32) : Bool
-      LibBlend2D.blContextStrokeGeometryRgba32(
-        self,
-        geometry.type,
-        geometry,
-        rgba32,
-      ).success_or_raise
+    def stroke_line(line : Line, style : Style? = nil) : Bool
+      stroke_geometry line, style
     end
 
-    def stroke(geometry : Geometry::Core, rgba32 : RGBA32) : Bool
-      LibBlend2D.blContextStrokeGeometryRgba32(
-        self,
-        geometry.type,
-        geometry,
-        rgba32.packed,
-      ).success_or_raise
+    def stroke_pie(cx : Float64, cy : Float64, rx : Float64, ry : Float64, start : Float64, sweep : Float64, style : Style? = nil) : Bool
+      pie = Pie.new cx, cy, rx, ry, start, sweep
+      stroke_geometry pie, style
     end
 
-    def stroke(geometry : Geometry::Core, style) : Bool
-      LibBlend2D.blContextStrokeGeometryExt(
-        self,
-        geometry.type,
-        geometry,
-        style,
-      ).success_or_raise
+    def stroke_pie(pie : Pie, style : Style? = nil) : Bool
+      stroke_geometry pie, style
     end
 
-    def stroke(origin : Point, font : Font, text : String) : Bool
-      LibBlend2D.blContextStrokeUtf8TextD(self, origin, font, text, text.size).success_or_raise
+    def stroke_round_rect(x : Float64, y : Float64, w : Float64, h : Float64, r : Float64, style : Style? = nil) : Bool
+      round_rect = RoundRect.new x, y, w, h, r
+      stroke_geometry round_rect, style
     end
 
-    def stroke(origin : Point, font : Font, text : String, rgba32 : UInt32) : Bool
-      LibBlend2D.blContextStrokeUtf8TextDRgba32(self, origin, font, text, text.size, rgba32).success_or_raise
+    def stroke_round_rect(x : Float64, y : Float64, w : Float64, h : Float64, rx : Float64, ry : Float64, style : Style? = nil) : Bool
+      round_rect = RoundRect.new x, y, w, h, rx, ry
+      stroke_geometry round_rect, style
     end
 
-    def stroke(origin : Point, font : Font, text : String, style) : Bool
-      LibBlend2D.blContextStrokeUtf8TextDExt(self, origin, font, text, text.size, style).success_or_raise
+    def stroke_round_rect(round_rect : RoundRect, style : Style? = nil) : Bool
+      stroke_geometry round_rect, style
     end
 
-    def stroke(origin : Point, font : Font, glyph_run : GlyphRun, rgba32 : UInt32) : Bool
-      LibBlend2D.blContextStrokeGlyphRunDRgba32(self, origin, font, glyph_run, rgba32).success_or_raise
+    def stroke_triangle(x0 : Float64, y0 : Float64, x1 : Float64, y1 : Float64, x2 : Float64, y2 : Float64, style : Style? = nil) : Bool
+      triangle = Triangle.new x0, y0, x1, y1, x2, y2
+      stroke_geometry triangle, style
     end
 
-    def blit_image(origin : PointI, img : Image, img_area : RectI? = nil) : Bool
-      LibBlend2D.blContextBlitImageI(self, origin, img, img_area).success_or_raise
+    def stroke_triangle(triangle : Triangle, style : Style? = nil) : Bool
+      stroke_geometry triangle, style
+    end
+
+    def stroke_text(origin : Tuple(Number, Number), font : Font, text : String, style : Style? = nil) : Bool
+      stroke_text Point.new(origin[0].to_f64, origin[1].to_f64), font, text, style
+    end
+
+    def stroke_text(origin : Point | PointI, font : Font, text : String, style : Style? = nil) : Bool
+      case origin
+      in Point
+        case style
+        when Nil
+          LibBlend2D.blContextStrokeUtf8TextD(self, origin, font, text, text.size).success_or_raise
+        when UInt32
+          LibBlend2D.blContextStrokeUtf8TextDRgba32(self, origin, font, text, text.size, style).success_or_raise
+        when RGBA32
+          LibBlend2D.blContextStrokeUtf8TextDRgba32(self, origin, font, text, text.size, style.packed).success_or_raise
+        when UInt64
+          LibBlend2D.blContextStrokeUtf8TextDRgba64(self, origin, font, text, text.size, style).success_or_raise
+        when RGBA64
+          LibBlend2D.blContextStrokeUtf8TextDRgba64(self, origin, font, text, text.size, style.packed).success_or_raise
+        else
+          LibBlend2D.blContextStrokeUtf8TextDExt(self, origin, font, text, text.size, style).success_or_raise
+        end
+      in PointI
+        case style
+        when Nil
+          LibBlend2D.blContextStrokeUtf8TextI(self, origin, font, text, text.size).success_or_raise
+        when UInt32
+          LibBlend2D.blContextStrokeUtf8TextIRgba32(self, origin, font, text, text.size, style).success_or_raise
+        when RGBA32
+          LibBlend2D.blContextStrokeUtf8TextIRgba32(self, origin, font, text, text.size, style.packed).success_or_raise
+        when UInt64
+          LibBlend2D.blContextStrokeUtf8TextIRgba64(self, origin, font, text, text.size, style).success_or_raise
+        when RGBA64
+          LibBlend2D.blContextStrokeUtf8TextIRgba64(self, origin, font, text, text.size, style.packed).success_or_raise
+        else
+          LibBlend2D.blContextStrokeUtf8TextIExt(self, origin, font, text, text.size, style).success_or_raise
+        end
+      end
+    end
+
+    def stroke_glyph_run(origin : Tuple(Number, Number), font : Font, glyph_run : GlyphRun, style : Style? = nil) : Bool
+      stroke_glyph_run Point.new(origin[0].to_f64, origin[1].to_f64), font, glyph_run, style
+    end
+
+    def stroke_glyph_run(origin : Point | PointI, font : Font, glyph_run : GlyphRun, style : Style? = nil) : Bool
+      case origin
+      in Point
+        case style
+        when Nil
+          LibBlend2D.blContextStrokeGlyphRunD(self, origin, font, glyph_run).success_or_raise
+        when UInt32
+          LibBlend2D.blContextStrokeGlyphRunDRgba32(self, origin, font, glyph_run, style).success_or_raise
+        when RGBA32
+          LibBlend2D.blContextStrokeGlyphRunDRgba32(self, origin, font, glyph_run, style.packed).success_or_raise
+        when UInt64
+          LibBlend2D.blContextStrokeGlyphRunDRgba64(self, origin, font, glyph_run, style).success_or_raise
+        when RGBA64
+          LibBlend2D.blContextStrokeGlyphRunDRgba64(self, origin, font, glyph_run, style.packed).success_or_raise
+        else
+          LibBlend2D.blContextStrokeGlyphRunDExt(self, origin, font, glyph_run, style).success_or_raise
+        end
+      in PointI
+        case style
+        when Nil
+          LibBlend2D.blContextStrokeGlyphRunI(self, origin, font, glyph_run).success_or_raise
+        when UInt32
+          LibBlend2D.blContextStrokeGlyphRunIRgba32(self, origin, font, glyph_run, style).success_or_raise
+        when RGBA32
+          LibBlend2D.blContextStrokeGlyphRunIRgba32(self, origin, font, glyph_run, style.packed).success_or_raise
+        when UInt64
+          LibBlend2D.blContextStrokeGlyphRunIRgba64(self, origin, font, glyph_run, style).success_or_raise
+        when RGBA64
+          LibBlend2D.blContextStrokeGlyphRunIRgba64(self, origin, font, glyph_run, style.packed).success_or_raise
+        else
+          LibBlend2D.blContextStrokeGlyphRunIExt(self, origin, font, glyph_run, style).success_or_raise
+        end
+      end
+    end
+
+    def blit_image(origin : Point | PointI, img : Image, img_area : RectI? = nil) : Bool
+      case origin
+      in Point
+        LibBlend2D.blContextBlitImageD(self, origin, img, img_area).success_or_raise
+      in PointI
+        LibBlend2D.blContextBlitImageI(self, origin, img, img_area).success_or_raise
+      end
+    end
+
+    def blit_scaled_image(rect : Rect | RectI, img : Image, img_area : RectI? = nil) : Bool
+      case rect
+      in Rect
+        LibBlend2D.blContextBlitScaledImageD(self, rect, img, img_area).success_or_raise
+      in RectI
+        LibBlend2D.blContextBlitScaledImageI(self, rect, img, img_area).success_or_raise
+      end
     end
   end
 end

@@ -19,7 +19,7 @@ ctx.stroke_width = 15
 ctx.stroke_start_cap = :round
 ctx.stroke_end_cap = :butt
 
-ctx.stroke path, linear_gradient
+ctx.stroke_path path, linear_gradient
 
 ctx.end
 img.write_to_file "#{__DIR__}/stroking.png"

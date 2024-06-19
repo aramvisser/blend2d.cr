@@ -48,7 +48,7 @@ def draw_header(font, text)
   ctx.stroke_style = WHITE
 
   ctx.fill_text Blend2D::Point.new(24, 52), font, text
-  ctx.stroke Blend2D::Line.new 12, 54.5, 798, 54.5
+  ctx.stroke_line Blend2D::Line.new 12, 54.5, 798, 54.5
 
   ctx.end
   img
@@ -96,23 +96,23 @@ def draw_primitive_shapes(size, padding)
   ctx.save_and_restore do
     ctx.stroke_width = 2.0
     ctx.translate padding, size + padding*2
-    ctx.stroke box
+    ctx.stroke_geometry box
     ctx.translate size + padding, 0
-    ctx.stroke rect
+    ctx.stroke_geometry rect
     ctx.translate size + padding, 0
-    ctx.stroke round_rect
+    ctx.stroke_geometry round_rect
     ctx.translate size + padding, 0
-    ctx.stroke ellipse
+    ctx.stroke_geometry ellipse
     ctx.translate size + padding, 0
-    ctx.stroke circle
+    ctx.stroke_geometry circle
     ctx.translate size + padding, 0
-    ctx.stroke arc
+    ctx.stroke_geometry arc
     ctx.translate size + padding, 0
-    ctx.stroke chord
+    ctx.stroke_geometry chord
     ctx.translate size + padding, 0
-    ctx.stroke pie
+    ctx.stroke_geometry pie
     ctx.translate size + padding, 0
-    ctx.stroke triangle
+    ctx.stroke_geometry triangle
   end
 
   img
@@ -241,7 +241,7 @@ def draw_stroke_caps(size, padding)
   %w[butt square round round_rev triangle triangle_rev].each do |cap|
     ctx.translate size, 0
     ctx.stroke_start_cap = Blend2D::StrokeCap.parse(cap)
-    ctx.stroke path, gradient
+    ctx.stroke_path path, gradient
   end
 
   img
@@ -270,7 +270,7 @@ def draw_stroke_joins(size, padding)
 
   %w[miter_clip miter_bevel miter_round bevel round].each do |join|
     ctx.stroke_join = Blend2D::StrokeJoin.parse(join)
-    ctx.stroke path, gradient
+    ctx.stroke_path path, gradient
     ctx.translate size*2 + padding, 0
   end
 
@@ -295,10 +295,10 @@ def draw_font_metrics(size, padding, face)
     font_metrics.x_height,
     font_metrics.cap_height,
   ].each do |y|
-    ctx.stroke Blend2D::Line.new(0.0, -y.to_f64, 600.0, -y.to_f64)
+    ctx.stroke_line Blend2D::Line.new(0.0, -y.to_f64, 600.0, -y.to_f64)
   end
 
-  ctx.stroke Blend2D::Point::ZERO, font, "Blend2D"
+  ctx.stroke_text Blend2D::Point::ZERO, font, "Blend2D"
 
   img
 end

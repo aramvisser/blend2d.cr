@@ -141,51 +141,6 @@ module Blend2D
     end
 
     # :nodoc:
-    private def stroke_geometry_rgba64(type : GeometryType, data : Pointer, rgba64 : LibC::ULong) : Bool
-      LibBlend2D.blContextStrokeGeometryRgba64(self, type, data, rgba64).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_geometry_ext(type : GeometryType, data : Pointer, style : Pointer) : Bool
-      LibBlend2D.blContextStrokeGeometryExt(self, type, data, style).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_utf8_text_i(origin : LibBlend2D::BLPointI*, font : Font, text : UInt8*, size : Int32) : Bool
-      LibBlend2D.blContextStrokeUtf8TextI(self, origin, font, text, size).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_utf8_text_i_rgba32(origin : LibBlend2D::BLPointI*, font : Font, text : UInt8*, size : Int32, rgba32 : UInt32) : Bool
-      LibBlend2D.blContextStrokeUtf8TextIRgba32(self, origin, font, text, size, rgba32).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_utf8_text_i_rgba64(origin : LibBlend2D::BLPointI*, font : Font, text : UInt8*, size : Int32, rgba64 : LibC::ULong) : Bool
-      LibBlend2D.blContextStrokeUtf8TextIRgba64(self, origin, font, text, size, rgba64).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_utf8_text_i_ext(origin : LibBlend2D::BLPointI*, font : Font, text : UInt8*, size : Int32, style : Pointer) : Bool
-      LibBlend2D.blContextStrokeUtf8TextIExt(self, origin, font, text, size, style).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_utf8_text_d(origin : LibBlend2D::BLPoint*, font : Font, text : UInt8*, size : Int32) : Bool
-      LibBlend2D.blContextStrokeUtf8TextD(self, origin, font, text, size).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_utf8_text_d_rgba32(origin : LibBlend2D::BLPoint*, font : Font, text : UInt8*, size : Int32, rgba32 : UInt32) : Bool
-      LibBlend2D.blContextStrokeUtf8TextDRgba32(self, origin, font, text, size, rgba32).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_utf8_text_d_rgba64(origin : LibBlend2D::BLPoint*, font : Font, text : UInt8*, size : Int32, rgba64 : LibC::ULong) : Bool
-      LibBlend2D.blContextStrokeUtf8TextDRgba64(self, origin, font, text, size, rgba64).success_or_raise
-    end
-
-    # :nodoc:
     private def stroke_utf8_text_d_ext(origin : LibBlend2D::BLPoint*, font : Font, text : UInt8*, size : Int32, style : Pointer) : Bool
       LibBlend2D.blContextStrokeUtf8TextDExt(self, origin, font, text, size, style).success_or_raise
     end
@@ -268,66 +223,6 @@ module Blend2D
     # :nodoc:
     private def stroke_utf32_text_d_ext(origin : LibBlend2D::BLPoint*, font : Font, text : UInt32*, size : Int32, style : Pointer) : Bool
       LibBlend2D.blContextStrokeUtf32TextDExt(self, origin, font, text, size, style).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_glyph_run_i(origin : LibBlend2D::BLPointI*, font : Font, glyphRun : LibBlend2D::BLGlyphRun*) : Bool
-      LibBlend2D.blContextStrokeGlyphRunI(self, origin, font, glyphRun).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_glyph_run_i_rgba32(origin : LibBlend2D::BLPointI*, font : Font, glyphRun : LibBlend2D::BLGlyphRun*, rgba32 : UInt32) : Bool
-      LibBlend2D.blContextStrokeGlyphRunIRgba32(self, origin, font, glyphRun, rgba32).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_glyph_run_i_rgba64(origin : LibBlend2D::BLPointI*, font : Font, glyphRun : LibBlend2D::BLGlyphRun*, rgba64 : LibC::ULong) : Bool
-      LibBlend2D.blContextStrokeGlyphRunIRgba64(self, origin, font, glyphRun, rgba64).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_glyph_run_i_ext(origin : LibBlend2D::BLPointI*, font : Font, glyphRun : LibBlend2D::BLGlyphRun*, style : Pointer) : Bool
-      LibBlend2D.blContextStrokeGlyphRunIExt(self, origin, font, glyphRun, style).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_glyph_run_d(origin : LibBlend2D::BLPoint*, font : Font, glyphRun : LibBlend2D::BLGlyphRun*) : Bool
-      LibBlend2D.blContextStrokeGlyphRunD(self, origin, font, glyphRun).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_glyph_run_d_rgba32(origin : LibBlend2D::BLPoint*, font : Font, glyphRun : LibBlend2D::BLGlyphRun*, rgba32 : UInt32) : Bool
-      LibBlend2D.blContextStrokeGlyphRunDRgba32(self, origin, font, glyphRun, rgba32).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_glyph_run_d_rgba64(origin : LibBlend2D::BLPoint*, font : Font, glyphRun : LibBlend2D::BLGlyphRun*, rgba64 : LibC::ULong) : Bool
-      LibBlend2D.blContextStrokeGlyphRunDRgba64(self, origin, font, glyphRun, rgba64).success_or_raise
-    end
-
-    # :nodoc:
-    private def stroke_glyph_run_d_ext(origin : LibBlend2D::BLPoint*, font : Font, glyphRun : LibBlend2D::BLGlyphRun*, style : Pointer) : Bool
-      LibBlend2D.blContextStrokeGlyphRunDExt(self, origin, font, glyphRun, style).success_or_raise
-    end
-
-    # :nodoc:
-    private def blit_image_i(origin : LibBlend2D::BLPointI*, img : Image, imgArea : LibBlend2D::BLRectI*) : Bool
-      LibBlend2D.blContextBlitImageI(self, origin, img, imgArea).success_or_raise
-    end
-
-    # :nodoc:
-    private def blit_image_d(origin : LibBlend2D::BLPoint*, img : Image, imgArea : LibBlend2D::BLRectI*) : Bool
-      LibBlend2D.blContextBlitImageD(self, origin, img, imgArea).success_or_raise
-    end
-
-    # :nodoc:
-    private def blit_scaled_image_i(rect : LibBlend2D::BLRectI*, img : Image, imgArea : LibBlend2D::BLRectI*) : Bool
-      LibBlend2D.blContextBlitScaledImageI(self, rect, img, imgArea).success_or_raise
-    end
-
-    # :nodoc:
-    private def blit_scaled_image_d(rect : LibBlend2D::BLRect*, img : Image, imgArea : LibBlend2D::BLRectI*) : Bool
-      LibBlend2D.blContextBlitScaledImageD(self, rect, img, imgArea).success_or_raise
     end
   end
 end
