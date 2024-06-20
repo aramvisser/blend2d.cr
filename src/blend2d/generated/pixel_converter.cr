@@ -1,4 +1,4 @@
-module Blend2D
+module Blend2D::Imaging
   class PixelConverter
     # :nodoc:
     private def initialize

@@ -52,11 +52,20 @@ This binding wraps the Blend2D C Api, but tries to follow the Blend2D C++ api de
 
 - Core classes are available in the Blend2D namespace, e.g. `BLContextCore` is
   `Blend2D::Context`.
-- Methods that return a `BLResult` in the C Api throw an exception on error.
-- Getter and setter methods are that start with `get` and `set` are directly
-  available, e.g. `Context#fill_style=` or `Context#comp_op`.
 - Enums are abbreviated and made camelcase, e.g. `COMP_OP_SRC_OVER` is
   `Blend2D::CompOp::SrcOver`.
+  
+It also does things differently to make them more crystal like.
+
+- Methods that return a `BLResult` in the C Api either return `true` or throw an
+  exception on error.
+- Getter and setter methods that start with `get` and `set` act like accessors,
+  i.e. `Context#fill_style=` or `Context#comp_op`.
+  
+The bindings are split into different modules that are also used in the Blend2D
+docs, like Imaging, Rendering, etc. This is only done to make things more
+organized. All modules are included directly in the `Blend2D` namespace. The
+different submodules are not needed during usage.
 
 ## Development
 

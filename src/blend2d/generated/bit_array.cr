@@ -1,4 +1,4 @@
-module Blend2D
+module Blend2D::Global
   class BitArray
     # :nodoc:
     private def initialize

@@ -1,4 +1,4 @@
-module Blend2D
+module Blend2D::Styling
   class Gradient
     # :nodoc:
     private def initialize

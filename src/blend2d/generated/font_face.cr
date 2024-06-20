@@ -1,4 +1,4 @@
-module Blend2D
+module Blend2D::Text
   class FontFace
     # :nodoc:
     private def reset : Bool

@@ -1,5 +1,5 @@
-module Blend2D
-  class Object
+module Blend2D::Object
+  class BLObject
     # :nodoc:
     private def alloc_impl(objectInfo : UInt32, implSize : Int32) : Bool
       LibBlend2D.blObjectAllocImpl(self, objectInfo, implSize).success_or_raise

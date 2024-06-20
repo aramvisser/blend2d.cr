@@ -1,4 +1,4 @@
-module Blend2D
+module Blend2D::Geometry
   class Path
     # :nodoc:
     private def reset : Bool

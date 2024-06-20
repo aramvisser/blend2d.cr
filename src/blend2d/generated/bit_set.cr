@@ -1,4 +1,4 @@
-module Blend2D
+module Blend2D::Global
   class BitSet
     # :nodoc:
     private def initialize

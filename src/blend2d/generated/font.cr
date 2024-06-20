@@ -1,4 +1,4 @@
-module Blend2D
+module Blend2D::Text
   class Font
     # :nodoc:
     private def initialize

@@ -1,4 +1,4 @@
-module Blend2D
+module Blend2D::Imaging
   class ImageDecoder
     # :nodoc:
     private def initialize

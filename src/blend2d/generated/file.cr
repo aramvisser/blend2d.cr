@@ -1,5 +1,5 @@
-module Blend2D
-  class File
+module Blend2D::Filesystem
+  class BLFile
     # :nodoc:
     private def initialize
       LibBlend2D.blFileInit(out @core).success_or_raise

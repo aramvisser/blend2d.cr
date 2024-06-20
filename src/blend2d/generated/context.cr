@@ -1,4 +1,4 @@
-module Blend2D
+module Blend2D::Rendering
   class Context
     # :nodoc:
     private def reset : Bool

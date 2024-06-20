@@ -1,4 +1,4 @@
-module Blend2D
+module Blend2D::Geometry
   class StrokeOptions
     # :nodoc:
     private def initialize

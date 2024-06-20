@@ -1,4 +1,4 @@
-module Blend2D
+module Blend2D::Text
   class GlyphBuffer
     # :nodoc:
     private def reset : Bool

@@ -1,4 +1,4 @@
-module Blend2D
+module Blend2D::Imaging
   class Image
     # :nodoc:
     private def initialize(w : Int32, h : Int32, format : Format, pixelData : Pointer, stride : LibC::Long, accessFlags : DataAccessFlags, destroyFunc : LibBlend2D::BLDestroyExternalDataFunc, userData : Pointer)

@@ -1,4 +1,4 @@
-module Blend2D
+module Blend2D::Global
   class BitSetBuilder
     # :nodoc:
     private def self.commit(self_ : BitSet, builder : BitSetBuilder, newAreaIndex : UInt32) : Bool
