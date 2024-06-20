@@ -118,9 +118,14 @@ module Blend2D
     end
 
     union BLObjectDetail
-      u32_data_overlap : UInt32[2]
-      impl_payload : UInt32
-      info : BLObjectInfo
+      impl : BLObjectImpl*
+      char_data : LibC::Char[16]
+      u8_data  : UInt8[16]
+      u16_data : UInt16[8]
+      u32_data : UInt32[4]
+      u64_data : UInt64[2]
+      f32_data : Float32[4]
+      f64_data : Float64[2]
     end
 
     struct BLObjectVirtBase
