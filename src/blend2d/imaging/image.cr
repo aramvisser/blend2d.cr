@@ -6,7 +6,11 @@ module Blend2D::Imaging
       image
     end
 
-    private def initialize
+    def self.read_from_data(data : Slice, codecs : BLArray(BLImageCodec)? = nil) : Bool
+      LibBlend2D.blImageReadFromData(self, data, data.bytesize, codecs).success_or_raise
+    end
+
+    protected def initialize
       LibBlend2D.blImageInit(out @core).success_or_raise
     end
 
@@ -49,6 +53,10 @@ module Blend2D::Imaging
     def data : ImageData
       LibBlend2D.blImageGetData(self, out image_data).success_or_raise
       ImageData.new image_data
+    end
+
+    def convert(format : Format) : Bool
+      LibBlend2D.blImageConvert(self, format).success_or_raise
     end
   end
 end

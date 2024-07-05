@@ -5,8 +5,8 @@ module Blend2D
   lib LibBlend2D
     enum BLGeometryDirection : UInt32
       None = 0
-      Cw   = 1
-      Ccw  = 2
+      CW   = 1
+      CCW  = 2
     end
 
     enum BLGeometryType : UInt32
