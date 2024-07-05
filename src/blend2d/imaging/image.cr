@@ -6,7 +6,7 @@ module Blend2D::Imaging
       image
     end
 
-    def self.read_from_data(data : Slice, codecs : BLArray(BLImageCodec)? = nil) : Bool
+    def self.read_from_data(data : Slice, codecs : BLArray(BLImageCodec)? = nil)
       LibBlend2D.blImageReadFromData(self, data, data.bytesize, codecs).success_or_raise
     end
 
@@ -26,12 +26,12 @@ module Blend2D::Imaging
     end
 
     # Codec is determined based on file extension
-    def write_to_file(filename) : Bool
+    def write_to_file(filename)
       codec = ImageCodec.find_by_extension(filename)
       write_to_file(filename, codec)
     end
 
-    def write_to_file(fileName, codec : ImageCodec) : Bool
+    def write_to_file(fileName, codec : ImageCodec)
       LibBlend2D.blImageWriteToFile(self, fileName.to_s, codec).success_or_raise
     end
 
@@ -55,7 +55,7 @@ module Blend2D::Imaging
       ImageData.new image_data
     end
 
-    def convert(format : Format) : Bool
+    def convert(format : Format)
       LibBlend2D.blImageConvert(self, format).success_or_raise
     end
   end

@@ -11,27 +11,27 @@ module Blend2D::Text
     end
 
     # :nodoc:
-    private def reset : Bool
+    private def reset
       LibBlend2D.blFontFeatureSettingsReset(self).success_or_raise
     end
 
     # :nodoc:
-    private def clear : Bool
+    private def clear
       LibBlend2D.blFontFeatureSettingsClear(self).success_or_raise
     end
 
     # :nodoc:
-    private def shrink : Bool
+    private def shrink
       LibBlend2D.blFontFeatureSettingsShrink(self).success_or_raise
     end
 
     # :nodoc:
-    private def assign_move(other : FontFeatureSettings) : Bool
+    private def assign_move(other : FontFeatureSettings)
       LibBlend2D.blFontFeatureSettingsAssignMove(self, other).success_or_raise
     end
 
     # :nodoc:
-    private def assign_weak(other : FontFeatureSettings) : Bool
+    private def assign_weak(other : FontFeatureSettings)
       LibBlend2D.blFontFeatureSettingsAssignWeak(self, other).success_or_raise
     end
 
@@ -46,7 +46,7 @@ module Blend2D::Text
     end
 
     # :nodoc:
-    private def get_view(out_ : LibBlend2D::BLFontFeatureSettingsView*) : Bool
+    private def get_view(out_ : LibBlend2D::BLFontFeatureSettingsView*)
       LibBlend2D.blFontFeatureSettingsGetView(self, out_).success_or_raise
     end
 
@@ -61,12 +61,12 @@ module Blend2D::Text
     end
 
     # :nodoc:
-    private def set_value(featureTag : LibBlend2D::BLTag, value : UInt32) : Bool
+    private def set_value(featureTag : LibBlend2D::BLTag, value : UInt32)
       LibBlend2D.blFontFeatureSettingsSetValue(self, featureTag, value).success_or_raise
     end
 
     # :nodoc:
-    private def remove_value(featureTag : LibBlend2D::BLTag) : Bool
+    private def remove_value(featureTag : LibBlend2D::BLTag)
       LibBlend2D.blFontFeatureSettingsRemoveValue(self, featureTag).success_or_raise
     end
 

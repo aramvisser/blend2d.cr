@@ -11,32 +11,32 @@ module Blend2D::Styling
     end
 
     # :nodoc:
-    private def reset : Bool
+    private def reset
       LibBlend2D.blGradientReset(self).success_or_raise
     end
 
     # :nodoc:
-    private def assign_move(other : Gradient) : Bool
+    private def assign_move(other : Gradient)
       LibBlend2D.blGradientAssignMove(self, other).success_or_raise
     end
 
     # :nodoc:
-    private def assign_weak(other : Gradient) : Bool
+    private def assign_weak(other : Gradient)
       LibBlend2D.blGradientAssignWeak(self, other).success_or_raise
     end
 
     # :nodoc:
-    private def create(type : GradientType, values : Pointer, extendMode : ExtendMode, stops : LibBlend2D::BLGradientStop*, n : Int32, transform : LibBlend2D::BLMatrix2D*) : Bool
+    private def create(type : GradientType, values : Pointer, extendMode : ExtendMode, stops : LibBlend2D::BLGradientStop*, n : Int32, transform : LibBlend2D::BLMatrix2D*)
       LibBlend2D.blGradientCreate(self, type, values, extendMode, stops, n, transform).success_or_raise
     end
 
     # :nodoc:
-    private def shrink : Bool
+    private def shrink
       LibBlend2D.blGradientShrink(self).success_or_raise
     end
 
     # :nodoc:
-    private def reserve(n : Int32) : Bool
+    private def reserve(n : Int32)
       LibBlend2D.blGradientReserve(self, n).success_or_raise
     end
 
@@ -56,12 +56,12 @@ module Blend2D::Styling
     end
 
     # :nodoc:
-    private def set_value(index : Int32, value : Float64) : Bool
+    private def set_value(index : Int32, value : Float64)
       LibBlend2D.blGradientSetValue(self, index, value).success_or_raise
     end
 
     # :nodoc:
-    private def set_values(index : Int32, values : Float64*, n : Int32) : Bool
+    private def set_values(index : Int32, values : Float64*, n : Int32)
       LibBlend2D.blGradientSetValues(self, index, values, n).success_or_raise
     end
 
@@ -81,42 +81,42 @@ module Blend2D::Styling
     end
 
     # :nodoc:
-    private def reset_stops : Bool
+    private def reset_stops
       LibBlend2D.blGradientResetStops(self).success_or_raise
     end
 
     # :nodoc:
-    private def assign_stops(stops : LibBlend2D::BLGradientStop*, n : Int32) : Bool
+    private def assign_stops(stops : LibBlend2D::BLGradientStop*, n : Int32)
       LibBlend2D.blGradientAssignStops(self, stops, n).success_or_raise
     end
 
     # :nodoc:
-    private def remove_stop(index : Int32) : Bool
+    private def remove_stop(index : Int32)
       LibBlend2D.blGradientRemoveStop(self, index).success_or_raise
     end
 
     # :nodoc:
-    private def remove_stop_by_offset(offset : Float64, all : UInt32) : Bool
+    private def remove_stop_by_offset(offset : Float64, all : UInt32)
       LibBlend2D.blGradientRemoveStopByOffset(self, offset, all).success_or_raise
     end
 
     # :nodoc:
-    private def remove_stops_by_index(rStart : Int32, rEnd : Int32) : Bool
+    private def remove_stops_by_index(rStart : Int32, rEnd : Int32)
       LibBlend2D.blGradientRemoveStopsByIndex(self, rStart, rEnd).success_or_raise
     end
 
     # :nodoc:
-    private def remove_stops_by_offset(offsetMin : Float64, offsetMax : Float64) : Bool
+    private def remove_stops_by_offset(offsetMin : Float64, offsetMax : Float64)
       LibBlend2D.blGradientRemoveStopsByOffset(self, offsetMin, offsetMax).success_or_raise
     end
 
     # :nodoc:
-    private def replace_stop_rgba32(index : Int32, offset : Float64, rgba32 : UInt32) : Bool
+    private def replace_stop_rgba32(index : Int32, offset : Float64, rgba32 : UInt32)
       LibBlend2D.blGradientReplaceStopRgba32(self, index, offset, rgba32).success_or_raise
     end
 
     # :nodoc:
-    private def replace_stop_rgba64(index : Int32, offset : Float64, rgba64 : LibC::ULong) : Bool
+    private def replace_stop_rgba64(index : Int32, offset : Float64, rgba64 : LibC::ULong)
       LibBlend2D.blGradientReplaceStopRgba64(self, index, offset, rgba64).success_or_raise
     end
 
@@ -126,7 +126,7 @@ module Blend2D::Styling
     end
 
     # :nodoc:
-    private def get_transform(transformOut : LibBlend2D::BLMatrix2D*) : Bool
+    private def get_transform(transformOut : LibBlend2D::BLMatrix2D*)
       LibBlend2D.blGradientGetTransform(self, transformOut).success_or_raise
     end
 
@@ -136,7 +136,7 @@ module Blend2D::Styling
     end
 
     # :nodoc:
-    private def apply_transform_op(opType : TransformOp, opData : Pointer) : Bool
+    private def apply_transform_op(opType : TransformOp, opData : Pointer)
       LibBlend2D.blGradientApplyTransformOp(self, opType, opData).success_or_raise
     end
 

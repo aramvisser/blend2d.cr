@@ -11,27 +11,27 @@ module Blend2D::Text
     end
 
     # :nodoc:
-    private def reset : Bool
+    private def reset
       LibBlend2D.blFontVariationSettingsReset(self).success_or_raise
     end
 
     # :nodoc:
-    private def clear : Bool
+    private def clear
       LibBlend2D.blFontVariationSettingsClear(self).success_or_raise
     end
 
     # :nodoc:
-    private def shrink : Bool
+    private def shrink
       LibBlend2D.blFontVariationSettingsShrink(self).success_or_raise
     end
 
     # :nodoc:
-    private def assign_move(other : FontVariationSettings) : Bool
+    private def assign_move(other : FontVariationSettings)
       LibBlend2D.blFontVariationSettingsAssignMove(self, other).success_or_raise
     end
 
     # :nodoc:
-    private def assign_weak(other : FontVariationSettings) : Bool
+    private def assign_weak(other : FontVariationSettings)
       LibBlend2D.blFontVariationSettingsAssignWeak(self, other).success_or_raise
     end
 
@@ -46,7 +46,7 @@ module Blend2D::Text
     end
 
     # :nodoc:
-    private def get_view(out_ : LibBlend2D::BLFontVariationSettingsView*) : Bool
+    private def get_view(out_ : LibBlend2D::BLFontVariationSettingsView*)
       LibBlend2D.blFontVariationSettingsGetView(self, out_).success_or_raise
     end
 
@@ -61,12 +61,12 @@ module Blend2D::Text
     end
 
     # :nodoc:
-    private def set_value(variationTag : LibBlend2D::BLTag, value : Float32) : Bool
+    private def set_value(variationTag : LibBlend2D::BLTag, value : Float32)
       LibBlend2D.blFontVariationSettingsSetValue(self, variationTag, value).success_or_raise
     end
 
     # :nodoc:
-    private def remove_value(variationTag : LibBlend2D::BLTag) : Bool
+    private def remove_value(variationTag : LibBlend2D::BLTag)
       LibBlend2D.blFontVariationSettingsRemoveValue(self, variationTag).success_or_raise
     end
 

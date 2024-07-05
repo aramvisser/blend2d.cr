@@ -11,32 +11,32 @@ module Blend2D::Text
     end
 
     # :nodoc:
-    private def reset : Bool
+    private def reset
       LibBlend2D.blFontDataReset(self).success_or_raise
     end
 
     # :nodoc:
-    private def assign_move(other : FontData) : Bool
+    private def assign_move(other : FontData)
       LibBlend2D.blFontDataAssignMove(self, other).success_or_raise
     end
 
     # :nodoc:
-    private def assign_weak(other : FontData) : Bool
+    private def assign_weak(other : FontData)
       LibBlend2D.blFontDataAssignWeak(self, other).success_or_raise
     end
 
     # :nodoc:
-    private def create_from_file(fileName : UInt8*, readFlags : FileReadFlags) : Bool
+    private def create_from_file(fileName : UInt8*, readFlags : FileReadFlags)
       LibBlend2D.blFontDataCreateFromFile(self, fileName, readFlags).success_or_raise
     end
 
     # :nodoc:
-    private def create_from_data_array(dataArray : Array) : Bool
+    private def create_from_data_array(dataArray : Array)
       LibBlend2D.blFontDataCreateFromDataArray(self, dataArray).success_or_raise
     end
 
     # :nodoc:
-    private def create_from_data(data : Pointer, dataSize : Int32, destroyFunc : LibBlend2D::BLDestroyExternalDataFunc, userData : Pointer) : Bool
+    private def create_from_data(data : Pointer, dataSize : Int32, destroyFunc : LibBlend2D::BLDestroyExternalDataFunc, userData : Pointer)
       LibBlend2D.blFontDataCreateFromData(self, data, dataSize, destroyFunc, userData).success_or_raise
     end
 
@@ -61,7 +61,7 @@ module Blend2D::Text
     end
 
     # :nodoc:
-    private def get_table_tags(faceIndex : UInt32, dst : Array) : Bool
+    private def get_table_tags(faceIndex : UInt32, dst : Array)
       LibBlend2D.blFontDataGetTableTags(self, faceIndex, dst).success_or_raise
     end
 

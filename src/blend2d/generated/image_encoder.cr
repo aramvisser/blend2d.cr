@@ -11,27 +11,27 @@ module Blend2D::Imaging
     end
 
     # :nodoc:
-    private def reset : Bool
+    private def reset
       LibBlend2D.blImageEncoderReset(self).success_or_raise
     end
 
     # :nodoc:
-    private def assign_move(other : ImageEncoder) : Bool
+    private def assign_move(other : ImageEncoder)
       LibBlend2D.blImageEncoderAssignMove(self, other).success_or_raise
     end
 
     # :nodoc:
-    private def assign_weak(other : ImageEncoder) : Bool
+    private def assign_weak(other : ImageEncoder)
       LibBlend2D.blImageEncoderAssignWeak(self, other).success_or_raise
     end
 
     # :nodoc:
-    private def restart : Bool
+    private def restart
       LibBlend2D.blImageEncoderRestart(self).success_or_raise
     end
 
     # :nodoc:
-    private def write_frame(dst : Array, image : Image) : Bool
+    private def write_frame(dst : Array, image : Image)
       LibBlend2D.blImageEncoderWriteFrame(self, dst, image).success_or_raise
     end
   end

@@ -16,32 +16,32 @@ module Blend2D::Global
     end
 
     # :nodoc:
-    private def reset : Bool
+    private def reset
       LibBlend2D.blBitSetReset(self).success_or_raise
     end
 
     # :nodoc:
-    private def assign_move(other : BitSet) : Bool
+    private def assign_move(other : BitSet)
       LibBlend2D.blBitSetAssignMove(self, other).success_or_raise
     end
 
     # :nodoc:
-    private def assign_weak(other : BitSet) : Bool
+    private def assign_weak(other : BitSet)
       LibBlend2D.blBitSetAssignWeak(self, other).success_or_raise
     end
 
     # :nodoc:
-    private def assign_deep(other : BitSet) : Bool
+    private def assign_deep(other : BitSet)
       LibBlend2D.blBitSetAssignDeep(self, other).success_or_raise
     end
 
     # :nodoc:
-    private def assign_range(startBit : UInt32, endBit : UInt32) : Bool
+    private def assign_range(startBit : UInt32, endBit : UInt32)
       LibBlend2D.blBitSetAssignRange(self, startBit, endBit).success_or_raise
     end
 
     # :nodoc:
-    private def assign_words(startWord : UInt32, wordData : UInt32*, wordCount : UInt32) : Bool
+    private def assign_words(startWord : UInt32, wordData : UInt32*, wordCount : UInt32)
       LibBlend2D.blBitSetAssignWords(self, startWord, wordData, wordCount).success_or_raise
     end
 
@@ -51,7 +51,7 @@ module Blend2D::Global
     end
 
     # :nodoc:
-    private def get_data(out_ : LibBlend2D::BLBitSetData*) : Bool
+    private def get_data(out_ : LibBlend2D::BLBitSetData*)
       LibBlend2D.blBitSetGetData(self, out_).success_or_raise
     end
 
@@ -111,47 +111,47 @@ module Blend2D::Global
     end
 
     # :nodoc:
-    private def clear : Bool
+    private def clear
       LibBlend2D.blBitSetClear(self).success_or_raise
     end
 
     # :nodoc:
-    private def shrink : Bool
+    private def shrink
       LibBlend2D.blBitSetShrink(self).success_or_raise
     end
 
     # :nodoc:
-    private def optimize : Bool
+    private def optimize
       LibBlend2D.blBitSetOptimize(self).success_or_raise
     end
 
     # :nodoc:
-    private def chop(startBit : UInt32, endBit : UInt32) : Bool
+    private def chop(startBit : UInt32, endBit : UInt32)
       LibBlend2D.blBitSetChop(self, startBit, endBit).success_or_raise
     end
 
     # :nodoc:
-    private def add_bit(bitIndex : UInt32) : Bool
+    private def add_bit(bitIndex : UInt32)
       LibBlend2D.blBitSetAddBit(self, bitIndex).success_or_raise
     end
 
     # :nodoc:
-    private def add_range(rangeStartBit : UInt32, rangeEndBit : UInt32) : Bool
+    private def add_range(rangeStartBit : UInt32, rangeEndBit : UInt32)
       LibBlend2D.blBitSetAddRange(self, rangeStartBit, rangeEndBit).success_or_raise
     end
 
     # :nodoc:
-    private def add_words(startWord : UInt32, wordData : UInt32*, wordCount : UInt32) : Bool
+    private def add_words(startWord : UInt32, wordData : UInt32*, wordCount : UInt32)
       LibBlend2D.blBitSetAddWords(self, startWord, wordData, wordCount).success_or_raise
     end
 
     # :nodoc:
-    private def clear_bit(bitIndex : UInt32) : Bool
+    private def clear_bit(bitIndex : UInt32)
       LibBlend2D.blBitSetClearBit(self, bitIndex).success_or_raise
     end
 
     # :nodoc:
-    private def clear_range(rangeStartBit : UInt32, rangeEndBit : UInt32) : Bool
+    private def clear_range(rangeStartBit : UInt32, rangeEndBit : UInt32)
       LibBlend2D.blBitSetClearRange(self, rangeStartBit, rangeEndBit).success_or_raise
     end
   end

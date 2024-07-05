@@ -1,12 +1,12 @@
 module Blend2D::Text
   class GlyphBuffer
     # :nodoc:
-    private def reset : Bool
+    private def reset
       LibBlend2D.blGlyphBufferReset(self).success_or_raise
     end
 
     # :nodoc:
-    private def clear : Bool
+    private def clear
       LibBlend2D.blGlyphBufferClear(self).success_or_raise
     end
 
@@ -36,22 +36,22 @@ module Blend2D::Text
     end
 
     # :nodoc:
-    private def set_glyphs(glyphData : UInt32*, size : Int32) : Bool
+    private def set_glyphs(glyphData : UInt32*, size : Int32)
       LibBlend2D.blGlyphBufferSetGlyphs(self, glyphData, size).success_or_raise
     end
 
     # :nodoc:
-    private def set_glyphs_from_struct(glyphData : Pointer, size : Int32, glyphIdSize : Int32, glyphIdAdvance : LibC::Long) : Bool
+    private def set_glyphs_from_struct(glyphData : Pointer, size : Int32, glyphIdSize : Int32, glyphIdAdvance : LibC::Long)
       LibBlend2D.blGlyphBufferSetGlyphsFromStruct(self, glyphData, size, glyphIdSize, glyphIdAdvance).success_or_raise
     end
 
     # :nodoc:
-    private def set_debug_sink(sink : LibBlend2D::BLDebugMessageSinkFunc, userData : Pointer) : Bool
+    private def set_debug_sink(sink : LibBlend2D::BLDebugMessageSinkFunc, userData : Pointer)
       LibBlend2D.blGlyphBufferSetDebugSink(self, sink, userData).success_or_raise
     end
 
     # :nodoc:
-    private def reset_debug_sink : Bool
+    private def reset_debug_sink
       LibBlend2D.blGlyphBufferResetDebugSink(self).success_or_raise
     end
   end

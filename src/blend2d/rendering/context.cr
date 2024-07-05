@@ -17,11 +17,11 @@ module Blend2D::Rendering
       Size.new target_size
     end
 
-    def begin(image : Image) : Bool
+    def begin(image : Image)
       LibBlend2D.blContextBegin(self, image, nil).success_or_raise
     end
 
-    def end : Bool
+    def end
       LibBlend2D.blContextEnd(self).success_or_raise
     end
 
@@ -30,11 +30,11 @@ module Blend2D::Rendering
       ContextCookie.new cookie
     end
 
-    def restore : Bool
+    def restore
       LibBlend2D.blContextRestore(self, nil).success_or_raise
     end
 
-    def restore(cookie : ContextCookie) : Bool
+    def restore(cookie : ContextCookie)
       LibBlend2D.blContextRestore(self, cookie).success_or_raise
     end
 
@@ -60,59 +60,59 @@ module Blend2D::Rendering
       Matrix2D.new transform
     end
 
-    def user_to_meta : Bool
+    def user_to_meta
       LibBlend2D.blContextUserToMeta(self).success_or_raise
     end
 
-    def apply_transform_op(op : TransformOp, data : Array(Float64)) : Bool
+    def apply_transform_op(op : TransformOp, data : Array(Float64))
       LibBlend2D.blContextApplyTransformOp(self, op, data).success_or_raise
     end
 
-    def translate(x : Float64, y : Float64) : Bool
+    def translate(x : Float64, y : Float64)
       apply_transform_op :translate, [x, y]
     end
 
-    def post_translate(x : Float64, y : Float64) : Bool
+    def post_translate(x : Float64, y : Float64)
       apply_transform_op :post_translate, [x, y]
     end
 
-    def rotate(angle : Float64) : Bool
+    def rotate(angle : Float64)
       apply_transform_op :rotate, [angle]
     end
 
-    def post_rotate(angle : Float64) : Bool
+    def post_rotate(angle : Float64)
       apply_transform_op :post_rotate, [angle]
     end
 
-    def rotate(angle : Float64, x : Float64, y : Float64) : Bool
+    def rotate(angle : Float64, x : Float64, y : Float64)
       apply_transform_op :rotate_pt, [angle, x, y]
     end
 
-    def post_rotate(angle : Float64, x : Float64, y : Float64) : Bool
+    def post_rotate(angle : Float64, x : Float64, y : Float64)
       apply_transform_op :post_rotate_pt, [angle, x, y]
     end
 
-    def scale(x : Float64, y : Float64) : Bool
+    def scale(x : Float64, y : Float64)
       apply_transform_op :scale, [x, y]
     end
 
-    def post_scale(x : Float64, y : Float64) : Bool
+    def post_scale(x : Float64, y : Float64)
       apply_transform_op :post_scale, [x, y]
     end
 
-    def skew(x : Float64, y : Float64) : Bool
+    def skew(x : Float64, y : Float64)
       apply_transform_op :skew, [x, y]
     end
 
-    def post_skew(x : Float64, y : Float64) : Bool
+    def post_skew(x : Float64, y : Float64)
       apply_transform_op :post_skew, [x, y]
     end
 
-    def transform(matrix : Matrix2D) : Bool
+    def transform(matrix : Matrix2D)
       LibBlend2D.blContextApplyTransformOp(self, TransformOp::Transform, matrix).success_or_raise
     end
 
-    def post_transform(matrix : Matrix2D) : Bool
+    def post_transform(matrix : Matrix2D)
       LibBlend2D.blContextApplyTransformOp(self, TransformOp::PostTransform, matrix).success_or_raise
     end
 
@@ -128,7 +128,7 @@ module Blend2D::Rendering
       LibBlend2D.blContextGetHint(self, hint_type)
     end
 
-    def set_hint(hint_type : ContextHint, value : UInt32) : Bool
+    def set_hint(hint_type : ContextHint, value : UInt32)
       LibBlend2D.blContextSetHint(self, hint_type, value).success_or_raise
     end
 
@@ -206,7 +206,7 @@ module Blend2D::Rendering
       LibBlend2D.blContextSetFillAlpha(self, alpha).success_or_raise
     end
 
-    def disable_fill_style : Bool
+    def disable_fill_style
       LibBlend2D.blContextDisableFillStyle(self).success_or_raise
     end
 
@@ -245,11 +245,11 @@ module Blend2D::Rendering
       LibBlend2D.blContextSetStrokeAlpha(self, alpha).success_or_raise
     end
 
-    def disable_stroke_style : Bool
+    def disable_stroke_style
       LibBlend2D.blContextDisableStrokeStyle(self).success_or_raise
     end
 
-    def swap_styles(mode : ContextStyleSwapMode = ContextStyleSwapMode::Styles) : Bool
+    def swap_styles(mode : ContextStyleSwapMode = ContextStyleSwapMode::Styles)
       LibBlend2D.blContextSwapStyles(self, mode).success_or_raise
     end
 
@@ -313,7 +313,7 @@ module Blend2D::Rendering
       LibBlend2D.blContextSetStrokeCaps(self, stroke_cap).success_or_raise
     end
 
-    def set_stroke_cap(position : StrokeCapPosition, stroke_cap : StrokeCap) : Bool
+    def set_stroke_cap(position : StrokeCapPosition, stroke_cap : StrokeCap)
       LibBlend2D.blContextSetStrokeCap(self, position, stroke_cap).success_or_raise
     end
 
@@ -350,7 +350,7 @@ module Blend2D::Rendering
       LibBlend2D.blContextSetStrokeOptions(self, options).success_or_raise
     end
 
-    def clip_to_rect(rect : Rect | RectI) : Bool
+    def clip_to_rect(rect : Rect | RectI)
       case rect
       in Rect
         LibBlend2D.blContextClipToRectD(self, rect).success_or_raise
@@ -359,20 +359,20 @@ module Blend2D::Rendering
       end
     end
 
-    def clip_to_rect(x : Float64, y : Float64, w : Float64, h : Float64) : Bool
+    def clip_to_rect(x : Float64, y : Float64, w : Float64, h : Float64)
       rect = Rect.new x, y, w, h
       LibBlend2D.blContextClipToRectD(self, rect).success_or_raise
     end
 
-    def restore_clipping : Bool
+    def restore_clipping
       LibBlend2D.blContextRestoreClipping(self).success_or_raise
     end
 
-    def clear_all : Bool
+    def clear_all
       LibBlend2D.blContextClearAll(self).success_or_raise
     end
 
-    def clear_rect(rect : Rect | RectI) : Bool
+    def clear_rect(rect : Rect | RectI)
       case rect
       in Rect
         LibBlend2D.blContextClearRectD(self, rect).success_or_raise
@@ -381,12 +381,12 @@ module Blend2D::Rendering
       end
     end
 
-    def clear_rect(x : Float64, y : Float64, w : Float64, h : Float64) : Bool
+    def clear_rect(x : Float64, y : Float64, w : Float64, h : Float64)
       rect = Rect.new x, y, w, h
       LibBlend2D.blContextClearRectD(self, rect).success_or_raise
     end
 
-    def fill_all(style : Style? = nil) : Bool
+    def fill_all(style : Style? = nil)
       case style
       when Nil
         LibBlend2D.blContextFillAll(self).success_or_raise
@@ -403,12 +403,12 @@ module Blend2D::Rendering
       end
     end
 
-    def fill_rect(x : Float64, y : Float64, w : Float64, h : Float64, style : Style? = nil) : Bool
+    def fill_rect(x : Float64, y : Float64, w : Float64, h : Float64, style : Style? = nil)
       rect = Rect.new x, y, w, h
       fill_rect rect, style
     end
 
-    def fill_rect(rect : Rect | RectI, style : Style? = nil) : Bool
+    def fill_rect(rect : Rect | RectI, style : Style? = nil)
       case rect
       in Rect
         case style
@@ -443,15 +443,15 @@ module Blend2D::Rendering
       end
     end
 
-    def fill_path(path : Path, style : Style? = nil) : Bool
+    def fill_path(path : Path, style : Style? = nil)
       fill_path Point::ZERO, path, style
     end
 
-    def fill_path(origin : Tuple(Float64, Float64), path : Path, style : Style? = nil) : Bool
+    def fill_path(origin : Tuple(Float64, Float64), path : Path, style : Style? = nil)
       fill_path Point.new(origin[0].to_f64, origin[1].to_f64), path, style
     end
 
-    def fill_path(origin : Point, path : Path, style : Style? = nil) : Bool
+    def fill_path(origin : Point, path : Path, style : Style? = nil)
       case style
       when Nil
         LibBlend2D.blContextFillPathD(self, origin, path).success_or_raise
@@ -468,7 +468,7 @@ module Blend2D::Rendering
       end
     end
 
-    def fill_geometry(geometry : Geometry::Core, style : Style? = nil) : Bool
+    def fill_geometry(geometry : Geometry::Core, style : Style? = nil)
       case style
       when Nil
         LibBlend2D.blContextFillGeometry(self, geometry.type, geometry.to_unsafe).success_or_raise
@@ -485,97 +485,97 @@ module Blend2D::Rendering
       end
     end
 
-    def fill_arc(cx : Float64, cy : Float64, rx : Float64, ry : Float64, start : Float64, sweep : Float64, style : Style? = nil) : Bool
+    def fill_arc(cx : Float64, cy : Float64, rx : Float64, ry : Float64, start : Float64, sweep : Float64, style : Style? = nil)
       arc = Arc.new cx, cy, rx, ry, start, sweep
       fill_geometry arc, style
     end
 
-    def fill_arc(arc : Arc, style : Style? = nil) : Bool
+    def fill_arc(arc : Arc, style : Style? = nil)
       fill_geometry arc, style
     end
 
-    def fill_box(x0 : Float64, y0 : Float64, x1 : Float64, y1 : Float64, style : Style? = nil) : Bool
+    def fill_box(x0 : Float64, y0 : Float64, x1 : Float64, y1 : Float64, style : Style? = nil)
       box = Box.new x0, y0, x1, y1
       fill_geometry box, style
     end
 
-    def fill_box(box : Box | BoxI, style : Style? = nil) : Bool
+    def fill_box(box : Box | BoxI, style : Style? = nil)
       fill_geometry box, style
     end
 
-    def fill_circle(cx : Float64, cy : Float64, r : Float64, style : Style? = nil) : Bool
+    def fill_circle(cx : Float64, cy : Float64, r : Float64, style : Style? = nil)
       circle = Circle.new cx, cy, r
       fill_geometry circle, style
     end
 
-    def fill_circle(circle : Circle, style : Style? = nil) : Bool
+    def fill_circle(circle : Circle, style : Style? = nil)
       fill_geometry circle, style
     end
 
-    def fill_chord(cx : Float64, cy : Float64, rx : Float64, ry : Float64, start : Float64, sweep : Float64, style : Style? = nil) : Bool
+    def fill_chord(cx : Float64, cy : Float64, rx : Float64, ry : Float64, start : Float64, sweep : Float64, style : Style? = nil)
       chord = Chord.new cx, cy, rx, ry, start, sweep
       fill_geometry chord, style
     end
 
-    def fill_chord(chord : Chord, style : Style? = nil) : Bool
+    def fill_chord(chord : Chord, style : Style? = nil)
       fill_geometry chord, style
     end
 
-    def fill_ellipse(cx : Float64, cy : Float64, rx : Float64, ry : Float64, style : Style? = nil) : Bool
+    def fill_ellipse(cx : Float64, cy : Float64, rx : Float64, ry : Float64, style : Style? = nil)
       ellipse = Circle.new cx, cy, rx, ry
       fill_geometry ellipse, style
     end
 
-    def fill_ellipse(ellipse : Ellipse, style : Style? = nil) : Bool
+    def fill_ellipse(ellipse : Ellipse, style : Style? = nil)
       fill_geometry ellipse, style
     end
 
-    def fill_line(x0 : Float64, y0 : Float64, x1 : Float64, y1 : Float64, style : Style? = nil) : Bool
+    def fill_line(x0 : Float64, y0 : Float64, x1 : Float64, y1 : Float64, style : Style? = nil)
       line = Line.new x0, y0, x1, y1
       fill_geometry line, style
     end
 
-    def fill_line(line : Line, style : Style? = nil) : Bool
+    def fill_line(line : Line, style : Style? = nil)
       fill_geometry line, style
     end
 
-    def fill_pie(cx : Float64, cy : Float64, rx : Float64, ry : Float64, start : Float64, sweep : Float64, style : Style? = nil) : Bool
+    def fill_pie(cx : Float64, cy : Float64, rx : Float64, ry : Float64, start : Float64, sweep : Float64, style : Style? = nil)
       pie = Pie.new cx, cy, rx, ry, start, sweep
       fill_geometry pie, style
     end
 
-    def fill_pie(pie : Pie, style : Style? = nil) : Bool
+    def fill_pie(pie : Pie, style : Style? = nil)
       fill_geometry pie, style
     end
 
-    def fill_round_rect(x : Float64, y : Float64, w : Float64, h : Float64, r : Float64, style : Style? = nil) : Bool
+    def fill_round_rect(x : Float64, y : Float64, w : Float64, h : Float64, r : Float64, style : Style? = nil)
       round_rect = RoundRect.new x, y, w, h, r
       fill_geometry round_rect, style
     end
 
-    def fill_round_rect(x : Float64, y : Float64, w : Float64, h : Float64, rx : Float64, ry : Float64, style : Style? = nil) : Bool
+    def fill_round_rect(x : Float64, y : Float64, w : Float64, h : Float64, rx : Float64, ry : Float64, style : Style? = nil)
       round_rect = RoundRect.new x, y, w, h, rx, ry
       fill_geometry round_rect, style
     end
 
-    def fill_round_rect(round_rect : RoundRect, style : Style? = nil) : Bool
+    def fill_round_rect(round_rect : RoundRect, style : Style? = nil)
       fill_geometry round_rect, style
     end
 
-    def fill_triangle(x0 : Float64, y0 : Float64, x1 : Float64, y1 : Float64, x2 : Float64, y2 : Float64, style : Style? = nil) : Bool
+    def fill_triangle(x0 : Float64, y0 : Float64, x1 : Float64, y1 : Float64, x2 : Float64, y2 : Float64, style : Style? = nil)
       triangle = Triangle.new x0, y0, x1, y1, x2, y2
       fill_geometry triangle, style
     end
 
-    def fill_triangle(triangle : Triangle, style : Style? = nil) : Bool
+    def fill_triangle(triangle : Triangle, style : Style? = nil)
       fill_geometry triangle, style
     end
 
-    def fill_text(origin : Tuple(Number, Number), font : Font, text : String, style : Style? = nil) : Bool
+    def fill_text(origin : Tuple(Number, Number), font : Font, text : String, style : Style? = nil)
       fill_text Point.new(origin[0].to_f64, origin[1].to_f64), font, text, style
     end
 
-    def fill_text(origin : Point | PointI, font : Font, text : String, style : Style? = nil) : Bool
+    def fill_text(origin : Point | PointI, font : Font, text : String, style : Style? = nil)
       case origin
       in Point
         case style
@@ -610,11 +610,11 @@ module Blend2D::Rendering
       end
     end
 
-    def fill_glyph_run(origin : Tuple(Number, Number), font : Font, glyph_run : GlyphRun, style : Style? = nil) : Bool
+    def fill_glyph_run(origin : Tuple(Number, Number), font : Font, glyph_run : GlyphRun, style : Style? = nil)
       fill_glyph_run Point.new(origin[0].to_f64, origin[1].to_f64), font, glyph_run, style
     end
 
-    def fill_glyph_run(origin : Point | PointI, font : Font, glyph_run : GlyphRun, style : Style? = nil) : Bool
+    def fill_glyph_run(origin : Point | PointI, font : Font, glyph_run : GlyphRun, style : Style? = nil)
       case origin
       in Point
         case style
@@ -649,15 +649,15 @@ module Blend2D::Rendering
       end
     end
 
-    def fill_mask(origin : Point | PointI, mask : Image, style : Style? = nil) : Bool
+    def fill_mask(origin : Point | PointI, mask : Image, style : Style? = nil)
       _fill_mask origin, mask, nil, style
     end
 
-    def fill_mask(origin : Point | PointI, mask : Image, mask_area : RectI, style : Style? = nil) : Bool
+    def fill_mask(origin : Point | PointI, mask : Image, mask_area : RectI, style : Style? = nil)
       _fill_mask origin, mask, mask_area, style
     end
 
-    private def _fill_mask(origin : Point | PointI, mask : Image, mask_area : RectI? = Nil, style : Style? = Nil) : Bool
+    private def _fill_mask(origin : Point | PointI, mask : Image, mask_area : RectI? = Nil, style : Style? = Nil)
       case origin
       in Point
         case style
@@ -692,12 +692,12 @@ module Blend2D::Rendering
       end
     end
 
-    def stroke_rect(x : Float64, y : Float64, w : Float64, h : Float64, style : Style? = nil) : Bool
+    def stroke_rect(x : Float64, y : Float64, w : Float64, h : Float64, style : Style? = nil)
       rect = Rect.new x, y, w, h
       stroke_rect rect, style
     end
 
-    def stroke_rect(rect : Rect | RectI, style : Style? = nil) : Bool
+    def stroke_rect(rect : Rect | RectI, style : Style? = nil)
       case rect
       in Rect
         case style
@@ -732,15 +732,15 @@ module Blend2D::Rendering
       end
     end
 
-    def stroke_path(path : Path, style : Style? = nil) : Bool
+    def stroke_path(path : Path, style : Style? = nil)
       stroke_path Point::ZERO, path, style
     end
 
-    def stroke_path(origin : Tuple(Float64, Float64), path : Path, style : Style? = nil) : Bool
+    def stroke_path(origin : Tuple(Float64, Float64), path : Path, style : Style? = nil)
       stroke_path Point.new(origin[0].to_f64, origin[1].to_f64), path, style
     end
 
-    def stroke_path(origin : Point, path : Path, style : Style? = nil) : Bool
+    def stroke_path(origin : Point, path : Path, style : Style? = nil)
       case style
       when Nil
         LibBlend2D.blContextStrokePathD(self, origin, path).success_or_raise
@@ -757,7 +757,7 @@ module Blend2D::Rendering
       end
     end
 
-    def stroke_geometry(geometry : Geometry::Core, style : Style? = nil) : Bool
+    def stroke_geometry(geometry : Geometry::Core, style : Style? = nil)
       case style
       when Nil
         LibBlend2D.blContextStrokeGeometry(self, geometry.type, geometry.to_unsafe).success_or_raise
@@ -774,97 +774,97 @@ module Blend2D::Rendering
       end
     end
 
-    def stroke_arc(cx : Float64, cy : Float64, rx : Float64, ry : Float64, start : Float64, sweep : Float64, style : Style? = nil) : Bool
+    def stroke_arc(cx : Float64, cy : Float64, rx : Float64, ry : Float64, start : Float64, sweep : Float64, style : Style? = nil)
       arc = Arc.new cx, cy, rx, ry, start, sweep
       stroke_geometry arc, style
     end
 
-    def stroke_arc(arc : Arc, style : Style? = nil) : Bool
+    def stroke_arc(arc : Arc, style : Style? = nil)
       stroke_geometry arc, style
     end
 
-    def stroke_box(x0 : Float64, y0 : Float64, x1 : Float64, y1 : Float64, style : Style? = nil) : Bool
+    def stroke_box(x0 : Float64, y0 : Float64, x1 : Float64, y1 : Float64, style : Style? = nil)
       box = Box.new x0, y0, x1, y1
       stroke_geometry box, style
     end
 
-    def stroke_box(box : Box | BoxI, style : Style? = nil) : Bool
+    def stroke_box(box : Box | BoxI, style : Style? = nil)
       stroke_geometry box, style
     end
 
-    def stroke_circle(cx : Float64, cy : Float64, r : Float64, style : Style? = nil) : Bool
+    def stroke_circle(cx : Float64, cy : Float64, r : Float64, style : Style? = nil)
       circle = Circle.new cx, cy, r
       stroke_geometry circle, style
     end
 
-    def stroke_circle(circle : Circle, style : Style? = nil) : Bool
+    def stroke_circle(circle : Circle, style : Style? = nil)
       stroke_geometry circle, style
     end
 
-    def stroke_chord(cx : Float64, cy : Float64, rx : Float64, ry : Float64, start : Float64, sweep : Float64, style : Style? = nil) : Bool
+    def stroke_chord(cx : Float64, cy : Float64, rx : Float64, ry : Float64, start : Float64, sweep : Float64, style : Style? = nil)
       chord = Chord.new cx, cy, rx, ry, start, sweep
       stroke_geometry chord, style
     end
 
-    def stroke_chord(chord : Chord, style : Style? = nil) : Bool
+    def stroke_chord(chord : Chord, style : Style? = nil)
       stroke_geometry chord, style
     end
 
-    def stroke_ellipse(cx : Float64, cy : Float64, rx : Float64, ry : Float64, style : Style? = nil) : Bool
+    def stroke_ellipse(cx : Float64, cy : Float64, rx : Float64, ry : Float64, style : Style? = nil)
       ellipse = Circle.new cx, cy, rx, ry
       stroke_geometry ellipse, style
     end
 
-    def stroke_ellipse(ellipse : Ellipse, style : Style? = nil) : Bool
+    def stroke_ellipse(ellipse : Ellipse, style : Style? = nil)
       stroke_geometry ellipse, style
     end
 
-    def stroke_line(x0 : Float64, y0 : Float64, x1 : Float64, y1 : Float64, style : Style? = nil) : Bool
+    def stroke_line(x0 : Float64, y0 : Float64, x1 : Float64, y1 : Float64, style : Style? = nil)
       line = Line.new x0, y0, x1, y1
       stroke_geometry line, style
     end
 
-    def stroke_line(line : Line, style : Style? = nil) : Bool
+    def stroke_line(line : Line, style : Style? = nil)
       stroke_geometry line, style
     end
 
-    def stroke_pie(cx : Float64, cy : Float64, rx : Float64, ry : Float64, start : Float64, sweep : Float64, style : Style? = nil) : Bool
+    def stroke_pie(cx : Float64, cy : Float64, rx : Float64, ry : Float64, start : Float64, sweep : Float64, style : Style? = nil)
       pie = Pie.new cx, cy, rx, ry, start, sweep
       stroke_geometry pie, style
     end
 
-    def stroke_pie(pie : Pie, style : Style? = nil) : Bool
+    def stroke_pie(pie : Pie, style : Style? = nil)
       stroke_geometry pie, style
     end
 
-    def stroke_round_rect(x : Float64, y : Float64, w : Float64, h : Float64, r : Float64, style : Style? = nil) : Bool
+    def stroke_round_rect(x : Float64, y : Float64, w : Float64, h : Float64, r : Float64, style : Style? = nil)
       round_rect = RoundRect.new x, y, w, h, r
       stroke_geometry round_rect, style
     end
 
-    def stroke_round_rect(x : Float64, y : Float64, w : Float64, h : Float64, rx : Float64, ry : Float64, style : Style? = nil) : Bool
+    def stroke_round_rect(x : Float64, y : Float64, w : Float64, h : Float64, rx : Float64, ry : Float64, style : Style? = nil)
       round_rect = RoundRect.new x, y, w, h, rx, ry
       stroke_geometry round_rect, style
     end
 
-    def stroke_round_rect(round_rect : RoundRect, style : Style? = nil) : Bool
+    def stroke_round_rect(round_rect : RoundRect, style : Style? = nil)
       stroke_geometry round_rect, style
     end
 
-    def stroke_triangle(x0 : Float64, y0 : Float64, x1 : Float64, y1 : Float64, x2 : Float64, y2 : Float64, style : Style? = nil) : Bool
+    def stroke_triangle(x0 : Float64, y0 : Float64, x1 : Float64, y1 : Float64, x2 : Float64, y2 : Float64, style : Style? = nil)
       triangle = Triangle.new x0, y0, x1, y1, x2, y2
       stroke_geometry triangle, style
     end
 
-    def stroke_triangle(triangle : Triangle, style : Style? = nil) : Bool
+    def stroke_triangle(triangle : Triangle, style : Style? = nil)
       stroke_geometry triangle, style
     end
 
-    def stroke_text(origin : Tuple(Number, Number), font : Font, text : String, style : Style? = nil) : Bool
+    def stroke_text(origin : Tuple(Number, Number), font : Font, text : String, style : Style? = nil)
       stroke_text Point.new(origin[0].to_f64, origin[1].to_f64), font, text, style
     end
 
-    def stroke_text(origin : Point | PointI, font : Font, text : String, style : Style? = nil) : Bool
+    def stroke_text(origin : Point | PointI, font : Font, text : String, style : Style? = nil)
       case origin
       in Point
         case style
@@ -899,11 +899,11 @@ module Blend2D::Rendering
       end
     end
 
-    def stroke_glyph_run(origin : Tuple(Number, Number), font : Font, glyph_run : GlyphRun, style : Style? = nil) : Bool
+    def stroke_glyph_run(origin : Tuple(Number, Number), font : Font, glyph_run : GlyphRun, style : Style? = nil)
       stroke_glyph_run Point.new(origin[0].to_f64, origin[1].to_f64), font, glyph_run, style
     end
 
-    def stroke_glyph_run(origin : Point | PointI, font : Font, glyph_run : GlyphRun, style : Style? = nil) : Bool
+    def stroke_glyph_run(origin : Point | PointI, font : Font, glyph_run : GlyphRun, style : Style? = nil)
       case origin
       in Point
         case style
@@ -938,7 +938,7 @@ module Blend2D::Rendering
       end
     end
 
-    def blit_image(origin : Point | PointI, img : Image, img_area : RectI? = nil) : Bool
+    def blit_image(origin : Point | PointI, img : Image, img_area : RectI? = nil)
       case origin
       in Point
         LibBlend2D.blContextBlitImageD(self, origin, img, img_area).success_or_raise
@@ -947,7 +947,7 @@ module Blend2D::Rendering
       end
     end
 
-    def blit_scaled_image(rect : Rect | RectI, img : Image, img_area : RectI? = nil) : Bool
+    def blit_scaled_image(rect : Rect | RectI, img : Image, img_area : RectI? = nil)
       case rect
       in Rect
         LibBlend2D.blContextBlitScaledImageD(self, rect, img, img_area).success_or_raise

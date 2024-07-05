@@ -56,72 +56,72 @@ module Blend2D::Global
     end
 
     # :nodoc:
-    private def self.destroy(self_ : Pointer) : Bool
+    private def self.destroy(self_ : Pointer)
       LibBlend2D.blVarDestroy(self_).success_or_raise
     end
 
     # :nodoc:
-    private def self.reset(self_ : Pointer) : Bool
+    private def self.reset(self_ : Pointer)
       LibBlend2D.blVarReset(self_).success_or_raise
     end
 
     # :nodoc:
-    private def self.assign_null(self_ : Pointer) : Bool
+    private def self.assign_null(self_ : Pointer)
       LibBlend2D.blVarAssignNull(self_).success_or_raise
     end
 
     # :nodoc:
-    private def self.assign_bool(self_ : Pointer, value : Int32) : Bool
+    private def self.assign_bool(self_ : Pointer, value : Int32)
       LibBlend2D.blVarAssignBool(self_, value).success_or_raise
     end
 
     # :nodoc:
-    private def self.assign_int32(self_ : Pointer, value : Int32) : Bool
+    private def self.assign_int32(self_ : Pointer, value : Int32)
       LibBlend2D.blVarAssignInt32(self_, value).success_or_raise
     end
 
     # :nodoc:
-    private def self.assign_int64(self_ : Pointer, value : LibC::Long) : Bool
+    private def self.assign_int64(self_ : Pointer, value : LibC::Long)
       LibBlend2D.blVarAssignInt64(self_, value).success_or_raise
     end
 
     # :nodoc:
-    private def self.assign_u_int32(self_ : Pointer, value : UInt32) : Bool
+    private def self.assign_u_int32(self_ : Pointer, value : UInt32)
       LibBlend2D.blVarAssignUInt32(self_, value).success_or_raise
     end
 
     # :nodoc:
-    private def self.assign_u_int64(self_ : Pointer, value : LibC::ULong) : Bool
+    private def self.assign_u_int64(self_ : Pointer, value : LibC::ULong)
       LibBlend2D.blVarAssignUInt64(self_, value).success_or_raise
     end
 
     # :nodoc:
-    private def self.assign_double(self_ : Pointer, value : Float64) : Bool
+    private def self.assign_double(self_ : Pointer, value : Float64)
       LibBlend2D.blVarAssignDouble(self_, value).success_or_raise
     end
 
     # :nodoc:
-    private def self.assign_rgba(self_ : Pointer, rgba : LibBlend2D::BLRgba*) : Bool
+    private def self.assign_rgba(self_ : Pointer, rgba : LibBlend2D::BLRgba*)
       LibBlend2D.blVarAssignRgba(self_, rgba).success_or_raise
     end
 
     # :nodoc:
-    private def self.assign_rgba32(self_ : Pointer, rgba32 : UInt32) : Bool
+    private def self.assign_rgba32(self_ : Pointer, rgba32 : UInt32)
       LibBlend2D.blVarAssignRgba32(self_, rgba32).success_or_raise
     end
 
     # :nodoc:
-    private def self.assign_rgba64(self_ : Pointer, rgba64 : LibC::ULong) : Bool
+    private def self.assign_rgba64(self_ : Pointer, rgba64 : LibC::ULong)
       LibBlend2D.blVarAssignRgba64(self_, rgba64).success_or_raise
     end
 
     # :nodoc:
-    private def self.assign_move(self_ : Pointer, other : Pointer) : Bool
+    private def self.assign_move(self_ : Pointer, other : Pointer)
       LibBlend2D.blVarAssignMove(self_, other).success_or_raise
     end
 
     # :nodoc:
-    private def self.assign_weak(self_ : Pointer, other : Pointer) : Bool
+    private def self.assign_weak(self_ : Pointer, other : Pointer)
       LibBlend2D.blVarAssignWeak(self_, other).success_or_raise
     end
 
@@ -131,47 +131,47 @@ module Blend2D::Global
     end
 
     # :nodoc:
-    private def self.to_bool(self_ : Pointer, out_ : Int32*) : Bool
+    private def self.to_bool(self_ : Pointer, out_ : Int32*)
       LibBlend2D.blVarToBool(self_, out_).success_or_raise
     end
 
     # :nodoc:
-    private def self.to_int32(self_ : Pointer, out_ : Int32*) : Bool
+    private def self.to_int32(self_ : Pointer, out_ : Int32*)
       LibBlend2D.blVarToInt32(self_, out_).success_or_raise
     end
 
     # :nodoc:
-    private def self.to_int64(self_ : Pointer, out_ : LibC::Long*) : Bool
+    private def self.to_int64(self_ : Pointer, out_ : LibC::Long*)
       LibBlend2D.blVarToInt64(self_, out_).success_or_raise
     end
 
     # :nodoc:
-    private def self.to_u_int32(self_ : Pointer, out_ : UInt32*) : Bool
+    private def self.to_u_int32(self_ : Pointer, out_ : UInt32*)
       LibBlend2D.blVarToUInt32(self_, out_).success_or_raise
     end
 
     # :nodoc:
-    private def self.to_u_int64(self_ : Pointer, out_ : LibC::ULong*) : Bool
+    private def self.to_u_int64(self_ : Pointer, out_ : LibC::ULong*)
       LibBlend2D.blVarToUInt64(self_, out_).success_or_raise
     end
 
     # :nodoc:
-    private def self.to_double(self_ : Pointer, out_ : Float64*) : Bool
+    private def self.to_double(self_ : Pointer, out_ : Float64*)
       LibBlend2D.blVarToDouble(self_, out_).success_or_raise
     end
 
     # :nodoc:
-    private def self.to_rgba(self_ : Pointer, out_ : LibBlend2D::BLRgba*) : Bool
+    private def self.to_rgba(self_ : Pointer, out_ : LibBlend2D::BLRgba*)
       LibBlend2D.blVarToRgba(self_, out_).success_or_raise
     end
 
     # :nodoc:
-    private def self.to_rgba32(self_ : Pointer, out_ : UInt32*) : Bool
+    private def self.to_rgba32(self_ : Pointer, out_ : UInt32*)
       LibBlend2D.blVarToRgba32(self_, out_).success_or_raise
     end
 
     # :nodoc:
-    private def self.to_rgba64(self_ : Pointer, out_ : LibC::ULong*) : Bool
+    private def self.to_rgba64(self_ : Pointer, out_ : LibC::ULong*)
       LibBlend2D.blVarToRgba64(self_, out_).success_or_raise
     end
 

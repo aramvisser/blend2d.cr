@@ -32,7 +32,7 @@ module Blend2D::Global
       LibBlend2D.blArrayGetCapacity(self)
     end
 
-    def reserve(n : Int32) : Bool
+    def reserve(n : Int32)
       LibBlend2D.blArrayReserve(self, n).success_or_raise
     end
 
@@ -40,47 +40,47 @@ module Blend2D::Global
       LibBlend2D.blArrayGetItemSize(self)
     end
 
-    def <<(value : UInt8) : Bool
+    def <<(value : UInt8)
       LibBlend2D.blArrayAppendU8(self, value).success_or_raise
     end
 
-    def <<(value : UInt16) : Bool
+    def <<(value : UInt16)
       LibBlend2D.blArrayAppendU16(self, value).success_or_raise
     end
 
-    def <<(value : UInt32) : Bool
+    def <<(value : UInt32)
       LibBlend2D.blArrayAppendU32(self, value).success_or_raise
     end
 
-    def <<(value : UInt64) : Bool
+    def <<(value : UInt64)
       LibBlend2D.blArrayAppendU64(self, value).success_or_raise
     end
 
-    def <<(value : Int8) : Bool
+    def <<(value : Int8)
       LibBlend2D.blArrayAppendU8(self, value).success_or_raise
     end
 
-    def <<(value : Int16) : Bool
+    def <<(value : Int16)
       LibBlend2D.blArrayAppendU16(self, value).success_or_raise
     end
 
-    def <<(value : Int32) : Bool
+    def <<(value : Int32)
       LibBlend2D.blArrayAppendU32(self, value).success_or_raise
     end
 
-    def <<(value : Int64) : Bool
+    def <<(value : Int64)
       LibBlend2D.blArrayAppendU64(self, value).success_or_raise
     end
 
-    def <<(value : Float32) : Bool
+    def <<(value : Float32)
       LibBlend2D.blArrayAppendF32(self, value).success_or_raise
     end
 
-    def <<(value : Float64) : Bool
+    def <<(value : Float64)
       LibBlend2D.blArrayAppendF64(self, value).success_or_raise
     end
 
-    def <<(item : Core) : Bool
+    def <<(item : Core)
       LibBlend2D.blArrayAppendItem(self, item).success_or_raise
     end
 

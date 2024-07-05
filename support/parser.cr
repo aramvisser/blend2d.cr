@@ -74,7 +74,7 @@ class Parser
       if cursor.spelling == "BLResultCode"
         str << <<-DEF
           def success_or_raise
-            return true if self == Success
+            return if self == Success
             raise self.to_s
           end
 

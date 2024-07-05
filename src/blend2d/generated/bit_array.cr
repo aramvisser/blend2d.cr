@@ -11,22 +11,22 @@ module Blend2D::Global
     end
 
     # :nodoc:
-    private def reset : Bool
+    private def reset
       LibBlend2D.blBitArrayReset(self).success_or_raise
     end
 
     # :nodoc:
-    private def assign_move(other : BitArray) : Bool
+    private def assign_move(other : BitArray)
       LibBlend2D.blBitArrayAssignMove(self, other).success_or_raise
     end
 
     # :nodoc:
-    private def assign_weak(other : BitArray) : Bool
+    private def assign_weak(other : BitArray)
       LibBlend2D.blBitArrayAssignWeak(self, other).success_or_raise
     end
 
     # :nodoc:
-    private def assign_words(wordData : UInt32*, wordCount : UInt32) : Bool
+    private def assign_words(wordData : UInt32*, wordCount : UInt32)
       LibBlend2D.blBitArrayAssignWords(self, wordData, wordCount).success_or_raise
     end
 
@@ -101,22 +101,22 @@ module Blend2D::Global
     end
 
     # :nodoc:
-    private def clear : Bool
+    private def clear
       LibBlend2D.blBitArrayClear(self).success_or_raise
     end
 
     # :nodoc:
-    private def resize(nBits : UInt32) : Bool
+    private def resize(nBits : UInt32)
       LibBlend2D.blBitArrayResize(self, nBits).success_or_raise
     end
 
     # :nodoc:
-    private def reserve(nBits : UInt32) : Bool
+    private def reserve(nBits : UInt32)
       LibBlend2D.blBitArrayReserve(self, nBits).success_or_raise
     end
 
     # :nodoc:
-    private def shrink : Bool
+    private def shrink
       LibBlend2D.blBitArrayShrink(self).success_or_raise
     end
 
@@ -126,67 +126,67 @@ module Blend2D::Global
     end
 
     # :nodoc:
-    private def fill_range(startBit : UInt32, endBit : UInt32) : Bool
+    private def fill_range(startBit : UInt32, endBit : UInt32)
       LibBlend2D.blBitArrayFillRange(self, startBit, endBit).success_or_raise
     end
 
     # :nodoc:
-    private def fill_words(bitIndex : UInt32, wordData : UInt32*, wordCount : UInt32) : Bool
+    private def fill_words(bitIndex : UInt32, wordData : UInt32*, wordCount : UInt32)
       LibBlend2D.blBitArrayFillWords(self, bitIndex, wordData, wordCount).success_or_raise
     end
 
     # :nodoc:
-    private def clear_bit(bitIndex : UInt32) : Bool
+    private def clear_bit(bitIndex : UInt32)
       LibBlend2D.blBitArrayClearBit(self, bitIndex).success_or_raise
     end
 
     # :nodoc:
-    private def clear_range(startBit : UInt32, endBit : UInt32) : Bool
+    private def clear_range(startBit : UInt32, endBit : UInt32)
       LibBlend2D.blBitArrayClearRange(self, startBit, endBit).success_or_raise
     end
 
     # :nodoc:
-    private def clear_word(bitIndex : UInt32, wordValue : UInt32) : Bool
+    private def clear_word(bitIndex : UInt32, wordValue : UInt32)
       LibBlend2D.blBitArrayClearWord(self, bitIndex, wordValue).success_or_raise
     end
 
     # :nodoc:
-    private def clear_words(bitIndex : UInt32, wordData : UInt32*, wordCount : UInt32) : Bool
+    private def clear_words(bitIndex : UInt32, wordData : UInt32*, wordCount : UInt32)
       LibBlend2D.blBitArrayClearWords(self, bitIndex, wordData, wordCount).success_or_raise
     end
 
     # :nodoc:
-    private def replace_op(nBits : UInt32, dataOut : UInt32**) : Bool
+    private def replace_op(nBits : UInt32, dataOut : UInt32**)
       LibBlend2D.blBitArrayReplaceOp(self, nBits, dataOut).success_or_raise
     end
 
     # :nodoc:
-    private def replace_bit(bitIndex : UInt32, bitValue : Int32) : Bool
+    private def replace_bit(bitIndex : UInt32, bitValue : Int32)
       LibBlend2D.blBitArrayReplaceBit(self, bitIndex, bitValue).success_or_raise
     end
 
     # :nodoc:
-    private def replace_word(bitIndex : UInt32, wordValue : UInt32) : Bool
+    private def replace_word(bitIndex : UInt32, wordValue : UInt32)
       LibBlend2D.blBitArrayReplaceWord(self, bitIndex, wordValue).success_or_raise
     end
 
     # :nodoc:
-    private def replace_words(bitIndex : UInt32, wordData : UInt32*, wordCount : UInt32) : Bool
+    private def replace_words(bitIndex : UInt32, wordData : UInt32*, wordCount : UInt32)
       LibBlend2D.blBitArrayReplaceWords(self, bitIndex, wordData, wordCount).success_or_raise
     end
 
     # :nodoc:
-    private def append_bit(bitValue : Int32) : Bool
+    private def append_bit(bitValue : Int32)
       LibBlend2D.blBitArrayAppendBit(self, bitValue).success_or_raise
     end
 
     # :nodoc:
-    private def append_word(wordValue : UInt32) : Bool
+    private def append_word(wordValue : UInt32)
       LibBlend2D.blBitArrayAppendWord(self, wordValue).success_or_raise
     end
 
     # :nodoc:
-    private def append_words(wordData : UInt32*, wordCount : UInt32) : Bool
+    private def append_words(wordData : UInt32*, wordCount : UInt32)
       LibBlend2D.blBitArrayAppendWords(self, wordData, wordCount).success_or_raise
     end
   end

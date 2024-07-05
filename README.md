@@ -57,8 +57,8 @@ This binding wraps the Blend2D C Api, but tries to follow the Blend2D C++ api de
   
 It also does things differently to make them more crystal like.
 
-- Methods that return a `BLResult` in the C Api either return `true` or throw an
-  exception on error.
+- Methods that return a `BLResult` in the C Api either throw an exception on
+  error.
 - Getter and setter methods that start with `get` and `set` act like accessors,
   i.e. `Context#fill_style=` or `Context#comp_op`.
   

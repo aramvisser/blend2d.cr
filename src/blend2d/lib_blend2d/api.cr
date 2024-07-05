@@ -101,7 +101,7 @@ module Blend2D
       ErrorInvalidGlyph              = 65618
 
       def success_or_raise
-        return true if self == Success
+        return if self == Success
         raise self.to_s
       end
     end

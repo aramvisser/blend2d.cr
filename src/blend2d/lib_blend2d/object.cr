@@ -120,7 +120,7 @@ module Blend2D
     union BLObjectDetail
       impl : BLObjectImpl*
       char_data : LibC::Char[16]
-      u8_data  : UInt8[16]
+      u8_data : UInt8[16]
       u16_data : UInt16[8]
       u32_data : UInt32[4]
       u64_data : UInt64[2]

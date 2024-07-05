@@ -82,15 +82,15 @@ module Blend2D::Styling
       LibBlend2D.blGradientSetExtendMode(self, extendMode).success_or_raise
     end
 
-    def add_stop(offset : Float64, rgba32 : RGBA32) : Bool
+    def add_stop(offset : Float64, rgba32 : RGBA32)
       LibBlend2D.blGradientAddStopRgba32(self, offset, rgba32.packed).success_or_raise
     end
 
-    def add_stop(offset : Float64, rgba64 : RGBA64) : Bool
+    def add_stop(offset : Float64, rgba64 : RGBA64)
       LibBlend2D.blGradientAddStopRgba64(self, offset, rgba64.packed).success_or_raise
     end
 
-    def add_stop(offset : Float64, argb32 : UInt32) : Bool
+    def add_stop(offset : Float64, argb32 : UInt32)
       LibBlend2D.blGradientAddStopRgba32(self, offset, argb32).success_or_raise
     end
   end

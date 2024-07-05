@@ -11,7 +11,7 @@ module Blend2D::Global
     end
 
     # :nodoc:
-    private def reset : Bool
+    private def reset
       LibBlend2D.blStringReset(self).success_or_raise
     end
 
@@ -31,107 +31,107 @@ module Blend2D::Global
     end
 
     # :nodoc:
-    private def clear : Bool
+    private def clear
       LibBlend2D.blStringClear(self).success_or_raise
     end
 
     # :nodoc:
-    private def shrink : Bool
+    private def shrink
       LibBlend2D.blStringShrink(self).success_or_raise
     end
 
     # :nodoc:
-    private def reserve(n : Int32) : Bool
+    private def reserve(n : Int32)
       LibBlend2D.blStringReserve(self, n).success_or_raise
     end
 
     # :nodoc:
-    private def resize(n : Int32, fill : UInt8) : Bool
+    private def resize(n : Int32, fill : UInt8)
       LibBlend2D.blStringResize(self, n, fill).success_or_raise
     end
 
     # :nodoc:
-    private def make_mutable(dataOut : UInt8**) : Bool
+    private def make_mutable(dataOut : UInt8**)
       LibBlend2D.blStringMakeMutable(self, dataOut).success_or_raise
     end
 
     # :nodoc:
-    private def modify_op(op : ModifyOp, n : Int32, dataOut : UInt8**) : Bool
+    private def modify_op(op : ModifyOp, n : Int32, dataOut : UInt8**)
       LibBlend2D.blStringModifyOp(self, op, n, dataOut).success_or_raise
     end
 
     # :nodoc:
-    private def insert_op(index : Int32, n : Int32, dataOut : UInt8**) : Bool
+    private def insert_op(index : Int32, n : Int32, dataOut : UInt8**)
       LibBlend2D.blStringInsertOp(self, index, n, dataOut).success_or_raise
     end
 
     # :nodoc:
-    private def assign_move(other : String) : Bool
+    private def assign_move(other : String)
       LibBlend2D.blStringAssignMove(self, other).success_or_raise
     end
 
     # :nodoc:
-    private def assign_weak(other : String) : Bool
+    private def assign_weak(other : String)
       LibBlend2D.blStringAssignWeak(self, other).success_or_raise
     end
 
     # :nodoc:
-    private def assign_deep(other : String) : Bool
+    private def assign_deep(other : String)
       LibBlend2D.blStringAssignDeep(self, other).success_or_raise
     end
 
     # :nodoc:
-    private def assign_data(str : UInt8*, n : Int32) : Bool
+    private def assign_data(str : UInt8*, n : Int32)
       LibBlend2D.blStringAssignData(self, str, n).success_or_raise
     end
 
     # :nodoc:
-    private def apply_op_char(op : ModifyOp, c : UInt8, n : Int32) : Bool
+    private def apply_op_char(op : ModifyOp, c : UInt8, n : Int32)
       LibBlend2D.blStringApplyOpChar(self, op, c, n).success_or_raise
     end
 
     # :nodoc:
-    private def apply_op_data(op : ModifyOp, str : UInt8*, n : Int32) : Bool
+    private def apply_op_data(op : ModifyOp, str : UInt8*, n : Int32)
       LibBlend2D.blStringApplyOpData(self, op, str, n).success_or_raise
     end
 
     # :nodoc:
-    private def apply_op_string(op : ModifyOp, other : String) : Bool
+    private def apply_op_string(op : ModifyOp, other : String)
       LibBlend2D.blStringApplyOpString(self, op, other).success_or_raise
     end
 
     # :nodoc:
-    private def apply_op_format(op : ModifyOp, fmt : UInt8*) : Bool
+    private def apply_op_format(op : ModifyOp, fmt : UInt8*)
       LibBlend2D.blStringApplyOpFormat(self, op, fmt).success_or_raise
     end
 
     # :nodoc:
-    private def apply_op_format_v(op : ModifyOp, fmt : UInt8*, ap : Int32) : Bool
+    private def apply_op_format_v(op : ModifyOp, fmt : UInt8*, ap : Int32)
       LibBlend2D.blStringApplyOpFormatV(self, op, fmt, ap).success_or_raise
     end
 
     # :nodoc:
-    private def insert_char(index : Int32, c : UInt8, n : Int32) : Bool
+    private def insert_char(index : Int32, c : UInt8, n : Int32)
       LibBlend2D.blStringInsertChar(self, index, c, n).success_or_raise
     end
 
     # :nodoc:
-    private def insert_data(index : Int32, str : UInt8*, n : Int32) : Bool
+    private def insert_data(index : Int32, str : UInt8*, n : Int32)
       LibBlend2D.blStringInsertData(self, index, str, n).success_or_raise
     end
 
     # :nodoc:
-    private def insert_string(index : Int32, other : String) : Bool
+    private def insert_string(index : Int32, other : String)
       LibBlend2D.blStringInsertString(self, index, other).success_or_raise
     end
 
     # :nodoc:
-    private def remove_index(index : Int32) : Bool
+    private def remove_index(index : Int32)
       LibBlend2D.blStringRemoveIndex(self, index).success_or_raise
     end
 
     # :nodoc:
-    private def remove_range(rStart : Int32, rEnd : Int32) : Bool
+    private def remove_range(rStart : Int32, rEnd : Int32)
       LibBlend2D.blStringRemoveRange(self, rStart, rEnd).success_or_raise
     end
 

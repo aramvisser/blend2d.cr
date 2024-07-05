@@ -6,7 +6,7 @@ module Blend2D::Geometry
     end
 
     # :nodoc:
-    private def reset : Bool
+    private def reset
       LibBlend2D.blStrokeOptionsReset(self).success_or_raise
     end
 
@@ -16,12 +16,12 @@ module Blend2D::Geometry
     end
 
     # :nodoc:
-    private def assign_move(other : StrokeOptions) : Bool
+    private def assign_move(other : StrokeOptions)
       LibBlend2D.blStrokeOptionsAssignMove(self, other).success_or_raise
     end
 
     # :nodoc:
-    private def assign_weak(other : StrokeOptions) : Bool
+    private def assign_weak(other : StrokeOptions)
       LibBlend2D.blStrokeOptionsAssignWeak(self, other).success_or_raise
     end
   end

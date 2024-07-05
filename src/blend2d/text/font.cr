@@ -13,7 +13,7 @@ module Blend2D::Text
       FontMetrics.new self
     end
 
-    def shape(gb : GlyphBuffer) : Bool
+    def shape(gb : GlyphBuffer)
       LibBlend2D.blFontShape(self, gb).success_or_raise
     end
 
