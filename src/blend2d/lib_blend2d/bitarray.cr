@@ -11,19 +11,19 @@ module Blend2D
     fun blBitArrayAssignMove(self : BLBitArrayCore*, other : BLBitArrayCore*) : BLResult
     fun blBitArrayAssignWeak(self : BLBitArrayCore*, other : BLBitArrayCore*) : BLResult
     fun blBitArrayAssignWords(self : BLBitArrayCore*, word_data : UInt32*, word_count : UInt32) : BLResult
-    fun blBitArrayIsEmpty(self : BLBitArrayCore*) : Int32
+    fun blBitArrayIsEmpty(self : BLBitArrayCore*) : Bool
     fun blBitArrayGetSize(self : BLBitArrayCore*) : UInt32
     fun blBitArrayGetWordCount(self : BLBitArrayCore*) : UInt32
     fun blBitArrayGetCapacity(self : BLBitArrayCore*) : UInt32
     fun blBitArrayGetData(self : BLBitArrayCore*) : UInt32*
     fun blBitArrayGetCardinality(self : BLBitArrayCore*) : UInt32
     fun blBitArrayGetCardinalityInRange(self : BLBitArrayCore*, start_bit : UInt32, end_bit : UInt32) : UInt32
-    fun blBitArrayHasBit(self : BLBitArrayCore*, bit_index : UInt32) : Int32
-    fun blBitArrayHasBitsInRange(self : BLBitArrayCore*, start_bit : UInt32, end_bit : UInt32) : Int32
-    fun blBitArraySubsumes(a : BLBitArrayCore*, b : BLBitArrayCore*) : Int32
-    fun blBitArrayIntersects(a : BLBitArrayCore*, b : BLBitArrayCore*) : Int32
-    fun blBitArrayGetRange(self : BLBitArrayCore*, start_out : UInt32*, end_out : UInt32*) : Int32
-    fun blBitArrayEquals(a : BLBitArrayCore*, b : BLBitArrayCore*) : Int32
+    fun blBitArrayHasBit(self : BLBitArrayCore*, bit_index : UInt32) : Bool
+    fun blBitArrayHasBitsInRange(self : BLBitArrayCore*, start_bit : UInt32, end_bit : UInt32) : Bool
+    fun blBitArraySubsumes(a : BLBitArrayCore*, b : BLBitArrayCore*) : Bool
+    fun blBitArrayIntersects(a : BLBitArrayCore*, b : BLBitArrayCore*) : Bool
+    fun blBitArrayGetRange(self : BLBitArrayCore*, start_out : UInt32*, end_out : UInt32*) : Bool
+    fun blBitArrayEquals(a : BLBitArrayCore*, b : BLBitArrayCore*) : Bool
     fun blBitArrayCompare(a : BLBitArrayCore*, b : BLBitArrayCore*) : Int32
     fun blBitArrayClear(self : BLBitArrayCore*) : BLResult
     fun blBitArrayResize(self : BLBitArrayCore*, n_bits : UInt32) : BLResult
@@ -37,10 +37,10 @@ module Blend2D
     fun blBitArrayClearWord(self : BLBitArrayCore*, bit_index : UInt32, word_value : UInt32) : BLResult
     fun blBitArrayClearWords(self : BLBitArrayCore*, bit_index : UInt32, word_data : UInt32*, word_count : UInt32) : BLResult
     fun blBitArrayReplaceOp(self : BLBitArrayCore*, n_bits : UInt32, data_out : UInt32**) : BLResult
-    fun blBitArrayReplaceBit(self : BLBitArrayCore*, bit_index : UInt32, bit_value : Int32) : BLResult
+    fun blBitArrayReplaceBit(self : BLBitArrayCore*, bit_index : UInt32, bit_value : Bool) : BLResult
     fun blBitArrayReplaceWord(self : BLBitArrayCore*, bit_index : UInt32, word_value : UInt32) : BLResult
     fun blBitArrayReplaceWords(self : BLBitArrayCore*, bit_index : UInt32, word_data : UInt32*, word_count : UInt32) : BLResult
-    fun blBitArrayAppendBit(self : BLBitArrayCore*, bit_value : Int32) : BLResult
+    fun blBitArrayAppendBit(self : BLBitArrayCore*, bit_value : Bool) : BLResult
     fun blBitArrayAppendWord(self : BLBitArrayCore*, word_value : UInt32) : BLResult
     fun blBitArrayAppendWords(self : BLBitArrayCore*, word_data : UInt32*, word_count : UInt32) : BLResult
 

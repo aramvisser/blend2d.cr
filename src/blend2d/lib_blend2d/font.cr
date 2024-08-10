@@ -10,7 +10,7 @@ module Blend2D
     fun blFontReset(self : BLFontCore*) : BLResult
     fun blFontAssignMove(self : BLFontCore*, other : BLFontCore*) : BLResult
     fun blFontAssignWeak(self : BLFontCore*, other : BLFontCore*) : BLResult
-    fun blFontEquals(a : BLFontCore*, b : BLFontCore*) : Int32
+    fun blFontEquals(a : BLFontCore*, b : BLFontCore*) : Bool
     fun blFontCreateFromFace(self : BLFontCore*, face : BLFontFaceCore*, size : Float32) : BLResult
     fun blFontCreateFromFaceWithSettings(self : BLFontCore*, face : BLFontFaceCore*, size : Float32, feature_settings : BLFontFeatureSettingsCore*, variation_settings : BLFontVariationSettingsCore*) : BLResult
     fun blFontGetFace(self : BLFontCore*, out : BLFontFaceCore*) : BLResult
@@ -32,8 +32,8 @@ module Blend2D
     fun blFontApplyGSub(self : BLFontCore*, gb : BLGlyphBufferCore*, lookups : BLBitArrayCore*) : BLResult
     fun blFontApplyGPos(self : BLFontCore*, gb : BLGlyphBufferCore*, lookups : BLBitArrayCore*) : BLResult
     fun blFontGetTextMetrics(self : BLFontCore*, gb : BLGlyphBufferCore*, out : BLTextMetrics*) : BLResult
-    fun blFontGetGlyphBounds(self : BLFontCore*, glyph_data : UInt32*, glyph_advance : LibC::Long, out : BLBoxI*, count : Int32) : BLResult
-    fun blFontGetGlyphAdvances(self : BLFontCore*, glyph_data : UInt32*, glyph_advance : LibC::Long, out : BLGlyphPlacement*, count : Int32) : BLResult
+    fun blFontGetGlyphBounds(self : BLFontCore*, glyph_data : UInt32*, glyph_advance : LibC::Long, out : BLBoxI*, count : LibC::ULong) : BLResult
+    fun blFontGetGlyphAdvances(self : BLFontCore*, glyph_data : UInt32*, glyph_advance : LibC::Long, out : BLGlyphPlacement*, count : LibC::ULong) : BLResult
     fun blFontGetGlyphOutlines(self : BLFontCore*, glyph_id : BLGlyphId, user_transform : BLMatrix2D*, out : BLPathCore*, sink : BLPathSinkFunc, user_data : Void*) : BLResult
     fun blFontGetGlyphRunOutlines(self : BLFontCore*, glyph_run : BLGlyphRun*, user_transform : BLMatrix2D*, out : BLPathCore*, sink : BLPathSinkFunc, user_data : Void*) : BLResult
 

@@ -8,22 +8,22 @@ module Blend2D
     fun blArrayInitWeak(self : BLArrayCore*, other : BLArrayCore*) : BLResult
     fun blArrayDestroy(self : BLArrayCore*) : BLResult
     fun blArrayReset(self : BLArrayCore*) : BLResult
-    fun blArrayGetSize(self : BLArrayCore*) : Int32
-    fun blArrayGetCapacity(self : BLArrayCore*) : Int32
-    fun blArrayGetItemSize(self : BLArrayCore*) : Int32
+    fun blArrayGetSize(self : BLArrayCore*) : LibC::ULong
+    fun blArrayGetCapacity(self : BLArrayCore*) : LibC::ULong
+    fun blArrayGetItemSize(self : BLArrayCore*) : LibC::ULong
     fun blArrayGetData(self : BLArrayCore*) : Void*
     fun blArrayClear(self : BLArrayCore*) : BLResult
     fun blArrayShrink(self : BLArrayCore*) : BLResult
-    fun blArrayReserve(self : BLArrayCore*, n : Int32) : BLResult
-    fun blArrayResize(self : BLArrayCore*, n : Int32, fill : Void*) : BLResult
+    fun blArrayReserve(self : BLArrayCore*, n : LibC::ULong) : BLResult
+    fun blArrayResize(self : BLArrayCore*, n : LibC::ULong, fill : Void*) : BLResult
     fun blArrayMakeMutable(self : BLArrayCore*, data_out : Void**) : BLResult
-    fun blArrayModifyOp(self : BLArrayCore*, op : BLModifyOp, n : Int32, data_out : Void**) : BLResult
-    fun blArrayInsertOp(self : BLArrayCore*, index : Int32, n : Int32, data_out : Void**) : BLResult
+    fun blArrayModifyOp(self : BLArrayCore*, op : BLModifyOp, n : LibC::ULong, data_out : Void**) : BLResult
+    fun blArrayInsertOp(self : BLArrayCore*, index : LibC::ULong, n : LibC::ULong, data_out : Void**) : BLResult
     fun blArrayAssignMove(self : BLArrayCore*, other : BLArrayCore*) : BLResult
     fun blArrayAssignWeak(self : BLArrayCore*, other : BLArrayCore*) : BLResult
     fun blArrayAssignDeep(self : BLArrayCore*, other : BLArrayCore*) : BLResult
-    fun blArrayAssignData(self : BLArrayCore*, data : Void*, n : Int32) : BLResult
-    fun blArrayAssignExternalData(self : BLArrayCore*, data : Void*, size : Int32, capacity : Int32, data_access_flags : BLDataAccessFlags, destroy_func : BLDestroyExternalDataFunc, user_data : Void*) : BLResult
+    fun blArrayAssignData(self : BLArrayCore*, data : Void*, n : LibC::ULong) : BLResult
+    fun blArrayAssignExternalData(self : BLArrayCore*, data : Void*, size : LibC::ULong, capacity : LibC::ULong, data_access_flags : BLDataAccessFlags, destroy_func : BLDestroyExternalDataFunc, user_data : Void*) : BLResult
     fun blArrayAppendU8(self : BLArrayCore*, value : UInt8) : BLResult
     fun blArrayAppendU16(self : BLArrayCore*, value : UInt16) : BLResult
     fun blArrayAppendU32(self : BLArrayCore*, value : UInt32) : BLResult
@@ -31,26 +31,26 @@ module Blend2D
     fun blArrayAppendF32(self : BLArrayCore*, value : Float32) : BLResult
     fun blArrayAppendF64(self : BLArrayCore*, value : Float64) : BLResult
     fun blArrayAppendItem(self : BLArrayCore*, item : Void*) : BLResult
-    fun blArrayAppendData(self : BLArrayCore*, data : Void*, n : Int32) : BLResult
-    fun blArrayInsertU8(self : BLArrayCore*, index : Int32, value : UInt8) : BLResult
-    fun blArrayInsertU16(self : BLArrayCore*, index : Int32, value : UInt16) : BLResult
-    fun blArrayInsertU32(self : BLArrayCore*, index : Int32, value : UInt32) : BLResult
-    fun blArrayInsertU64(self : BLArrayCore*, index : Int32, value : LibC::ULong) : BLResult
-    fun blArrayInsertF32(self : BLArrayCore*, index : Int32, value : Float32) : BLResult
-    fun blArrayInsertF64(self : BLArrayCore*, index : Int32, value : Float64) : BLResult
-    fun blArrayInsertItem(self : BLArrayCore*, index : Int32, item : Void*) : BLResult
-    fun blArrayInsertData(self : BLArrayCore*, index : Int32, data : Void*, n : Int32) : BLResult
-    fun blArrayReplaceU8(self : BLArrayCore*, index : Int32, value : UInt8) : BLResult
-    fun blArrayReplaceU16(self : BLArrayCore*, index : Int32, value : UInt16) : BLResult
-    fun blArrayReplaceU32(self : BLArrayCore*, index : Int32, value : UInt32) : BLResult
-    fun blArrayReplaceU64(self : BLArrayCore*, index : Int32, value : LibC::ULong) : BLResult
-    fun blArrayReplaceF32(self : BLArrayCore*, index : Int32, value : Float32) : BLResult
-    fun blArrayReplaceF64(self : BLArrayCore*, index : Int32, value : Float64) : BLResult
-    fun blArrayReplaceItem(self : BLArrayCore*, index : Int32, item : Void*) : BLResult
-    fun blArrayReplaceData(self : BLArrayCore*, r_start : Int32, r_end : Int32, data : Void*, n : Int32) : BLResult
-    fun blArrayRemoveIndex(self : BLArrayCore*, index : Int32) : BLResult
-    fun blArrayRemoveRange(self : BLArrayCore*, r_start : Int32, r_end : Int32) : BLResult
-    fun blArrayEquals(a : BLArrayCore*, b : BLArrayCore*) : Int32
+    fun blArrayAppendData(self : BLArrayCore*, data : Void*, n : LibC::ULong) : BLResult
+    fun blArrayInsertU8(self : BLArrayCore*, index : LibC::ULong, value : UInt8) : BLResult
+    fun blArrayInsertU16(self : BLArrayCore*, index : LibC::ULong, value : UInt16) : BLResult
+    fun blArrayInsertU32(self : BLArrayCore*, index : LibC::ULong, value : UInt32) : BLResult
+    fun blArrayInsertU64(self : BLArrayCore*, index : LibC::ULong, value : LibC::ULong) : BLResult
+    fun blArrayInsertF32(self : BLArrayCore*, index : LibC::ULong, value : Float32) : BLResult
+    fun blArrayInsertF64(self : BLArrayCore*, index : LibC::ULong, value : Float64) : BLResult
+    fun blArrayInsertItem(self : BLArrayCore*, index : LibC::ULong, item : Void*) : BLResult
+    fun blArrayInsertData(self : BLArrayCore*, index : LibC::ULong, data : Void*, n : LibC::ULong) : BLResult
+    fun blArrayReplaceU8(self : BLArrayCore*, index : LibC::ULong, value : UInt8) : BLResult
+    fun blArrayReplaceU16(self : BLArrayCore*, index : LibC::ULong, value : UInt16) : BLResult
+    fun blArrayReplaceU32(self : BLArrayCore*, index : LibC::ULong, value : UInt32) : BLResult
+    fun blArrayReplaceU64(self : BLArrayCore*, index : LibC::ULong, value : LibC::ULong) : BLResult
+    fun blArrayReplaceF32(self : BLArrayCore*, index : LibC::ULong, value : Float32) : BLResult
+    fun blArrayReplaceF64(self : BLArrayCore*, index : LibC::ULong, value : Float64) : BLResult
+    fun blArrayReplaceItem(self : BLArrayCore*, index : LibC::ULong, item : Void*) : BLResult
+    fun blArrayReplaceData(self : BLArrayCore*, r_start : LibC::ULong, r_end : LibC::ULong, data : Void*, n : LibC::ULong) : BLResult
+    fun blArrayRemoveIndex(self : BLArrayCore*, index : LibC::ULong) : BLResult
+    fun blArrayRemoveRange(self : BLArrayCore*, r_start : LibC::ULong, r_end : LibC::ULong) : BLResult
+    fun blArrayEquals(a : BLArrayCore*, b : BLArrayCore*) : Bool
 
     struct BLArrayCore
       _d : BLArrayImpl*
@@ -58,8 +58,8 @@ module Blend2D
 
     struct BLArrayImpl
       data : Void*
-      size : Int32
-      capacity : Int32
+      size : LibC::ULong
+      capacity : LibC::ULong
     end
   end
 end

@@ -19,8 +19,8 @@ module Blend2D::Styling
     struct Radial
       @core : LibBlend2D::BLRadialGradientValues
 
-      def initialize(x0 : Float64, y0 : Float64, x1 : Float64, y1 : Float64, r0 : Float64)
-        @core = LibBlend2D::BLRadialGradientValues.new x0: x0, y0: y0, x1: x1, y1: y1, r0: r0
+      def initialize(x0 : Float64, y0 : Float64, x1 : Float64, y1 : Float64, r0 : Float64, r1 : Float64 = 0.0)
+        @core = LibBlend2D::BLRadialGradientValues.new x0: x0, y0: y0, x1: x1, y1: y1, r0: r0, r1: r1
       end
 
       def to_unsafe
@@ -35,8 +35,8 @@ module Blend2D::Styling
     struct Conic
       @core : LibBlend2D::BLConicGradientValues
 
-      def initialize(x0 : Float64, y0 : Float64, angle : Float64)
-        @core = LibBlend2D::BLConicGradientValues.new x0: x0, y0: y0, angle: angle
+      def initialize(x0 : Float64, y0 : Float64, angle : Float64, repeat : Float64 = 1.0)
+        @core = LibBlend2D::BLConicGradientValues.new x0: x0, y0: y0, angle: angle, repeat: repeat
       end
 
       def to_unsafe

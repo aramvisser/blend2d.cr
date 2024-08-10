@@ -12,13 +12,13 @@ module Blend2D
     fun blFontManagerAssignMove(self : BLFontManagerCore*, other : BLFontManagerCore*) : BLResult
     fun blFontManagerAssignWeak(self : BLFontManagerCore*, other : BLFontManagerCore*) : BLResult
     fun blFontManagerCreate(self : BLFontManagerCore*) : BLResult
-    fun blFontManagerGetFaceCount(self : BLFontManagerCore*) : Int32
-    fun blFontManagerGetFamilyCount(self : BLFontManagerCore*) : Int32
-    fun blFontManagerHasFace(self : BLFontManagerCore*, face : BLFontFaceCore*) : Int32
+    fun blFontManagerGetFaceCount(self : BLFontManagerCore*) : LibC::ULong
+    fun blFontManagerGetFamilyCount(self : BLFontManagerCore*) : LibC::ULong
+    fun blFontManagerHasFace(self : BLFontManagerCore*, face : BLFontFaceCore*) : Bool
     fun blFontManagerAddFace(self : BLFontManagerCore*, face : BLFontFaceCore*) : BLResult
-    fun blFontManagerQueryFace(self : BLFontManagerCore*, name : UInt8*, name_size : Int32, properties : BLFontQueryProperties*, out : BLFontFaceCore*) : BLResult
-    fun blFontManagerQueryFacesByFamilyName(self : BLFontManagerCore*, name : UInt8*, name_size : Int32, out : BLArrayCore*) : BLResult
-    fun blFontManagerEquals(a : BLFontManagerCore*, b : BLFontManagerCore*) : Int32
+    fun blFontManagerQueryFace(self : BLFontManagerCore*, name : UInt8*, name_size : LibC::ULong, properties : BLFontQueryProperties*, out : BLFontFaceCore*) : BLResult
+    fun blFontManagerQueryFacesByFamilyName(self : BLFontManagerCore*, name : UInt8*, name_size : LibC::ULong, out : BLArrayCore*) : BLResult
+    fun blFontManagerEquals(a : BLFontManagerCore*, b : BLFontManagerCore*) : Bool
 
     struct BLFontQueryProperties
       style : UInt32

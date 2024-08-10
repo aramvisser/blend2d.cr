@@ -5,29 +5,29 @@ module Blend2D
   lib LibBlend2D
     alias BLDestroyExternalDataFunc = (Void*, Void*, Void*) -> Void*
 
-    fun blObjectAllocImpl(self : BLObjectCore*, object_info : UInt32, impl_size : Int32) : BLResult
-    fun blObjectAllocImplAligned(self : BLObjectCore*, object_info : UInt32, impl_size : Int32, impl_alignment : Int32) : BLResult
-    fun blObjectAllocImplExternal(self : BLObjectCore*, object_info : UInt32, impl_size : Int32, immutable : Int32, destroy_func : BLDestroyExternalDataFunc, user_data : Void*) : BLResult
+    fun blObjectAllocImpl(self : BLObjectCore*, object_info : UInt32, impl_size : LibC::ULong) : BLResult
+    fun blObjectAllocImplAligned(self : BLObjectCore*, object_info : UInt32, impl_size : LibC::ULong, impl_alignment : LibC::ULong) : BLResult
+    fun blObjectAllocImplExternal(self : BLObjectCore*, object_info : UInt32, impl_size : LibC::ULong, immutable : Bool, destroy_func : BLDestroyExternalDataFunc, user_data : Void*) : BLResult
     fun blObjectFreeImpl(impl : BLObjectImpl*) : BLResult
     fun blObjectInitMove(self : BLUnknown*, other : BLUnknown*) : BLResult
     fun blObjectInitWeak(self : BLUnknown*, other : BLUnknown*) : BLResult
     fun blObjectReset(self : BLUnknown*) : BLResult
     fun blObjectAssignMove(self : BLUnknown*, other : BLUnknown*) : BLResult
     fun blObjectAssignWeak(self : BLUnknown*, other : BLUnknown*) : BLResult
-    fun blObjectGetProperty(self : BLUnknown*, name : UInt8*, name_size : Int32, value_out : BLVarCore*) : BLResult
-    fun blObjectGetPropertyBool(self : BLUnknown*, name : UInt8*, name_size : Int32, value_out : Int32*) : BLResult
-    fun blObjectGetPropertyInt32(self : BLUnknown*, name : UInt8*, name_size : Int32, value_out : Int32*) : BLResult
-    fun blObjectGetPropertyInt64(self : BLUnknown*, name : UInt8*, name_size : Int32, value_out : LibC::Long*) : BLResult
-    fun blObjectGetPropertyUInt32(self : BLUnknown*, name : UInt8*, name_size : Int32, value_out : UInt32*) : BLResult
-    fun blObjectGetPropertyUInt64(self : BLUnknown*, name : UInt8*, name_size : Int32, value_out : LibC::ULong*) : BLResult
-    fun blObjectGetPropertyDouble(self : BLUnknown*, name : UInt8*, name_size : Int32, value_out : Float64*) : BLResult
-    fun blObjectSetProperty(self : BLUnknown*, name : UInt8*, name_size : Int32, value : BLUnknown*) : BLResult
-    fun blObjectSetPropertyBool(self : BLUnknown*, name : UInt8*, name_size : Int32, value : Int32) : BLResult
-    fun blObjectSetPropertyInt32(self : BLUnknown*, name : UInt8*, name_size : Int32, value : Int32) : BLResult
-    fun blObjectSetPropertyInt64(self : BLUnknown*, name : UInt8*, name_size : Int32, value : LibC::Long) : BLResult
-    fun blObjectSetPropertyUInt32(self : BLUnknown*, name : UInt8*, name_size : Int32, value : UInt32) : BLResult
-    fun blObjectSetPropertyUInt64(self : BLUnknown*, name : UInt8*, name_size : Int32, value : LibC::ULong) : BLResult
-    fun blObjectSetPropertyDouble(self : BLUnknown*, name : UInt8*, name_size : Int32, value : Float64) : BLResult
+    fun blObjectGetProperty(self : BLUnknown*, name : UInt8*, name_size : LibC::ULong, value_out : BLVarCore*) : BLResult
+    fun blObjectGetPropertyBool(self : BLUnknown*, name : UInt8*, name_size : LibC::ULong, value_out : Bool*) : BLResult
+    fun blObjectGetPropertyInt32(self : BLUnknown*, name : UInt8*, name_size : LibC::ULong, value_out : Int32*) : BLResult
+    fun blObjectGetPropertyInt64(self : BLUnknown*, name : UInt8*, name_size : LibC::ULong, value_out : LibC::Long*) : BLResult
+    fun blObjectGetPropertyUInt32(self : BLUnknown*, name : UInt8*, name_size : LibC::ULong, value_out : UInt32*) : BLResult
+    fun blObjectGetPropertyUInt64(self : BLUnknown*, name : UInt8*, name_size : LibC::ULong, value_out : LibC::ULong*) : BLResult
+    fun blObjectGetPropertyDouble(self : BLUnknown*, name : UInt8*, name_size : LibC::ULong, value_out : Float64*) : BLResult
+    fun blObjectSetProperty(self : BLUnknown*, name : UInt8*, name_size : LibC::ULong, value : BLUnknown*) : BLResult
+    fun blObjectSetPropertyBool(self : BLUnknown*, name : UInt8*, name_size : LibC::ULong, value : Bool) : BLResult
+    fun blObjectSetPropertyInt32(self : BLUnknown*, name : UInt8*, name_size : LibC::ULong, value : Int32) : BLResult
+    fun blObjectSetPropertyInt64(self : BLUnknown*, name : UInt8*, name_size : LibC::ULong, value : LibC::Long) : BLResult
+    fun blObjectSetPropertyUInt32(self : BLUnknown*, name : UInt8*, name_size : LibC::ULong, value : UInt32) : BLResult
+    fun blObjectSetPropertyUInt64(self : BLUnknown*, name : UInt8*, name_size : LibC::ULong, value : LibC::ULong) : BLResult
+    fun blObjectSetPropertyDouble(self : BLUnknown*, name : UInt8*, name_size : LibC::ULong, value : Float64) : BLResult
 
     enum BLObjectInfoShift : UInt32
       PShift    =  0
@@ -130,8 +130,8 @@ module Blend2D
 
     struct BLObjectVirtBase
       destroy : (BLObjectImpl*) -> BLResult*
-      get_property : (BLObjectImpl*, UInt8*, Int32, BLVarCore*) -> BLResult*
-      set_property : (BLObjectImpl*, UInt8*, Int32, BLVarCore*) -> BLResult*
+      get_property : (BLObjectImpl*, UInt8*, LibC::ULong, BLVarCore*) -> BLResult*
+      set_property : (BLObjectImpl*, UInt8*, LibC::ULong, BLVarCore*) -> BLResult*
     end
 
     struct BLObjectVirt

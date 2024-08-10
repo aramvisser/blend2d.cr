@@ -224,14 +224,14 @@ module Blend2D
     end
 
     struct BLGlyphMappingState
-      glyph_count : Int32
-      undefined_first : Int32
-      undefined_count : Int32
+      glyph_count : LibC::ULong
+      undefined_first : LibC::ULong
+      undefined_count : LibC::ULong
     end
 
     struct BLGlyphOutlineSinkInfo
-      glyph_index : Int32
-      contour_count : Int32
+      glyph_index : LibC::ULong
+      contour_count : LibC::ULong
     end
 
     struct BLFontUnicodeCoverage

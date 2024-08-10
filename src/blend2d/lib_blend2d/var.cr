@@ -5,7 +5,7 @@ module Blend2D
   lib LibBlend2D
     fun blVarInitType(self : BLUnknown*, type : BLObjectType) : BLResult
     fun blVarInitNull(self : BLUnknown*) : BLResult
-    fun blVarInitBool(self : BLUnknown*, value : Int32) : BLResult
+    fun blVarInitBool(self : BLUnknown*, value : Bool) : BLResult
     fun blVarInitInt32(self : BLUnknown*, value : Int32) : BLResult
     fun blVarInitInt64(self : BLUnknown*, value : LibC::Long) : BLResult
     fun blVarInitUInt32(self : BLUnknown*, value : UInt32) : BLResult
@@ -19,7 +19,7 @@ module Blend2D
     fun blVarDestroy(self : BLUnknown*) : BLResult
     fun blVarReset(self : BLUnknown*) : BLResult
     fun blVarAssignNull(self : BLUnknown*) : BLResult
-    fun blVarAssignBool(self : BLUnknown*, value : Int32) : BLResult
+    fun blVarAssignBool(self : BLUnknown*, value : Bool) : BLResult
     fun blVarAssignInt32(self : BLUnknown*, value : Int32) : BLResult
     fun blVarAssignInt64(self : BLUnknown*, value : LibC::Long) : BLResult
     fun blVarAssignUInt32(self : BLUnknown*, value : UInt32) : BLResult
@@ -31,7 +31,7 @@ module Blend2D
     fun blVarAssignMove(self : BLUnknown*, other : BLUnknown*) : BLResult
     fun blVarAssignWeak(self : BLUnknown*, other : BLUnknown*) : BLResult
     fun blVarGetType(self : BLUnknown*) : BLObjectType
-    fun blVarToBool(self : BLUnknown*, out : Int32*) : BLResult
+    fun blVarToBool(self : BLUnknown*, out : Bool*) : BLResult
     fun blVarToInt32(self : BLUnknown*, out : Int32*) : BLResult
     fun blVarToInt64(self : BLUnknown*, out : LibC::Long*) : BLResult
     fun blVarToUInt32(self : BLUnknown*, out : UInt32*) : BLResult
@@ -40,20 +40,19 @@ module Blend2D
     fun blVarToRgba(self : BLUnknown*, out : BLRgba*) : BLResult
     fun blVarToRgba32(self : BLUnknown*, out : UInt32*) : BLResult
     fun blVarToRgba64(self : BLUnknown*, out : LibC::ULong*) : BLResult
-    fun blVarEquals(a : BLUnknown*, b : BLUnknown*) : Int32
-    fun blVarEqualsNull(self : BLUnknown*) : Int32
-    fun blVarEqualsBool(self : BLUnknown*, value : Int32) : Int32
-    fun blVarEqualsInt64(self : BLUnknown*, value : LibC::Long) : Int32
-    fun blVarEqualsUInt64(self : BLUnknown*, value : LibC::ULong) : Int32
-    fun blVarEqualsDouble(self : BLUnknown*, value : Float64) : Int32
-    fun blVarEqualsRgba(self : BLUnknown*, rgba : BLRgba*) : Int32
-    fun blVarEqualsRgba32(self : BLUnknown*, rgba32 : UInt32) : Int32
-    fun blVarEqualsRgba64(self : BLUnknown*, rgba64 : LibC::ULong) : Int32
-    fun blVarStrictEquals(a : BLUnknown*, b : BLUnknown*) : Int32
+    fun blVarEquals(a : BLUnknown*, b : BLUnknown*) : Bool
+    fun blVarEqualsNull(self : BLUnknown*) : Bool
+    fun blVarEqualsBool(self : BLUnknown*, value : Bool) : Bool
+    fun blVarEqualsInt64(self : BLUnknown*, value : LibC::Long) : Bool
+    fun blVarEqualsUInt64(self : BLUnknown*, value : LibC::ULong) : Bool
+    fun blVarEqualsDouble(self : BLUnknown*, value : Float64) : Bool
+    fun blVarEqualsRgba(self : BLUnknown*, rgba : BLRgba*) : Bool
+    fun blVarEqualsRgba32(self : BLUnknown*, rgba32 : UInt32) : Bool
+    fun blVarEqualsRgba64(self : BLUnknown*, rgba64 : LibC::ULong) : Bool
+    fun blVarStrictEquals(a : BLUnknown*, b : BLUnknown*) : Bool
 
     struct BLVarCore
       _d : BLObjectDetail
-      _dummy : UInt8 # Add dummy data to force heap allocation
     end
   end
 end

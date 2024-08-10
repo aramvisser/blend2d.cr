@@ -6,39 +6,39 @@ module Blend2D
     fun blGradientInit(self : BLGradientCore*) : BLResult
     fun blGradientInitMove(self : BLGradientCore*, other : BLGradientCore*) : BLResult
     fun blGradientInitWeak(self : BLGradientCore*, other : BLGradientCore*) : BLResult
-    fun blGradientInitAs(self : BLGradientCore*, type : BLGradientType, values : Void*, extend_mode : BLExtendMode, stops : BLGradientStop*, n : Int32, transform : BLMatrix2D*) : BLResult
+    fun blGradientInitAs(self : BLGradientCore*, type : BLGradientType, values : Void*, extend_mode : BLExtendMode, stops : BLGradientStop*, n : LibC::ULong, transform : BLMatrix2D*) : BLResult
     fun blGradientDestroy(self : BLGradientCore*) : BLResult
     fun blGradientReset(self : BLGradientCore*) : BLResult
     fun blGradientAssignMove(self : BLGradientCore*, other : BLGradientCore*) : BLResult
     fun blGradientAssignWeak(self : BLGradientCore*, other : BLGradientCore*) : BLResult
-    fun blGradientCreate(self : BLGradientCore*, type : BLGradientType, values : Void*, extend_mode : BLExtendMode, stops : BLGradientStop*, n : Int32, transform : BLMatrix2D*) : BLResult
+    fun blGradientCreate(self : BLGradientCore*, type : BLGradientType, values : Void*, extend_mode : BLExtendMode, stops : BLGradientStop*, n : LibC::ULong, transform : BLMatrix2D*) : BLResult
     fun blGradientShrink(self : BLGradientCore*) : BLResult
-    fun blGradientReserve(self : BLGradientCore*, n : Int32) : BLResult
+    fun blGradientReserve(self : BLGradientCore*, n : LibC::ULong) : BLResult
     fun blGradientGetType(self : BLGradientCore*) : BLGradientType
     fun blGradientSetType(self : BLGradientCore*, type : BLGradientType) : BLResult
     fun blGradientGetExtendMode(self : BLGradientCore*) : BLExtendMode
     fun blGradientSetExtendMode(self : BLGradientCore*, extend_mode : BLExtendMode) : BLResult
-    fun blGradientGetValue(self : BLGradientCore*, index : Int32) : Float64
-    fun blGradientSetValue(self : BLGradientCore*, index : Int32, value : Float64) : BLResult
-    fun blGradientSetValues(self : BLGradientCore*, index : Int32, values : Float64*, n : Int32) : BLResult
-    fun blGradientGetSize(self : BLGradientCore*) : Int32
-    fun blGradientGetCapacity(self : BLGradientCore*) : Int32
+    fun blGradientGetValue(self : BLGradientCore*, index : LibC::ULong) : Float64
+    fun blGradientSetValue(self : BLGradientCore*, index : LibC::ULong, value : Float64) : BLResult
+    fun blGradientSetValues(self : BLGradientCore*, index : LibC::ULong, values : Float64*, n : LibC::ULong) : BLResult
+    fun blGradientGetSize(self : BLGradientCore*) : LibC::ULong
+    fun blGradientGetCapacity(self : BLGradientCore*) : LibC::ULong
     fun blGradientGetStops(self : BLGradientCore*) : BLGradientStop*
     fun blGradientResetStops(self : BLGradientCore*) : BLResult
-    fun blGradientAssignStops(self : BLGradientCore*, stops : BLGradientStop*, n : Int32) : BLResult
+    fun blGradientAssignStops(self : BLGradientCore*, stops : BLGradientStop*, n : LibC::ULong) : BLResult
     fun blGradientAddStopRgba32(self : BLGradientCore*, offset : Float64, argb32 : UInt32) : BLResult
     fun blGradientAddStopRgba64(self : BLGradientCore*, offset : Float64, argb64 : LibC::ULong) : BLResult
-    fun blGradientRemoveStop(self : BLGradientCore*, index : Int32) : BLResult
+    fun blGradientRemoveStop(self : BLGradientCore*, index : LibC::ULong) : BLResult
     fun blGradientRemoveStopByOffset(self : BLGradientCore*, offset : Float64, all : UInt32) : BLResult
-    fun blGradientRemoveStopsByIndex(self : BLGradientCore*, r_start : Int32, r_end : Int32) : BLResult
+    fun blGradientRemoveStopsByIndex(self : BLGradientCore*, r_start : LibC::ULong, r_end : LibC::ULong) : BLResult
     fun blGradientRemoveStopsByOffset(self : BLGradientCore*, offset_min : Float64, offset_max : Float64) : BLResult
-    fun blGradientReplaceStopRgba32(self : BLGradientCore*, index : Int32, offset : Float64, rgba32 : UInt32) : BLResult
-    fun blGradientReplaceStopRgba64(self : BLGradientCore*, index : Int32, offset : Float64, rgba64 : LibC::ULong) : BLResult
-    fun blGradientIndexOfStop(self : BLGradientCore*, offset : Float64) : Int32
+    fun blGradientReplaceStopRgba32(self : BLGradientCore*, index : LibC::ULong, offset : Float64, rgba32 : UInt32) : BLResult
+    fun blGradientReplaceStopRgba64(self : BLGradientCore*, index : LibC::ULong, offset : Float64, rgba64 : LibC::ULong) : BLResult
+    fun blGradientIndexOfStop(self : BLGradientCore*, offset : Float64) : LibC::ULong
     fun blGradientGetTransform(self : BLGradientCore*, transform_out : BLMatrix2D*) : BLResult
     fun blGradientGetTransformType(self : BLGradientCore*) : BLTransformType
     fun blGradientApplyTransformOp(self : BLGradientCore*, op_type : BLTransformOp, op_data : Void*) : BLResult
-    fun blGradientEquals(a : BLGradientCore*, b : BLGradientCore*) : Int32
+    fun blGradientEquals(a : BLGradientCore*, b : BLGradientCore*) : Bool
 
     enum BLGradientType : UInt32
       Linear = 0
@@ -47,12 +47,14 @@ module Blend2D
     end
 
     enum BLGradientValue : UInt32
-      CommonX0   = 0
-      CommonY0   = 1
-      CommonX1   = 2
-      CommonY1   = 3
-      RadialR0   = 4
-      ConicAngle = 2
+      CommonX0    = 0
+      CommonY0    = 1
+      CommonX1    = 2
+      CommonY1    = 3
+      RadialR0    = 4
+      RadialR1    = 5
+      ConicAngle  = 2
+      ConicRepeat = 3
     end
 
     enum BLGradientQuality : UInt32
@@ -79,12 +81,14 @@ module Blend2D
       x1 : Float64
       y1 : Float64
       r0 : Float64
+      r1 : Float64
     end
 
     struct BLConicGradientValues
       x0 : Float64
       y0 : Float64
       angle : Float64
+      repeat : Float64
     end
 
     struct BLGradientCore
@@ -93,10 +97,10 @@ module Blend2D
 
     struct BLGradientImpl
       stops : BLGradientStop*
-      size : Int32
-      capacity : Int32
+      size : LibC::ULong
+      capacity : LibC::ULong
       transform : BLMatrix2D
-      values : Float64[6]
+      radial : BLRadialGradientValues
     end
   end
 end

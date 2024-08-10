@@ -8,22 +8,23 @@ module Blend2D
     fun blGlyphBufferDestroy(self : BLGlyphBufferCore*) : BLResult
     fun blGlyphBufferReset(self : BLGlyphBufferCore*) : BLResult
     fun blGlyphBufferClear(self : BLGlyphBufferCore*) : BLResult
-    fun blGlyphBufferGetSize(self : BLGlyphBufferCore*) : Int32
+    fun blGlyphBufferGetSize(self : BLGlyphBufferCore*) : LibC::ULong
     fun blGlyphBufferGetFlags(self : BLGlyphBufferCore*) : UInt32
     fun blGlyphBufferGetGlyphRun(self : BLGlyphBufferCore*) : BLGlyphRun*
     fun blGlyphBufferGetContent(self : BLGlyphBufferCore*) : UInt32*
     fun blGlyphBufferGetInfoData(self : BLGlyphBufferCore*) : BLGlyphInfo*
     fun blGlyphBufferGetPlacementData(self : BLGlyphBufferCore*) : BLGlyphPlacement*
-    fun blGlyphBufferSetText(self : BLGlyphBufferCore*, text_data : Void*, size : Int32, encoding : BLTextEncoding) : BLResult
-    fun blGlyphBufferSetGlyphs(self : BLGlyphBufferCore*, glyph_data : UInt32*, size : Int32) : BLResult
-    fun blGlyphBufferSetGlyphsFromStruct(self : BLGlyphBufferCore*, glyph_data : Void*, size : Int32, glyph_id_size : Int32, glyph_id_advance : LibC::Long) : BLResult
+    fun blGlyphBufferSetText(self : BLGlyphBufferCore*, text_data : Void*, size : LibC::ULong, encoding : BLTextEncoding) : BLResult
+    fun blGlyphBufferSetGlyphs(self : BLGlyphBufferCore*, glyph_data : UInt32*, size : LibC::ULong) : BLResult
+    fun blGlyphBufferSetGlyphsFromStruct(self : BLGlyphBufferCore*, glyph_data : Void*, size : LibC::ULong, glyph_id_size : LibC::ULong, glyph_id_advance : LibC::Long) : BLResult
     fun blGlyphBufferSetDebugSink(self : BLGlyphBufferCore*, sink : BLDebugMessageSinkFunc, user_data : Void*) : BLResult
     fun blGlyphBufferResetDebugSink(self : BLGlyphBufferCore*) : BLResult
 
     struct BLGlyphBufferImpl
+      glyph_run : BLGlyphRun
       content : UInt32*
       placement_data : BLGlyphPlacement*
-      size : Int32
+      size : LibC::ULong
       reserved : UInt32
       flags : UInt32
       info_data : BLGlyphInfo*

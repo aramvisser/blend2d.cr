@@ -12,14 +12,14 @@ module Blend2D
     fun blFontFeatureSettingsShrink(self : BLFontFeatureSettingsCore*) : BLResult
     fun blFontFeatureSettingsAssignMove(self : BLFontFeatureSettingsCore*, other : BLFontFeatureSettingsCore*) : BLResult
     fun blFontFeatureSettingsAssignWeak(self : BLFontFeatureSettingsCore*, other : BLFontFeatureSettingsCore*) : BLResult
-    fun blFontFeatureSettingsGetSize(self : BLFontFeatureSettingsCore*) : Int32
-    fun blFontFeatureSettingsGetCapacity(self : BLFontFeatureSettingsCore*) : Int32
+    fun blFontFeatureSettingsGetSize(self : BLFontFeatureSettingsCore*) : LibC::ULong
+    fun blFontFeatureSettingsGetCapacity(self : BLFontFeatureSettingsCore*) : LibC::ULong
     fun blFontFeatureSettingsGetView(self : BLFontFeatureSettingsCore*, out : BLFontFeatureSettingsView*) : BLResult
-    fun blFontFeatureSettingsHasValue(self : BLFontFeatureSettingsCore*, feature_tag : BLTag) : Int32
+    fun blFontFeatureSettingsHasValue(self : BLFontFeatureSettingsCore*, feature_tag : BLTag) : Bool
     fun blFontFeatureSettingsGetValue(self : BLFontFeatureSettingsCore*, feature_tag : BLTag) : UInt32
     fun blFontFeatureSettingsSetValue(self : BLFontFeatureSettingsCore*, feature_tag : BLTag, value : UInt32) : BLResult
     fun blFontFeatureSettingsRemoveValue(self : BLFontFeatureSettingsCore*, feature_tag : BLTag) : BLResult
-    fun blFontFeatureSettingsEquals(a : BLFontFeatureSettingsCore*, b : BLFontFeatureSettingsCore*) : Int32
+    fun blFontFeatureSettingsEquals(a : BLFontFeatureSettingsCore*, b : BLFontFeatureSettingsCore*) : Bool
 
     struct BLFontFeatureItem
       tag : BLTag
@@ -28,7 +28,7 @@ module Blend2D
 
     struct BLFontFeatureSettingsView
       data : BLFontFeatureItem*
-      size : Int32
+      size : LibC::ULong
       sso_data : BLFontFeatureItem[36]
     end
 
@@ -38,8 +38,8 @@ module Blend2D
 
     struct BLFontFeatureSettingsImpl
       data : BLFontFeatureItem*
-      size : Int32
-      capacity : Int32
+      size : LibC::ULong
+      capacity : LibC::ULong
     end
   end
 end

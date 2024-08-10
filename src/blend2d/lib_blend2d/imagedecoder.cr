@@ -11,14 +11,14 @@ module Blend2D
     fun blImageDecoderAssignMove(self : BLImageDecoderCore*, other : BLImageDecoderCore*) : BLResult
     fun blImageDecoderAssignWeak(self : BLImageDecoderCore*, other : BLImageDecoderCore*) : BLResult
     fun blImageDecoderRestart(self : BLImageDecoderCore*) : BLResult
-    fun blImageDecoderReadInfo(self : BLImageDecoderCore*, info_out : BLImageInfo*, data : UInt8*, size : Int32) : BLResult
-    fun blImageDecoderReadFrame(self : BLImageDecoderCore*, image_out : BLImageCore*, data : UInt8*, size : Int32) : BLResult
+    fun blImageDecoderReadInfo(self : BLImageDecoderCore*, info_out : BLImageInfo*, data : UInt8*, size : LibC::ULong) : BLResult
+    fun blImageDecoderReadFrame(self : BLImageDecoderCore*, image_out : BLImageCore*, data : UInt8*, size : LibC::ULong) : BLResult
 
     struct BLImageDecoderVirt
       base : BLObjectVirtBase
       restart : (BLImageDecoderImpl*) -> BLResult*
-      read_info : (BLImageDecoderImpl*, BLImageInfo*, UInt8*, Int32) -> BLResult*
-      read_frame : (BLImageDecoderImpl*, BLImageCore*, UInt8*, Int32) -> BLResult*
+      read_info : (BLImageDecoderImpl*, BLImageInfo*, UInt8*, LibC::ULong) -> BLResult*
+      read_frame : (BLImageDecoderImpl*, BLImageCore*, UInt8*, LibC::ULong) -> BLResult*
     end
 
     struct BLImageDecoderImpl
@@ -27,7 +27,7 @@ module Blend2D
       last_result : BLResult
       handle : Void*
       frame_index : LibC::ULong
-      buffer_index : Int32
+      buffer_index : LibC::ULong
     end
 
     struct BLImageDecoderCore

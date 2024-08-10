@@ -18,6 +18,7 @@ module Renamer
     when .record?
       spelling = type.cursor.spelling
       spelling = type.spelling if type.cursor.spelling.empty?
+      spelling = "Void" if spelling == "__va_list_tag"
       spelling
     when .elaborated?     then type(type.named_type)
     when .typedef?        then typedef(type)

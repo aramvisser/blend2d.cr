@@ -25,7 +25,7 @@ module Blend2D
       last_result : BLResult
       handle : Void*
       frame_index : LibC::ULong
-      buffer_index : Int32
+      buffer_index : LibC::ULong
     end
 
     struct BLImageEncoderCore

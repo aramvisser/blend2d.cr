@@ -8,11 +8,11 @@ module Blend2D::Geometry
       LibBlend2D.blPathDestroy(self).success_or_raise
     end
 
-    def size : Int32
+    def size : LibC::ULong
       LibBlend2D.blPathGetSize self
     end
 
-    def capacity : Int32
+    def capacity : LibC::ULong
       LibBlend2D.blPathGetCapacity self
     end
 
@@ -34,7 +34,7 @@ module Blend2D::Geometry
       LibBlend2D.blPathShrink(self).success_or_raise
     end
 
-    def reserve(n : Int32)
+    def reserve(n : LibC::ULong)
       LibBlend2D.blPathReserve(self, n).success_or_raise
     end
 

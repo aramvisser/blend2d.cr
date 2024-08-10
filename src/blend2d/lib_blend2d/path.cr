@@ -4,36 +4,36 @@ module Blend2D
   @[Link("blend2d")]
   lib LibBlend2D
     alias BLPathSinkFunc = (BLPathCore*, Void*, Void*) -> BLResult*
-    alias BLPathStrokeSinkFunc = (BLPathCore*, BLPathCore*, BLPathCore*, Int32, Int32, Void*) -> BLResult*
+    alias BLPathStrokeSinkFunc = (BLPathCore*, BLPathCore*, BLPathCore*, LibC::ULong, LibC::ULong, Void*) -> BLResult*
 
     fun blPathInit(self : BLPathCore*) : BLResult
     fun blPathInitMove(self : BLPathCore*, other : BLPathCore*) : BLResult
     fun blPathInitWeak(self : BLPathCore*, other : BLPathCore*) : BLResult
     fun blPathDestroy(self : BLPathCore*) : BLResult
     fun blPathReset(self : BLPathCore*) : BLResult
-    fun blPathGetSize(self : BLPathCore*) : Int32
-    fun blPathGetCapacity(self : BLPathCore*) : Int32
+    fun blPathGetSize(self : BLPathCore*) : LibC::ULong
+    fun blPathGetCapacity(self : BLPathCore*) : LibC::ULong
     fun blPathGetCommandData(self : BLPathCore*) : UInt8*
     fun blPathGetVertexData(self : BLPathCore*) : BLPoint*
     fun blPathClear(self : BLPathCore*) : BLResult
     fun blPathShrink(self : BLPathCore*) : BLResult
-    fun blPathReserve(self : BLPathCore*, n : Int32) : BLResult
-    fun blPathModifyOp(self : BLPathCore*, op : BLModifyOp, n : Int32, cmd_data_out : UInt8**, vtx_data_out : BLPoint**) : BLResult
+    fun blPathReserve(self : BLPathCore*, n : LibC::ULong) : BLResult
+    fun blPathModifyOp(self : BLPathCore*, op : BLModifyOp, n : LibC::ULong, cmd_data_out : UInt8**, vtx_data_out : BLPoint**) : BLResult
     fun blPathAssignMove(self : BLPathCore*, other : BLPathCore*) : BLResult
     fun blPathAssignWeak(self : BLPathCore*, other : BLPathCore*) : BLResult
     fun blPathAssignDeep(self : BLPathCore*, other : BLPathCore*) : BLResult
-    fun blPathSetVertexAt(self : BLPathCore*, index : Int32, cmd : UInt32, x : Float64, y : Float64) : BLResult
+    fun blPathSetVertexAt(self : BLPathCore*, index : LibC::ULong, cmd : UInt32, x : Float64, y : Float64) : BLResult
     fun blPathMoveTo(self : BLPathCore*, x0 : Float64, y0 : Float64) : BLResult
     fun blPathLineTo(self : BLPathCore*, x1 : Float64, y1 : Float64) : BLResult
-    fun blPathPolyTo(self : BLPathCore*, poly : BLPoint*, count : Int32) : BLResult
+    fun blPathPolyTo(self : BLPathCore*, poly : BLPoint*, count : LibC::ULong) : BLResult
     fun blPathQuadTo(self : BLPathCore*, x1 : Float64, y1 : Float64, x2 : Float64, y2 : Float64) : BLResult
     fun blPathConicTo(self : BLPathCore*, x1 : Float64, y1 : Float64, x2 : Float64, y2 : Float64, w : Float64) : BLResult
     fun blPathCubicTo(self : BLPathCore*, x1 : Float64, y1 : Float64, x2 : Float64, y2 : Float64, x3 : Float64, y3 : Float64) : BLResult
     fun blPathSmoothQuadTo(self : BLPathCore*, x2 : Float64, y2 : Float64) : BLResult
     fun blPathSmoothCubicTo(self : BLPathCore*, x2 : Float64, y2 : Float64, x3 : Float64, y3 : Float64) : BLResult
-    fun blPathArcTo(self : BLPathCore*, x : Float64, y : Float64, rx : Float64, ry : Float64, start : Float64, sweep : Float64, force_move_to : Int32) : BLResult
+    fun blPathArcTo(self : BLPathCore*, x : Float64, y : Float64, rx : Float64, ry : Float64, start : Float64, sweep : Float64, force_move_to : Bool) : BLResult
     fun blPathArcQuadrantTo(self : BLPathCore*, x1 : Float64, y1 : Float64, x2 : Float64, y2 : Float64) : BLResult
-    fun blPathEllipticArcTo(self : BLPathCore*, rx : Float64, ry : Float64, x_axis_rotation : Float64, large_arc_flag : Int32, sweep_flag : Int32, x1 : Float64, y1 : Float64) : BLResult
+    fun blPathEllipticArcTo(self : BLPathCore*, rx : Float64, ry : Float64, x_axis_rotation : Float64, large_arc_flag : Bool, sweep_flag : Bool, x1 : Float64, y1 : Float64) : BLResult
     fun blPathClose(self : BLPathCore*) : BLResult
     fun blPathAddGeometry(self : BLPathCore*, geometry_type : BLGeometryType, geometry_data : Void*, m : BLMatrix2D*, dir : BLGeometryDirection) : BLResult
     fun blPathAddBoxI(self : BLPathCore*, box : BLBoxI*, dir : BLGeometryDirection) : BLResult
@@ -49,20 +49,20 @@ module Blend2D
     fun blPathTranslate(self : BLPathCore*, range : BLRange*, p : BLPoint*) : BLResult
     fun blPathTransform(self : BLPathCore*, range : BLRange*, m : BLMatrix2D*) : BLResult
     fun blPathFitTo(self : BLPathCore*, range : BLRange*, rect : BLRect*, fit_flags : UInt32) : BLResult
-    fun blPathEquals(a : BLPathCore*, b : BLPathCore*) : Int32
+    fun blPathEquals(a : BLPathCore*, b : BLPathCore*) : Bool
     fun blPathGetInfoFlags(self : BLPathCore*, flags_out : UInt32*) : BLResult
     fun blPathGetControlBox(self : BLPathCore*, box_out : BLBox*) : BLResult
     fun blPathGetBoundingBox(self : BLPathCore*, box_out : BLBox*) : BLResult
-    fun blPathGetFigureRange(self : BLPathCore*, index : Int32, range_out : BLRange*) : BLResult
+    fun blPathGetFigureRange(self : BLPathCore*, index : LibC::ULong, range_out : BLRange*) : BLResult
     fun blPathGetLastVertex(self : BLPathCore*, vtx_out : BLPoint*) : BLResult
-    fun blPathGetClosestVertex(self : BLPathCore*, p : BLPoint*, max_distance : Float64, index_out : Int32*, distance_out : Float64*) : BLResult
+    fun blPathGetClosestVertex(self : BLPathCore*, p : BLPoint*, max_distance : Float64, index_out : LibC::ULong*, distance_out : Float64*) : BLResult
     fun blPathHitTest(self : BLPathCore*, p : BLPoint*, fill_rule : BLFillRule) : BLHitTest
     fun blStrokeOptionsInit(self : BLStrokeOptionsCore*) : BLResult
     fun blStrokeOptionsInitMove(self : BLStrokeOptionsCore*, other : BLStrokeOptionsCore*) : BLResult
     fun blStrokeOptionsInitWeak(self : BLStrokeOptionsCore*, other : BLStrokeOptionsCore*) : BLResult
     fun blStrokeOptionsDestroy(self : BLStrokeOptionsCore*) : BLResult
     fun blStrokeOptionsReset(self : BLStrokeOptionsCore*) : BLResult
-    fun blStrokeOptionsEquals(a : BLStrokeOptionsCore*, b : BLStrokeOptionsCore*) : Int32
+    fun blStrokeOptionsEquals(a : BLStrokeOptionsCore*, b : BLStrokeOptionsCore*) : Bool
     fun blStrokeOptionsAssignMove(self : BLStrokeOptionsCore*, other : BLStrokeOptionsCore*) : BLResult
     fun blStrokeOptionsAssignWeak(self : BLStrokeOptionsCore*, other : BLStrokeOptionsCore*) : BLResult
     fun blPathStrokeToSink(self : BLPathCore*, range : BLRange*, stroke_options : BLStrokeOptionsCore*, approximation_options : BLApproximationOptions*, a : BLPathCore*, b : BLPathCore*, c : BLPathCore*, sink : BLPathStrokeSinkFunc, user_data : Void*) : BLResult
@@ -146,7 +146,7 @@ module Blend2D
     struct BLPathView
       command_data : UInt8*
       vertex_data : BLPoint*
-      size : Int32
+      size : LibC::ULong
     end
 
     struct BLPathCore
@@ -165,8 +165,8 @@ module Blend2D
     struct BLPathImpl
       command_data : UInt8*
       vertex_data : BLPoint*
-      size : Int32
-      capacity : Int32
+      size : LibC::ULong
+      capacity : LibC::ULong
       flags : UInt32
     end
   end

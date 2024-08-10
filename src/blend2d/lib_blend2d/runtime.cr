@@ -9,7 +9,7 @@ module Blend2D
     fun blRuntimeQueryInfo(info_type : BLRuntimeInfoType, info_out : Void*) : BLResult
     fun blRuntimeMessageOut(msg : UInt8*) : BLResult
     fun blRuntimeMessageFmt(fmt : UInt8*) : BLResult
-    fun blRuntimeMessageVFmt(fmt : UInt8*, ap : Int32) : BLResult
+    fun blRuntimeMessageVFmt(fmt : UInt8*, ap : Void[1]) : BLResult
     fun blResultFromPosixError(e : Int32) : BLResult
 
     enum BLRuntimeLimits : UInt32
@@ -76,19 +76,21 @@ module Blend2D
       removed : UInt32
       allocation_granularity : UInt32
       reserved : UInt32[5]
+      cpu_vendor : UInt8[16]
+      cpu_brand : UInt8[64]
     end
 
     struct BLRuntimeResourceInfo
-      vm_used : Int32
-      vm_reserved : Int32
-      vm_overhead : Int32
-      vm_block_count : Int32
-      zm_used : Int32
-      zm_reserved : Int32
-      zm_overhead : Int32
-      zm_block_count : Int32
-      dynamic_pipeline_count : Int32
-      reserved : Int32[7]
+      vm_used : LibC::ULong
+      vm_reserved : LibC::ULong
+      vm_overhead : LibC::ULong
+      vm_block_count : LibC::ULong
+      zm_used : LibC::ULong
+      zm_reserved : LibC::ULong
+      zm_overhead : LibC::ULong
+      zm_block_count : LibC::ULong
+      dynamic_pipeline_count : LibC::ULong
+      reserved : LibC::ULong[7]
     end
   end
 end

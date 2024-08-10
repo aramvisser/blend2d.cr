@@ -6,45 +6,45 @@ module Blend2D
     fun blStringInit(self : BLStringCore*) : BLResult
     fun blStringInitMove(self : BLStringCore*, other : BLStringCore*) : BLResult
     fun blStringInitWeak(self : BLStringCore*, other : BLStringCore*) : BLResult
-    fun blStringInitWithData(self : BLStringCore*, str : UInt8*, size : Int32) : BLResult
+    fun blStringInitWithData(self : BLStringCore*, str : UInt8*, size : LibC::ULong) : BLResult
     fun blStringDestroy(self : BLStringCore*) : BLResult
     fun blStringReset(self : BLStringCore*) : BLResult
     fun blStringGetData(self : BLStringCore*) : UInt8*
-    fun blStringGetSize(self : BLStringCore*) : Int32
-    fun blStringGetCapacity(self : BLStringCore*) : Int32
+    fun blStringGetSize(self : BLStringCore*) : LibC::ULong
+    fun blStringGetCapacity(self : BLStringCore*) : LibC::ULong
     fun blStringClear(self : BLStringCore*) : BLResult
     fun blStringShrink(self : BLStringCore*) : BLResult
-    fun blStringReserve(self : BLStringCore*, n : Int32) : BLResult
-    fun blStringResize(self : BLStringCore*, n : Int32, fill : UInt8) : BLResult
+    fun blStringReserve(self : BLStringCore*, n : LibC::ULong) : BLResult
+    fun blStringResize(self : BLStringCore*, n : LibC::ULong, fill : UInt8) : BLResult
     fun blStringMakeMutable(self : BLStringCore*, data_out : UInt8**) : BLResult
-    fun blStringModifyOp(self : BLStringCore*, op : BLModifyOp, n : Int32, data_out : UInt8**) : BLResult
-    fun blStringInsertOp(self : BLStringCore*, index : Int32, n : Int32, data_out : UInt8**) : BLResult
+    fun blStringModifyOp(self : BLStringCore*, op : BLModifyOp, n : LibC::ULong, data_out : UInt8**) : BLResult
+    fun blStringInsertOp(self : BLStringCore*, index : LibC::ULong, n : LibC::ULong, data_out : UInt8**) : BLResult
     fun blStringAssignMove(self : BLStringCore*, other : BLStringCore*) : BLResult
     fun blStringAssignWeak(self : BLStringCore*, other : BLStringCore*) : BLResult
     fun blStringAssignDeep(self : BLStringCore*, other : BLStringCore*) : BLResult
-    fun blStringAssignData(self : BLStringCore*, str : UInt8*, n : Int32) : BLResult
-    fun blStringApplyOpChar(self : BLStringCore*, op : BLModifyOp, c : UInt8, n : Int32) : BLResult
-    fun blStringApplyOpData(self : BLStringCore*, op : BLModifyOp, str : UInt8*, n : Int32) : BLResult
+    fun blStringAssignData(self : BLStringCore*, str : UInt8*, n : LibC::ULong) : BLResult
+    fun blStringApplyOpChar(self : BLStringCore*, op : BLModifyOp, c : UInt8, n : LibC::ULong) : BLResult
+    fun blStringApplyOpData(self : BLStringCore*, op : BLModifyOp, str : UInt8*, n : LibC::ULong) : BLResult
     fun blStringApplyOpString(self : BLStringCore*, op : BLModifyOp, other : BLStringCore*) : BLResult
     fun blStringApplyOpFormat(self : BLStringCore*, op : BLModifyOp, fmt : UInt8*) : BLResult
-    fun blStringApplyOpFormatV(self : BLStringCore*, op : BLModifyOp, fmt : UInt8*, ap : Int32) : BLResult
-    fun blStringInsertChar(self : BLStringCore*, index : Int32, c : UInt8, n : Int32) : BLResult
-    fun blStringInsertData(self : BLStringCore*, index : Int32, str : UInt8*, n : Int32) : BLResult
-    fun blStringInsertString(self : BLStringCore*, index : Int32, other : BLStringCore*) : BLResult
-    fun blStringRemoveIndex(self : BLStringCore*, index : Int32) : BLResult
-    fun blStringRemoveRange(self : BLStringCore*, r_start : Int32, r_end : Int32) : BLResult
-    fun blStringEquals(a : BLStringCore*, b : BLStringCore*) : Int32
-    fun blStringEqualsData(self : BLStringCore*, str : UInt8*, n : Int32) : Int32
+    fun blStringApplyOpFormatV(self : BLStringCore*, op : BLModifyOp, fmt : UInt8*, ap : Void[1]) : BLResult
+    fun blStringInsertChar(self : BLStringCore*, index : LibC::ULong, c : UInt8, n : LibC::ULong) : BLResult
+    fun blStringInsertData(self : BLStringCore*, index : LibC::ULong, str : UInt8*, n : LibC::ULong) : BLResult
+    fun blStringInsertString(self : BLStringCore*, index : LibC::ULong, other : BLStringCore*) : BLResult
+    fun blStringRemoveIndex(self : BLStringCore*, index : LibC::ULong) : BLResult
+    fun blStringRemoveRange(self : BLStringCore*, r_start : LibC::ULong, r_end : LibC::ULong) : BLResult
+    fun blStringEquals(a : BLStringCore*, b : BLStringCore*) : Bool
+    fun blStringEqualsData(self : BLStringCore*, str : UInt8*, n : LibC::ULong) : Bool
     fun blStringCompare(a : BLStringCore*, b : BLStringCore*) : Int32
-    fun blStringCompareData(self : BLStringCore*, str : UInt8*, n : Int32) : Int32
+    fun blStringCompareData(self : BLStringCore*, str : UInt8*, n : LibC::ULong) : Int32
 
     struct BLStringCore
       _d : BLStringImpl*
     end
 
     struct BLStringImpl
-      size : Int32
-      capacity : Int32
+      size : LibC::ULong
+      capacity : LibC::ULong
     end
   end
 end

@@ -20,7 +20,7 @@ input_content = include_files.map { |f| "#include <#{f}>\n" }.join
 files = [Clang::UnsavedFile.new("input.c", input_content)]
 
 index = Clang::Index.new
-args = ["-I/usr/include"]
+args = ["-I/usr/include", "-I/usr/lib/clang/18/include/"]
 options = Clang::TranslationUnit.default_options |
           Clang::TranslationUnit::Options::SkipFunctionBodies |
           Clang::TranslationUnit::Options::DetailedPreprocessingRecord

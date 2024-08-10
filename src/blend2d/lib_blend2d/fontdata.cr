@@ -12,13 +12,13 @@ module Blend2D
     fun blFontDataAssignWeak(self : BLFontDataCore*, other : BLFontDataCore*) : BLResult
     fun blFontDataCreateFromFile(self : BLFontDataCore*, file_name : UInt8*, read_flags : BLFileReadFlags) : BLResult
     fun blFontDataCreateFromDataArray(self : BLFontDataCore*, data_array : BLArrayCore*) : BLResult
-    fun blFontDataCreateFromData(self : BLFontDataCore*, data : Void*, data_size : Int32, destroy_func : BLDestroyExternalDataFunc, user_data : Void*) : BLResult
-    fun blFontDataEquals(a : BLFontDataCore*, b : BLFontDataCore*) : Int32
+    fun blFontDataCreateFromData(self : BLFontDataCore*, data : Void*, data_size : LibC::ULong, destroy_func : BLDestroyExternalDataFunc, user_data : Void*) : BLResult
+    fun blFontDataEquals(a : BLFontDataCore*, b : BLFontDataCore*) : Bool
     fun blFontDataGetFaceCount(self : BLFontDataCore*) : UInt32
     fun blFontDataGetFaceType(self : BLFontDataCore*) : BLFontFaceType
     fun blFontDataGetFlags(self : BLFontDataCore*) : BLFontDataFlags
     fun blFontDataGetTableTags(self : BLFontDataCore*, face_index : UInt32, dst : BLArrayCore*) : BLResult
-    fun blFontDataGetTables(self : BLFontDataCore*, face_index : UInt32, dst : BLFontTable*, tags : BLTag*, count : Int32) : Int32
+    fun blFontDataGetTables(self : BLFontDataCore*, face_index : UInt32, dst : BLFontTable*, tags : BLTag*, count : LibC::ULong) : LibC::ULong
 
     enum BLFontDataFlags : UInt32
       NoFlags    = 0
@@ -27,7 +27,7 @@ module Blend2D
 
     struct BLFontTable
       data : UInt8*
-      size : Int32
+      size : LibC::ULong
     end
 
     struct BLFontDataCore
@@ -37,7 +37,7 @@ module Blend2D
     struct BLFontDataVirt
       base : BLObjectVirtBase
       get_table_tags : (BLFontDataImpl*, UInt32, BLArrayCore*) -> BLResult*
-      size_t : (Int32*) -> (BLFontDataImpl*, UInt32, BLFontTable*, BLTag*, Int32) -> Int32
+      get_tables : (BLFontDataImpl*, UInt32, BLFontTable*, BLTag*, LibC::ULong) -> LibC::ULong*
     end
 
     struct BLFontDataImpl

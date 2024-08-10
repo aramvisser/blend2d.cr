@@ -5,7 +5,7 @@ describe Blend2D::ImageCodec do
     it "returns an array of image codecs" do
       codecs = Blend2D::ImageCodec.built_in_codecs
       codecs.should be_a Array(Blend2D::ImageCodec)
-      codecs.map(&.name.to_s).sort.should eq ["BMP", "JPEG", "PNG"]
+      codecs.map(&.name.to_s).sort.should eq ["BMP", "JPEG", "PNG", "QOI"]
     end
   end
 end

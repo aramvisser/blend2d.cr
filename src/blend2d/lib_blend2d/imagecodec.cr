@@ -6,15 +6,15 @@ module Blend2D
     fun blImageCodecInit(self : BLImageCodecCore*) : BLResult
     fun blImageCodecInitMove(self : BLImageCodecCore*, other : BLImageCodecCore*) : BLResult
     fun blImageCodecInitWeak(self : BLImageCodecCore*, other : BLImageCodecCore*) : BLResult
-    fun blImageCodecInitByName(self : BLImageCodecCore*, name : UInt8*, size : Int32, codecs : BLArrayCore*) : BLResult
+    fun blImageCodecInitByName(self : BLImageCodecCore*, name : UInt8*, size : LibC::ULong, codecs : BLArrayCore*) : BLResult
     fun blImageCodecDestroy(self : BLImageCodecCore*) : BLResult
     fun blImageCodecReset(self : BLImageCodecCore*) : BLResult
     fun blImageCodecAssignMove(self : BLImageCodecCore*, other : BLImageCodecCore*) : BLResult
     fun blImageCodecAssignWeak(self : BLImageCodecCore*, other : BLImageCodecCore*) : BLResult
-    fun blImageCodecFindByName(self : BLImageCodecCore*, name : UInt8*, size : Int32, codecs : BLArrayCore*) : BLResult
-    fun blImageCodecFindByExtension(self : BLImageCodecCore*, name : UInt8*, size : Int32, codecs : BLArrayCore*) : BLResult
-    fun blImageCodecFindByData(self : BLImageCodecCore*, data : Void*, size : Int32, codecs : BLArrayCore*) : BLResult
-    fun blImageCodecInspectData(self : BLImageCodecCore*, data : Void*, size : Int32) : UInt32
+    fun blImageCodecFindByName(self : BLImageCodecCore*, name : UInt8*, size : LibC::ULong, codecs : BLArrayCore*) : BLResult
+    fun blImageCodecFindByExtension(self : BLImageCodecCore*, name : UInt8*, size : LibC::ULong, codecs : BLArrayCore*) : BLResult
+    fun blImageCodecFindByData(self : BLImageCodecCore*, data : Void*, size : LibC::ULong, codecs : BLArrayCore*) : BLResult
+    fun blImageCodecInspectData(self : BLImageCodecCore*, data : Void*, size : LibC::ULong) : UInt32
     fun blImageCodecCreateDecoder(self : BLImageCodecCore*, dst : BLImageDecoderCore*) : BLResult
     fun blImageCodecCreateEncoder(self : BLImageCodecCore*, dst : BLImageEncoderCore*) : BLResult
     fun blImageCodecArrayInitBuiltInCodecs(self : BLArrayCore*) : BLResult
@@ -40,7 +40,7 @@ module Blend2D
 
     struct BLImageCodecVirt
       base : BLObjectVirtBase
-      inspect_data : (BLImageCodecImpl*, UInt8*, Int32) -> UInt32*
+      inspect_data : (BLImageCodecImpl*, UInt8*, LibC::ULong) -> UInt32*
       create_decoder : (BLImageCodecImpl*, BLImageDecoderCore*) -> BLResult*
       create_encoder : (BLImageCodecImpl*, BLImageEncoderCore*) -> BLResult*
     end

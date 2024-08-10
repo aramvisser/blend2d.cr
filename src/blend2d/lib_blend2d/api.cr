@@ -7,7 +7,7 @@ module Blend2D
     alias BLTag = UInt32
     alias BLUniqueId = LibC::ULong
     alias BLUnknown = Void
-    alias BLDebugMessageSinkFunc = (UInt8*, Int32, Void*) -> Void*
+    alias BLDebugMessageSinkFunc = (UInt8*, LibC::ULong, Void*) -> Void*
     alias BLDataView = BLArrayView
 
     fun blTraceError(result : BLResult) : BLResult
@@ -163,22 +163,22 @@ module Blend2D
       UTF16  = 1
       UTF32  = 2
       Latin1 = 3
-      Wchar  = 4
+      Wchar  = 2
     end
 
     struct BLRange
-      start : Int32
-      _end : Int32
+      start : LibC::ULong
+      _end : LibC::ULong
     end
 
     struct BLArrayView
       data : Void*
-      size : Int32
+      size : LibC::ULong
     end
 
     struct BLStringView
       data : UInt8*
-      size : Int32
+      size : LibC::ULong
     end
   end
 end

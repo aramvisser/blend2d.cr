@@ -18,10 +18,10 @@ module Blend2D
     fun blImageGetData(self : BLImageCore*, data_out : BLImageData*) : BLResult
     fun blImageMakeMutable(self : BLImageCore*, data_out : BLImageData*) : BLResult
     fun blImageConvert(self : BLImageCore*, format : BLFormat) : BLResult
-    fun blImageEquals(a : BLImageCore*, b : BLImageCore*) : Int32
+    fun blImageEquals(a : BLImageCore*, b : BLImageCore*) : Bool
     fun blImageScale(dst : BLImageCore*, src : BLImageCore*, size : BLSizeI*, filter : BLImageScaleFilter) : BLResult
     fun blImageReadFromFile(self : BLImageCore*, file_name : UInt8*, codecs : BLArrayCore*) : BLResult
-    fun blImageReadFromData(self : BLImageCore*, data : Void*, size : Int32, codecs : BLArrayCore*) : BLResult
+    fun blImageReadFromData(self : BLImageCore*, data : Void*, size : LibC::ULong, codecs : BLArrayCore*) : BLResult
     fun blImageWriteToFile(self : BLImageCore*, file_name : UInt8*, codec : BLImageCodecCore*) : BLResult
     fun blImageWriteToData(self : BLImageCore*, dst : BLArrayCore*, codec : BLImageCodecCore*) : BLResult
 

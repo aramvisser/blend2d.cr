@@ -24,19 +24,19 @@ module Blend2D::Global
       LibBlend2D.blArrayDestroy(self).success_or_raise
     end
 
-    def size : Int32
+    def size : LibC::ULong
       LibBlend2D.blArrayGetSize(self)
     end
 
-    def capacity : Int32
+    def capacity : LibC::ULong
       LibBlend2D.blArrayGetCapacity(self)
     end
 
-    def reserve(n : Int32)
+    def reserve(n : LibC::ULong)
       LibBlend2D.blArrayReserve(self, n).success_or_raise
     end
 
-    def item_size : Int32
+    def item_size : LibC::ULong
       LibBlend2D.blArrayGetItemSize(self)
     end
 

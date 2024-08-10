@@ -12,14 +12,14 @@ module Blend2D
     fun blFontVariationSettingsShrink(self : BLFontVariationSettingsCore*) : BLResult
     fun blFontVariationSettingsAssignMove(self : BLFontVariationSettingsCore*, other : BLFontVariationSettingsCore*) : BLResult
     fun blFontVariationSettingsAssignWeak(self : BLFontVariationSettingsCore*, other : BLFontVariationSettingsCore*) : BLResult
-    fun blFontVariationSettingsGetSize(self : BLFontVariationSettingsCore*) : Int32
-    fun blFontVariationSettingsGetCapacity(self : BLFontVariationSettingsCore*) : Int32
+    fun blFontVariationSettingsGetSize(self : BLFontVariationSettingsCore*) : LibC::ULong
+    fun blFontVariationSettingsGetCapacity(self : BLFontVariationSettingsCore*) : LibC::ULong
     fun blFontVariationSettingsGetView(self : BLFontVariationSettingsCore*, out : BLFontVariationSettingsView*) : BLResult
-    fun blFontVariationSettingsHasValue(self : BLFontVariationSettingsCore*, variation_tag : BLTag) : Int32
+    fun blFontVariationSettingsHasValue(self : BLFontVariationSettingsCore*, variation_tag : BLTag) : Bool
     fun blFontVariationSettingsGetValue(self : BLFontVariationSettingsCore*, variation_tag : BLTag) : Float32
     fun blFontVariationSettingsSetValue(self : BLFontVariationSettingsCore*, variation_tag : BLTag, value : Float32) : BLResult
     fun blFontVariationSettingsRemoveValue(self : BLFontVariationSettingsCore*, variation_tag : BLTag) : BLResult
-    fun blFontVariationSettingsEquals(a : BLFontVariationSettingsCore*, b : BLFontVariationSettingsCore*) : Int32
+    fun blFontVariationSettingsEquals(a : BLFontVariationSettingsCore*, b : BLFontVariationSettingsCore*) : Bool
 
     struct BLFontVariationItem
       tag : BLTag
@@ -28,7 +28,7 @@ module Blend2D
 
     struct BLFontVariationSettingsView
       data : BLFontVariationItem*
-      size : Int32
+      size : LibC::ULong
       sso_data : BLFontVariationItem[3]
     end
 
@@ -38,8 +38,8 @@ module Blend2D
 
     struct BLFontVariationSettingsImpl
       data : BLFontVariationItem*
-      size : Int32
-      capacity : Int32
+      size : LibC::ULong
+      capacity : LibC::ULong
     end
   end
 end

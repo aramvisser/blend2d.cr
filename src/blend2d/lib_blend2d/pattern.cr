@@ -24,7 +24,7 @@ module Blend2D
     fun blPatternGetTransform(self : BLPatternCore*, transform_out : BLMatrix2D*) : BLResult
     fun blPatternGetTransformType(self : BLPatternCore*) : BLTransformType
     fun blPatternApplyTransformOp(self : BLPatternCore*, op_type : BLTransformOp, op_data : Void*) : BLResult
-    fun blPatternEquals(a : BLPatternCore*, b : BLPatternCore*) : Int32
+    fun blPatternEquals(a : BLPatternCore*, b : BLPatternCore*) : Bool
 
     enum BLPatternQuality : UInt32
       Nearest  = 0

@@ -22,7 +22,7 @@ module Blend2D
 
     struct BLPixelConverterOptions
       origin : BLPointI
-      gap : Int32
+      gap : LibC::ULong
     end
 
     struct BLPixelConverterCore

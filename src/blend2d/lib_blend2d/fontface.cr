@@ -10,7 +10,7 @@ module Blend2D
     fun blFontFaceReset(self : BLFontFaceCore*) : BLResult
     fun blFontFaceAssignMove(self : BLFontFaceCore*, other : BLFontFaceCore*) : BLResult
     fun blFontFaceAssignWeak(self : BLFontFaceCore*, other : BLFontFaceCore*) : BLResult
-    fun blFontFaceEquals(a : BLFontFaceCore*, b : BLFontFaceCore*) : Int32
+    fun blFontFaceEquals(a : BLFontFaceCore*, b : BLFontFaceCore*) : Bool
     fun blFontFaceCreateFromFile(self : BLFontFaceCore*, file_name : UInt8*, read_flags : BLFileReadFlags) : BLResult
     fun blFontFaceCreateFromData(self : BLFontFaceCore*, font_data : BLFontDataCore*, face_index : UInt32) : BLResult
     fun blFontFaceGetFullName(self : BLFontFaceCore*, out : BLStringCore*) : BLResult
@@ -21,9 +21,9 @@ module Blend2D
     fun blFontFaceGetDesignMetrics(self : BLFontFaceCore*, out : BLFontDesignMetrics*) : BLResult
     fun blFontFaceGetUnicodeCoverage(self : BLFontFaceCore*, out : BLFontUnicodeCoverage*) : BLResult
     fun blFontFaceGetCharacterCoverage(self : BLFontFaceCore*, out : BLBitSetCore*) : BLResult
-    fun blFontFaceHasScriptTag(self : BLFontFaceCore*, script_tag : BLTag) : Int32
-    fun blFontFaceHasFeatureTag(self : BLFontFaceCore*, feature_tag : BLTag) : Int32
-    fun blFontFaceHasVariationTag(self : BLFontFaceCore*, variation_tag : BLTag) : Int32
+    fun blFontFaceHasScriptTag(self : BLFontFaceCore*, script_tag : BLTag) : Bool
+    fun blFontFaceHasFeatureTag(self : BLFontFaceCore*, feature_tag : BLTag) : Bool
+    fun blFontFaceHasVariationTag(self : BLFontFaceCore*, variation_tag : BLTag) : Bool
     fun blFontFaceGetScriptTags(self : BLFontFaceCore*, out : BLArrayCore*) : BLResult
     fun blFontFaceGetFeatureTags(self : BLFontFaceCore*, out : BLArrayCore*) : BLResult
     fun blFontFaceGetVariationTags(self : BLFontFaceCore*, out : BLArrayCore*) : BLResult

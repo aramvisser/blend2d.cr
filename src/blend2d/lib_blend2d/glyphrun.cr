@@ -22,7 +22,7 @@ module Blend2D
     struct BLGlyphRun
       glyph_data : Void*
       placement_data : Void*
-      size : Int32
+      size : LibC::ULong
       reserved : UInt8
       placement_type : UInt8
       glyph_advance : UInt8

@@ -101,30 +101,30 @@ module Blend2D
     fun blContextFillGeometryRgba32(self : BLContextCore*, type : BLGeometryType, data : Void*, rgba32 : UInt32) : BLResult
     fun blContextFillGeometryRgba64(self : BLContextCore*, type : BLGeometryType, data : Void*, rgba64 : LibC::ULong) : BLResult
     fun blContextFillGeometryExt(self : BLContextCore*, type : BLGeometryType, data : Void*, style : BLUnknown*) : BLResult
-    fun blContextFillUtf8TextI(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt8*, size : Int32) : BLResult
-    fun blContextFillUtf8TextIRgba32(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt8*, size : Int32, rgba32 : UInt32) : BLResult
-    fun blContextFillUtf8TextIRgba64(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt8*, size : Int32, rgba64 : LibC::ULong) : BLResult
-    fun blContextFillUtf8TextIExt(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt8*, size : Int32, style : BLUnknown*) : BLResult
-    fun blContextFillUtf8TextD(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt8*, size : Int32) : BLResult
-    fun blContextFillUtf8TextDRgba32(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt8*, size : Int32, rgba32 : UInt32) : BLResult
-    fun blContextFillUtf8TextDRgba64(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt8*, size : Int32, rgba64 : LibC::ULong) : BLResult
-    fun blContextFillUtf8TextDExt(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt8*, size : Int32, style : BLUnknown*) : BLResult
-    fun blContextFillUtf16TextI(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt16*, size : Int32) : BLResult
-    fun blContextFillUtf16TextIRgba32(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt16*, size : Int32, rgba32 : UInt32) : BLResult
-    fun blContextFillUtf16TextIRgba64(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt16*, size : Int32, rgba64 : LibC::ULong) : BLResult
-    fun blContextFillUtf16TextIExt(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt16*, size : Int32, style : BLUnknown*) : BLResult
-    fun blContextFillUtf16TextD(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt16*, size : Int32) : BLResult
-    fun blContextFillUtf16TextDRgba32(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt16*, size : Int32, rgba32 : UInt32) : BLResult
-    fun blContextFillUtf16TextDRgba64(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt16*, size : Int32, rgba64 : LibC::ULong) : BLResult
-    fun blContextFillUtf16TextDExt(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt16*, size : Int32, style : BLUnknown*) : BLResult
-    fun blContextFillUtf32TextI(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt32*, size : Int32) : BLResult
-    fun blContextFillUtf32TextIRgba32(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt32*, size : Int32, rgba32 : UInt32) : BLResult
-    fun blContextFillUtf32TextIRgba64(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt32*, size : Int32, rgba64 : LibC::ULong) : BLResult
-    fun blContextFillUtf32TextIExt(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt32*, size : Int32, style : BLUnknown*) : BLResult
-    fun blContextFillUtf32TextD(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt32*, size : Int32) : BLResult
-    fun blContextFillUtf32TextDRgba32(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt32*, size : Int32, rgba32 : UInt32) : BLResult
-    fun blContextFillUtf32TextDRgba64(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt32*, size : Int32, rgba64 : LibC::ULong) : BLResult
-    fun blContextFillUtf32TextDExt(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt32*, size : Int32, style : BLUnknown*) : BLResult
+    fun blContextFillUtf8TextI(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt8*, size : LibC::ULong) : BLResult
+    fun blContextFillUtf8TextIRgba32(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt8*, size : LibC::ULong, rgba32 : UInt32) : BLResult
+    fun blContextFillUtf8TextIRgba64(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt8*, size : LibC::ULong, rgba64 : LibC::ULong) : BLResult
+    fun blContextFillUtf8TextIExt(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt8*, size : LibC::ULong, style : BLUnknown*) : BLResult
+    fun blContextFillUtf8TextD(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt8*, size : LibC::ULong) : BLResult
+    fun blContextFillUtf8TextDRgba32(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt8*, size : LibC::ULong, rgba32 : UInt32) : BLResult
+    fun blContextFillUtf8TextDRgba64(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt8*, size : LibC::ULong, rgba64 : LibC::ULong) : BLResult
+    fun blContextFillUtf8TextDExt(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt8*, size : LibC::ULong, style : BLUnknown*) : BLResult
+    fun blContextFillUtf16TextI(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt16*, size : LibC::ULong) : BLResult
+    fun blContextFillUtf16TextIRgba32(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt16*, size : LibC::ULong, rgba32 : UInt32) : BLResult
+    fun blContextFillUtf16TextIRgba64(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt16*, size : LibC::ULong, rgba64 : LibC::ULong) : BLResult
+    fun blContextFillUtf16TextIExt(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt16*, size : LibC::ULong, style : BLUnknown*) : BLResult
+    fun blContextFillUtf16TextD(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt16*, size : LibC::ULong) : BLResult
+    fun blContextFillUtf16TextDRgba32(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt16*, size : LibC::ULong, rgba32 : UInt32) : BLResult
+    fun blContextFillUtf16TextDRgba64(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt16*, size : LibC::ULong, rgba64 : LibC::ULong) : BLResult
+    fun blContextFillUtf16TextDExt(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt16*, size : LibC::ULong, style : BLUnknown*) : BLResult
+    fun blContextFillUtf32TextI(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt32*, size : LibC::ULong) : BLResult
+    fun blContextFillUtf32TextIRgba32(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt32*, size : LibC::ULong, rgba32 : UInt32) : BLResult
+    fun blContextFillUtf32TextIRgba64(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt32*, size : LibC::ULong, rgba64 : LibC::ULong) : BLResult
+    fun blContextFillUtf32TextIExt(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt32*, size : LibC::ULong, style : BLUnknown*) : BLResult
+    fun blContextFillUtf32TextD(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt32*, size : LibC::ULong) : BLResult
+    fun blContextFillUtf32TextDRgba32(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt32*, size : LibC::ULong, rgba32 : UInt32) : BLResult
+    fun blContextFillUtf32TextDRgba64(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt32*, size : LibC::ULong, rgba64 : LibC::ULong) : BLResult
+    fun blContextFillUtf32TextDExt(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt32*, size : LibC::ULong, style : BLUnknown*) : BLResult
     fun blContextFillGlyphRunI(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, glyph_run : BLGlyphRun*) : BLResult
     fun blContextFillGlyphRunIRgba32(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, glyph_run : BLGlyphRun*, rgba32 : UInt32) : BLResult
     fun blContextFillGlyphRunIRgba64(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, glyph_run : BLGlyphRun*, rgba64 : LibC::ULong) : BLResult
@@ -157,30 +157,30 @@ module Blend2D
     fun blContextStrokeGeometryRgba32(self : BLContextCore*, type : BLGeometryType, data : Void*, rgba32 : UInt32) : BLResult
     fun blContextStrokeGeometryRgba64(self : BLContextCore*, type : BLGeometryType, data : Void*, rgba64 : LibC::ULong) : BLResult
     fun blContextStrokeGeometryExt(self : BLContextCore*, type : BLGeometryType, data : Void*, style : BLUnknown*) : BLResult
-    fun blContextStrokeUtf8TextI(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt8*, size : Int32) : BLResult
-    fun blContextStrokeUtf8TextIRgba32(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt8*, size : Int32, rgba32 : UInt32) : BLResult
-    fun blContextStrokeUtf8TextIRgba64(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt8*, size : Int32, rgba64 : LibC::ULong) : BLResult
-    fun blContextStrokeUtf8TextIExt(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt8*, size : Int32, style : BLUnknown*) : BLResult
-    fun blContextStrokeUtf8TextD(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt8*, size : Int32) : BLResult
-    fun blContextStrokeUtf8TextDRgba32(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt8*, size : Int32, rgba32 : UInt32) : BLResult
-    fun blContextStrokeUtf8TextDRgba64(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt8*, size : Int32, rgba64 : LibC::ULong) : BLResult
-    fun blContextStrokeUtf8TextDExt(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt8*, size : Int32, style : BLUnknown*) : BLResult
-    fun blContextStrokeUtf16TextI(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt16*, size : Int32) : BLResult
-    fun blContextStrokeUtf16TextIRgba32(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt16*, size : Int32, rgba32 : UInt32) : BLResult
-    fun blContextStrokeUtf16TextIRgba64(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt16*, size : Int32, rgba64 : LibC::ULong) : BLResult
-    fun blContextStrokeUtf16TextIExt(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt16*, size : Int32, style : BLUnknown*) : BLResult
-    fun blContextStrokeUtf16TextD(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt16*, size : Int32) : BLResult
-    fun blContextStrokeUtf16TextDRgba32(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt16*, size : Int32, rgba32 : UInt32) : BLResult
-    fun blContextStrokeUtf16TextDRgba64(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt16*, size : Int32, rgba64 : LibC::ULong) : BLResult
-    fun blContextStrokeUtf16TextDExt(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt16*, size : Int32, style : BLUnknown*) : BLResult
-    fun blContextStrokeUtf32TextI(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt32*, size : Int32) : BLResult
-    fun blContextStrokeUtf32TextIRgba32(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt32*, size : Int32, rgba32 : UInt32) : BLResult
-    fun blContextStrokeUtf32TextIRgba64(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt32*, size : Int32, rgba64 : LibC::ULong) : BLResult
-    fun blContextStrokeUtf32TextIExt(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt32*, size : Int32, style : BLUnknown*) : BLResult
-    fun blContextStrokeUtf32TextD(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt32*, size : Int32) : BLResult
-    fun blContextStrokeUtf32TextDRgba32(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt32*, size : Int32, rgba32 : UInt32) : BLResult
-    fun blContextStrokeUtf32TextDRgba64(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt32*, size : Int32, rgba64 : LibC::ULong) : BLResult
-    fun blContextStrokeUtf32TextDExt(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt32*, size : Int32, style : BLUnknown*) : BLResult
+    fun blContextStrokeUtf8TextI(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt8*, size : LibC::ULong) : BLResult
+    fun blContextStrokeUtf8TextIRgba32(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt8*, size : LibC::ULong, rgba32 : UInt32) : BLResult
+    fun blContextStrokeUtf8TextIRgba64(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt8*, size : LibC::ULong, rgba64 : LibC::ULong) : BLResult
+    fun blContextStrokeUtf8TextIExt(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt8*, size : LibC::ULong, style : BLUnknown*) : BLResult
+    fun blContextStrokeUtf8TextD(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt8*, size : LibC::ULong) : BLResult
+    fun blContextStrokeUtf8TextDRgba32(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt8*, size : LibC::ULong, rgba32 : UInt32) : BLResult
+    fun blContextStrokeUtf8TextDRgba64(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt8*, size : LibC::ULong, rgba64 : LibC::ULong) : BLResult
+    fun blContextStrokeUtf8TextDExt(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt8*, size : LibC::ULong, style : BLUnknown*) : BLResult
+    fun blContextStrokeUtf16TextI(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt16*, size : LibC::ULong) : BLResult
+    fun blContextStrokeUtf16TextIRgba32(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt16*, size : LibC::ULong, rgba32 : UInt32) : BLResult
+    fun blContextStrokeUtf16TextIRgba64(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt16*, size : LibC::ULong, rgba64 : LibC::ULong) : BLResult
+    fun blContextStrokeUtf16TextIExt(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt16*, size : LibC::ULong, style : BLUnknown*) : BLResult
+    fun blContextStrokeUtf16TextD(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt16*, size : LibC::ULong) : BLResult
+    fun blContextStrokeUtf16TextDRgba32(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt16*, size : LibC::ULong, rgba32 : UInt32) : BLResult
+    fun blContextStrokeUtf16TextDRgba64(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt16*, size : LibC::ULong, rgba64 : LibC::ULong) : BLResult
+    fun blContextStrokeUtf16TextDExt(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt16*, size : LibC::ULong, style : BLUnknown*) : BLResult
+    fun blContextStrokeUtf32TextI(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt32*, size : LibC::ULong) : BLResult
+    fun blContextStrokeUtf32TextIRgba32(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt32*, size : LibC::ULong, rgba32 : UInt32) : BLResult
+    fun blContextStrokeUtf32TextIRgba64(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt32*, size : LibC::ULong, rgba64 : LibC::ULong) : BLResult
+    fun blContextStrokeUtf32TextIExt(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, text : UInt32*, size : LibC::ULong, style : BLUnknown*) : BLResult
+    fun blContextStrokeUtf32TextD(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt32*, size : LibC::ULong) : BLResult
+    fun blContextStrokeUtf32TextDRgba32(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt32*, size : LibC::ULong, rgba32 : UInt32) : BLResult
+    fun blContextStrokeUtf32TextDRgba64(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt32*, size : LibC::ULong, rgba64 : LibC::ULong) : BLResult
+    fun blContextStrokeUtf32TextDExt(self : BLContextCore*, origin : BLPoint*, font : BLFontCore*, text : UInt32*, size : LibC::ULong, style : BLUnknown*) : BLResult
     fun blContextStrokeGlyphRunI(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, glyph_run : BLGlyphRun*) : BLResult
     fun blContextStrokeGlyphRunIRgba32(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, glyph_run : BLGlyphRun*, rgba32 : UInt32) : BLResult
     fun blContextStrokeGlyphRunIRgba64(self : BLContextCore*, origin : BLPointI*, font : BLFontCore*, glyph_run : BLGlyphRun*, rgba64 : LibC::ULong) : BLResult
@@ -216,7 +216,7 @@ module Blend2D
       UTF16    = 1
       UTF32    = 2
       Latin1   = 3
-      Wchar    = 4
+      Wchar    = 2
       GlyphRun = 4
     end
 
@@ -363,7 +363,7 @@ module Blend2D
       set_flatten_mode : (BLContextImpl*, BLFlattenMode) -> BLResult*
       set_flatten_tolerance : (BLContextImpl*, Float64) -> BLResult*
       set_approximation_options : (BLContextImpl*, BLApproximationOptions*) -> BLResult*
-      get_style : (BLContextImpl*, BLContextStyleSlot, Int32, BLVarCore*) -> BLResult*
+      get_style : (BLContextImpl*, BLContextStyleSlot, Bool, BLVarCore*) -> BLResult*
       set_style : (BLContextImpl*, BLContextStyleSlot, BLObjectCore*, BLContextStyleTransformMode) -> BLResult*
       set_style_rgba : (BLContextImpl*, BLContextStyleSlot, BLRgba*) -> BLResult*
       set_style_rgba32 : (BLContextImpl*, BLContextStyleSlot, UInt32) -> BLResult*

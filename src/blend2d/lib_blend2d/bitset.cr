@@ -14,18 +14,18 @@ module Blend2D
     fun blBitSetAssignDeep(self : BLBitSetCore*, other : BLBitSetCore*) : BLResult
     fun blBitSetAssignRange(self : BLBitSetCore*, start_bit : UInt32, end_bit : UInt32) : BLResult
     fun blBitSetAssignWords(self : BLBitSetCore*, start_word : UInt32, word_data : UInt32*, word_count : UInt32) : BLResult
-    fun blBitSetIsEmpty(self : BLBitSetCore*) : Int32
+    fun blBitSetIsEmpty(self : BLBitSetCore*) : Bool
     fun blBitSetGetData(self : BLBitSetCore*, out : BLBitSetData*) : BLResult
     fun blBitSetGetSegmentCount(self : BLBitSetCore*) : UInt32
     fun blBitSetGetSegmentCapacity(self : BLBitSetCore*) : UInt32
     fun blBitSetGetCardinality(self : BLBitSetCore*) : UInt32
     fun blBitSetGetCardinalityInRange(self : BLBitSetCore*, start_bit : UInt32, end_bit : UInt32) : UInt32
-    fun blBitSetHasBit(self : BLBitSetCore*, bit_index : UInt32) : Int32
-    fun blBitSetHasBitsInRange(self : BLBitSetCore*, start_bit : UInt32, end_bit : UInt32) : Int32
-    fun blBitSetSubsumes(a : BLBitSetCore*, b : BLBitSetCore*) : Int32
-    fun blBitSetIntersects(a : BLBitSetCore*, b : BLBitSetCore*) : Int32
-    fun blBitSetGetRange(self : BLBitSetCore*, start_out : UInt32*, end_out : UInt32*) : Int32
-    fun blBitSetEquals(a : BLBitSetCore*, b : BLBitSetCore*) : Int32
+    fun blBitSetHasBit(self : BLBitSetCore*, bit_index : UInt32) : Bool
+    fun blBitSetHasBitsInRange(self : BLBitSetCore*, start_bit : UInt32, end_bit : UInt32) : Bool
+    fun blBitSetSubsumes(a : BLBitSetCore*, b : BLBitSetCore*) : Bool
+    fun blBitSetIntersects(a : BLBitSetCore*, b : BLBitSetCore*) : Bool
+    fun blBitSetGetRange(self : BLBitSetCore*, start_out : UInt32*, end_out : UInt32*) : Bool
+    fun blBitSetEquals(a : BLBitSetCore*, b : BLBitSetCore*) : Bool
     fun blBitSetCompare(a : BLBitSetCore*, b : BLBitSetCore*) : Int32
     fun blBitSetClear(self : BLBitSetCore*) : BLResult
     fun blBitSetShrink(self : BLBitSetCore*) : BLResult

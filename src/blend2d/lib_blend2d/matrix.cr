@@ -11,7 +11,7 @@ module Blend2D
     fun blMatrix2DApplyOp(self : BLMatrix2D*, op_type : BLTransformOp, op_data : Void*) : BLResult
     fun blMatrix2DInvert(dst : BLMatrix2D*, src : BLMatrix2D*) : BLResult
     fun blMatrix2DGetType(self : BLMatrix2D*) : BLTransformType
-    fun blMatrix2DMapPointDArray(self : BLMatrix2D*, dst : BLPoint*, src : BLPoint*, count : Int32) : BLResult
+    fun blMatrix2DMapPointDArray(self : BLMatrix2D*, dst : BLPoint*, src : BLPoint*, count : LibC::ULong) : BLResult
 
     enum BLTransformType : UInt32
       Identity  = 0
