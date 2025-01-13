@@ -21,6 +21,10 @@ module Blend2D::Imaging
       LibBlend2D.blImageInitAs(out @core, w, h, format).success_or_raise
     end
 
+    def initialize(w : Int32, h : Int32, format : Format, pixel_data : Slice(UInt32))
+      LibBlend2D.blImageInitAsFromData(out @core, w, h, format, pixel_data, w * 4, DataAccessFlags::Read, nil, nil).success_or_raise
+    end
+
     def finalize
       LibBlend2D.blImageDestroy(self).success_or_raise
     end
@@ -52,6 +56,11 @@ module Blend2D::Imaging
 
     def data : ImageData
       LibBlend2D.blImageGetData(self, out image_data).success_or_raise
+      ImageData.new image_data
+    end
+
+    def mutable_data : ImageData
+      LibBlend2D.blImageMakeMutable(self, out image_data).success_or_raise
       ImageData.new image_data
     end
 
